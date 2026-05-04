@@ -230,3 +230,19 @@ mana_cloak:
     - "&7Automatically use mana potions "
     - "&7when needed"
     - "&7Causes stars to fall after taking damage"
+cloud_in_a_balloon:
+  name: "Cloud in a Balloon"
+  lore:
+    - "&7Allows the holder to double jump"
+    - "&7Increases jump height"
+sandstorm_in_a_balloon:
+  name: "Sandstorm in a Balloon"
+  lore:
+    - "&7Allows the holder to do an"
+    - "&7improved double jump"
+    - "&7Increases jump height"
+blizzard_in_a_balloon:
+  name: "Blizzard in a Balloon"
+  lore:
+    - "&7Allows the holder to double jump"
+    - "&7Increases jump height"

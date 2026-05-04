@@ -82,6 +82,9 @@ public class AccessoryManager implements Listener {
         accessoryList.put("NaturesGift",new NaturesGift(plugin));
         accessoryList.put("ManaFlower",new ManaFlower(plugin));
         accessoryList.put("ManaCloak",new ManaCloak(plugin));
+        accessoryList.put("CloudInABalloon",new CloudInABalloon(plugin));
+        accessoryList.put("SandstormInABalloon",new SandstormInABalloon(plugin));
+        accessoryList.put("BlizzardInABalloon",new BlizzardInABalloon(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

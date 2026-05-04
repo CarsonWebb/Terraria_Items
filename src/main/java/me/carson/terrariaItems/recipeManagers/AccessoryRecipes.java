@@ -57,6 +57,39 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         registerStingerNecklaceRecipe();
         registerManaFlowerRecipe();
         registerManaCloakRecipe();
+        registerCloudInABalloonRecipe();
+        registerBlizzardInABalloonRecipe();
+        registerSandstormInABalloonRecipe();
+    }
+
+    private void registerSandstormInABalloonRecipe(){
+        ItemStack item= SandstormInABalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SandstormInABalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SandstormInABottle.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBlizzardInABalloonRecipe(){
+        ItemStack item= BlizzardInABalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BlizzardInABalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABottle.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerCloudInABalloonRecipe(){
+        ItemStack item= CloudInABalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CloudInABalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerManaCloakRecipe(){

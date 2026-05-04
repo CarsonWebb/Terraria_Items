@@ -35,7 +35,7 @@ public class AccessoryListeners implements Listener {
     private final AccessoryManager accessoryManagerInstance= AccessoryManager.getInstance();
     private static final Set<Biome> jungleBiomes = Set.of(Biome.JUNGLE,Biome.BAMBOO_JUNGLE,Biome.SPARSE_JUNGLE);
     private final Set<UUID> usedDoubleJump = new HashSet<>();
-    public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle");
+    public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle","CloudInABalloon","BlizzardInABalloon","SandstormInABalloon");
     public final Set<String> SHIELDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
 
     public AccessoryListeners(Plugin plugin){
@@ -117,7 +117,7 @@ public class AccessoryListeners implements Listener {
         }
         if(itemId==null){return;}
         switch (itemId){
-            case "CloudInABottle" ->{
+            case "CloudInABottle","CloudInABalloon" ->{
                 player.setVelocity(player.getVelocity().setY(0.5));
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
@@ -127,7 +127,7 @@ public class AccessoryListeners implements Listener {
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
             }
-            case "BlizzardInABottle"->{
+            case "BlizzardInABottle","BlizzardInABalloon"->{
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 final int[] timeLeft = {10};
                 Bukkit.getScheduler().runTaskTimer(plugin, task -> {
@@ -139,7 +139,7 @@ public class AccessoryListeners implements Listener {
                     }
                 }, 0L, 1L);
             }
-            case "SandstormInABottle"->{
+            case "SandstormInABottle","SandstormInABalloon"->{
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
                 final int[] timeLeft = {15};
                 Bukkit.getScheduler().runTaskTimer(plugin, task -> {
