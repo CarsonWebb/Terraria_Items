@@ -3,6 +3,8 @@ package me.carson.terrariaItems.recipeManagers;
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
+import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
+import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import org.bukkit.Bukkit;
@@ -60,6 +62,104 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         registerCloudInABalloonRecipe();
         registerBlizzardInABalloonRecipe();
         registerSandstormInABalloonRecipe();
+        registerAmberHorseshoeBalloonRecipe();
+        registerBlueHorseshoeBalloonRecipe();
+        registerWhiteHorseshoeBalloonRecipe();
+        registerYellowHorseshoeBalloonRecipe();
+        registerSandstormInABottleRecipe();
+        registerBlizzardInABottleRecipe();
+        registerBundleOfBalloonsRecipe();
+        registerBundleOfHorseshoeBalloonsRecipe();
+    }
+
+    private void registerBundleOfHorseshoeBalloonsRecipe(){
+        ItemStack item= BundleOfHorseshoeBalloons.getItem(plugin);
+
+        NamespacedKey key = new NamespacedKey(plugin, "BundleOfHorseshoeBalloons");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BundleOfBalloons.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+
+        NamespacedKey key1 = new NamespacedKey(plugin, "BundleOfHorseshoeBalloons1");
+        ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(BlueHorseshoeBalloon.getItem(plugin),CloudInABalloon.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin),WhiteHorseshoeBalloon.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin),YellowHorseshoeBalloon.getItem(plugin)));
+        recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe1);
+    }
+
+    private void registerBundleOfBalloonsRecipe(){
+        ItemStack item= BundleOfBalloons.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BundleOfBalloons");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABalloon.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBlizzardInABottleRecipe(){
+        ItemStack item= BlizzardInABottle.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BlizzardInABottle");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerSandstormInABottleRecipe(){
+        ItemStack item= SandstormInABottle.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SandstormInABottle");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerYellowHorseshoeBalloonRecipe(){
+        ItemStack item= YellowHorseshoeBalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "YellowHorseshoeBalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerWhiteHorseshoeBalloonRecipe(){
+        ItemStack item= WhiteHorseshoeBalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "WhiteHorseshoeBalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerBlueHorseshoeBalloonRecipe(){
+        ItemStack item= BlueHorseshoeBalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "BlueHorseshoeBalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAmberHorseshoeBalloonRecipe(){
+        ItemStack item= AmberHorseshoeBalloon.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "AmberHorseshoeBalloon");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyBalloon.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerSandstormInABalloonRecipe(){

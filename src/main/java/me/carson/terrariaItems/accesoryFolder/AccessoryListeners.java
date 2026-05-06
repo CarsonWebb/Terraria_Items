@@ -34,8 +34,8 @@ public class AccessoryListeners implements Listener {
     private final PlayerDataHandler playerDataInstance=PlayerDataHandler.getInstance();
     private final AccessoryManager accessoryManagerInstance= AccessoryManager.getInstance();
     private static final Set<Biome> jungleBiomes = Set.of(Biome.JUNGLE,Biome.BAMBOO_JUNGLE,Biome.SPARSE_JUNGLE);
-    private final Set<UUID> usedDoubleJump = new HashSet<>();
-    public final Set<String> DOUBLE_JUMPS = Set.of("CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle","CloudInABalloon","BlizzardInABalloon","SandstormInABalloon");
+    private final HashMap<UUID,Integer> usedJumps = new HashMap<UUID, Integer>();
+    public final Set<String> DOUBLE_JUMPS = Set.of("BundleOfBalloons","BundleOfHorseshoeBalloons","CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle","CloudInABalloon","BlizzardInABalloon","SandstormInABalloon","BlueHorseshoeBalloon","WhiteHorseshoeBalloon","YellowHorseshoeBalloon");
     public final Set<String> SHIELDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
 
     public AccessoryListeners(Plugin plugin){
@@ -90,7 +90,7 @@ public class AccessoryListeners implements Listener {
     public void onMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         if(((Entity)player).isOnGround()){
-            usedDoubleJump.remove(player.getUniqueId());
+            usedJumps.put(player.getUniqueId(),0);
         }
     }
 
@@ -100,8 +100,6 @@ public class AccessoryListeners implements Listener {
         Player player = event.getPlayer();
         if(((Entity)player).isOnGround()){return;}
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR){return;}
-        if(usedDoubleJump.contains(player.getUniqueId())){return;}
-        usedDoubleJump.add(player.getUniqueId());
 
         String itemId=null;
         List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
@@ -116,18 +114,24 @@ public class AccessoryListeners implements Listener {
             }
         }
         if(itemId==null){return;}
+        UUID id = player.getUniqueId();
         switch (itemId){
-            case "CloudInABottle","CloudInABalloon" ->{
+            case "CloudInABottle","CloudInABalloon","BlueHorseshoeBalloon" ->{
+                if(usedJumps.get(id)>0){return;}
                 player.setVelocity(player.getVelocity().setY(0.5));
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                usedJumps.merge(id,1,Integer::sum);
             }
             case "TsunamiInABottle"->{
+                if(usedJumps.get(id)>0){return;}
                 player.setVelocity(player.getVelocity().setY(0.6));
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                usedJumps.merge(id,1,Integer::sum);
             }
-            case "BlizzardInABottle","BlizzardInABalloon"->{
+            case "BlizzardInABottle","BlizzardInABalloon","WhiteHorseshoeBalloon"->{
+                if(usedJumps.get(id)>0){return;}
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
                 final int[] timeLeft = {10};
                 Bukkit.getScheduler().runTaskTimer(plugin, task -> {
@@ -138,8 +142,10 @@ public class AccessoryListeners implements Listener {
                         task.cancel();
                     }
                 }, 0L, 1L);
+                usedJumps.merge(id,1,Integer::sum);
             }
-            case "SandstormInABottle","SandstormInABalloon"->{
+            case "SandstormInABottle","SandstormInABalloon","YellowHorseshoeBalloon"->{
+                if(usedJumps.get(id)>0){return;}
                 player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
                 final int[] timeLeft = {15};
                 Bukkit.getScheduler().runTaskTimer(plugin, task -> {
@@ -150,6 +156,46 @@ public class AccessoryListeners implements Listener {
                         task.cancel();
                     }
                 }, 0L, 1L);
+                usedJumps.merge(id,1,Integer::sum);
+            }
+            case "BundleOfBalloons","BundleOfHorseshoeBalloons" ->{
+                switch (usedJumps.get(id)){
+                    case 0 ->{
+                        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 0.5F, 1.0F);
+                        final int[] timeLeft = {15};
+                        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+                            player.setVelocity(player.getVelocity().setY(0.4));
+                            player.getWorld().spawnParticle(Particle.DUST_PLUME, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                            timeLeft[0]--;
+                            if (timeLeft[0] <= 0) {
+                                task.cancel();
+                            }
+                        }, 0L, 1L);
+                        usedJumps.merge(id,1,Integer::sum);
+                    }
+                    case 1 -> {
+                        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+                        final int[] timeLeft = {10};
+                        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+                            player.setVelocity(player.getVelocity().setY(0.4));
+                            player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                            timeLeft[0]--;
+                            if (timeLeft[0] <= 0) {
+                                task.cancel();
+                            }
+                        }, 0L, 1L);
+                        usedJumps.merge(id,1,Integer::sum);
+                    }
+                    case 2 -> {
+                        player.setVelocity(player.getVelocity().setY(0.5));
+                        player.getWorld().playSound(player.getLocation(), "terraria:double_jump", 1.0F, 1.0F);
+                        player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation(), 20, 0.2, 0.2, 0.2, 0.05);
+                        usedJumps.merge(id,1,Integer::sum);
+                    }
+                    default -> {
+                        return;
+                    }
+                }
             }
             default -> {
                 return;

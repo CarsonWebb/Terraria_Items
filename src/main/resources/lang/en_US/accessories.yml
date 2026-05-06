@@ -246,3 +246,39 @@ blizzard_in_a_balloon:
   lore:
     - "&7Allows the holder to double jump"
     - "&7Increases jump height"
+amber_horseshoe_balloon:
+  name: "Amber Horseshoe Balloon"
+  lore:
+    - "&7Douses the user in honey when damaged"
+    - "&7Increases jump height"
+    - "&7Negates fall damage"
+blue_horseshoe_balloon:
+  name: "Blue Horseshoe Balloon"
+  lore:
+    - "&7Allows the holder to double jump"
+    - "&7Increases jump height"
+    - "&7Negates fall damage"
+white_horseshoe_balloon:
+  name: "White Horseshoe Balloon"
+  lore:
+    - "&7Allows the holder to double jump"
+    - "&7Increases jump height"
+    - "&7Negates fall damage"
+yellow_horseshoe_balloon:
+  name: "Yellow Horseshoe Balloon"
+  lore:
+    - "&7Allows the holder to do an"
+    - "&7improved double jump"
+    - "&7Increases jump height"
+    - "&7Negates fall damage"
+bundle_of_balloons:
+  name: "Bundle of Balloons"
+  lore:
+    - "&7Allows the holder to quadruple jump"
+    - "&7Increases jump height"
+bundle_of_horseshoe_balloons:
+  name: "Bundle of Horseshoe Balloons"
+  lore:
+    - "&7Allows the holder to quadruple jump"
+    - "&7Increases jump height"
+    - "&7Negates fall damage"
