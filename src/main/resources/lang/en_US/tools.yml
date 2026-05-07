@@ -97,3 +97,7 @@ bloody_tear:
     - "&7'What a horrible night to have a curse.'"
     - "&7Must be used at Night"
     - "&7Consumable"
+grappling_hook:
+  name: "Grappling Hook"
+  lore:
+    - "&7"

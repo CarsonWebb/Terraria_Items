@@ -3,6 +3,7 @@ package me.carson.terrariaItems.toolFolder;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
+import me.carson.terrariaItems.toolFolder.tools.hooks.GrapplingHook;
 import me.carson.terrariaItems.toolFolder.tools.potions.*;
 import me.carson.terrariaItems.toolFolder.tools.summons.*;
 import org.bukkit.Bukkit;
@@ -53,6 +54,7 @@ public class ToolManager implements Listener {
         toolList.put("GreaterManaPotion",new GreaterManaPotion(plugin));
         toolList.put("SuperManaPotion",new SuperManaPotion(plugin));
         toolList.put("BloodyTear",new BloodyTear(plugin));
+        toolList.put("GrapplingHook",new GrapplingHook(plugin));
     }
 
     public Tool getTool(ItemStack item){
