@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class GrapplingHook extends Tool {
 
     public GrapplingHook(Plugin plugin) {
-        super(plugin,"grappling_hook.name","#9696FF", Material.QUARTZ,"grappling_hook","GrapplingHook",0,"grappling_hook.lore");
+        super(plugin,"grappling_hook.name","#9696FF", Material.QUARTZ,"grappling_hook","GrapplingHook",40,"grappling_hook.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

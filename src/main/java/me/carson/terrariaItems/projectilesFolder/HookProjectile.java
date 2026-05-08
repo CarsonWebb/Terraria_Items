@@ -69,7 +69,7 @@ public abstract class HookProjectile implements Listener {
 
             tick[0]++;
             if (tick[0] >= reach) {
-                proj.remove();
+                moveHookBack(player,proj);
                 task.cancel();
                 return;
             }
@@ -82,8 +82,9 @@ public abstract class HookProjectile implements Listener {
             if (result != null) {
                 if (result.getHitBlock() != null) {
                     if (!result.getHitBlock().isPassable() && result.getHitBlockFace() != null) {
-                        onBlockHit();
-                        next = now.clone().add(direction[0][0]);
+                        pullPlayerToHook(player,proj);
+                        task.cancel();
+                        return;
                     }
                 }
             }
@@ -95,6 +96,81 @@ public abstract class HookProjectile implements Listener {
             next.setPitch(pitch);
 
             proj.teleport(next);
+        }, 1L, 1L);
+    }
+
+    private void moveHookBack(Player player, ItemDisplay proj) {
+        final int[] tick = {0};
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= 100) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
+            Vector toPlayer = player.getEyeLocation().toVector().subtract(proj.getLocation().toVector());
+
+            Vector direction = toPlayer.normalize().multiply(speed);
+
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction);
+
+            RayTraceResult result = player.getWorld().rayTrace(now, direction, direction.length(), FluidCollisionMode.NEVER, true, 0.1, e -> e != proj);
+            if (result != null && result.getHitEntity() == player) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
+            Vector norm = direction.clone().normalize().multiply(-1);
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(Math.max(-1.0, Math.min(1.0, -norm.getY()))));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+
+            proj.teleport(next);
+        }, 1L, 1L);
+    }
+
+    private void pullPlayerToHook(Player player, ItemDisplay proj) {
+        final int[] tick = {0};
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead() || !player.isOnline()) {
+                proj.remove();
+                player.setAllowFlight(false);
+                player.setFlying(false);
+                task.cancel();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= 100) {
+                proj.remove();
+                player.setAllowFlight(false);
+                player.setFlying(false);
+                task.cancel();
+                return;
+            }
+
+            Vector toHook = proj.getLocation().toVector().subtract(player.getEyeLocation().toVector());
+
+            if (toHook.length() < 1) {
+                player.setVelocity(new Vector(0, 0, 0));
+                player.setAllowFlight(true);
+                player.setFlying(true);
+                return;
+            }
+
+            player.setVelocity(toHook.normalize().multiply(speed)); // 1.5 = pull speed
         }, 1L, 1L);
     }
 
@@ -110,7 +186,4 @@ public abstract class HookProjectile implements Listener {
         proj.teleport(loc);
     }
 
-    public void onBlockHit(){
-
-    }
 }

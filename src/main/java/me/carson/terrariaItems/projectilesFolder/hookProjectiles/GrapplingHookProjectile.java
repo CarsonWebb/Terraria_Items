@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class GrapplingHookProjectile extends HookProjectile {
 
     public GrapplingHookProjectile(Plugin plugin) {
-        super(plugin,  "amethyst_bolt", "GrapplingHookProjectile",60,1);
+        super(plugin,  "grappling_hook_projectile", "GrapplingHookProjectile",40,0.75f);
     }
 
 }
