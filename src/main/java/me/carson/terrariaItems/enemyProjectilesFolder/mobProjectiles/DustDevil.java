@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.enemyProjectilesFolder.mobProjectiles;
 
 import me.carson.terrariaItems.enemyProjectilesFolder.EnemyProjectile;
+import org.bukkit.Color;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
@@ -11,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class DustDevil extends EnemyProjectile {
 
     public DustDevil(Plugin plugin) {
-        super(plugin, 15,1f, "dust_devil", "DustDevil",0,0, DamageType.ARROW);
+        super(plugin, 15,1f, "dust_devil", "DustDevil",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(210, 148, 87), 1f));
     }
 
 

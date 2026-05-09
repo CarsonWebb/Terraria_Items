@@ -24,8 +24,9 @@ public abstract class EnemyProjectile implements Listener {
     protected final int peirce;
     protected final int bounces;
     protected final DamageType damageType;
+    protected final Particle.DustOptions particle;
 
-    public EnemyProjectile(Plugin plugin, int damage, float projSpeed, String texture, String id, int peirce, int bounces, DamageType damageType) {
+    public EnemyProjectile(Plugin plugin, int damage, float projSpeed, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
         this.plugin = plugin;
         this.projSpeed = projSpeed;
         this.texture = texture;
@@ -34,6 +35,7 @@ public abstract class EnemyProjectile implements Listener {
         this.peirce = peirce;
         this.bounces = bounces;
         this.damageType = damageType;
+        this.particle = particle;
     }
 
     public void createBossProjectile(LivingEntity shooter,Player target, float speed, float weaponDamage, float spread, float duration){
@@ -130,6 +132,10 @@ public abstract class EnemyProjectile implements Listener {
             next.setYaw(yaw);
             next.setPitch(pitch);
             proj.teleport(next);
+
+            if (particle != null&&tick[0]>2) {
+                proj.getWorld().spawnParticle(Particle.DUST, now, 1, 0, 0, 0, 0,particle);
+            }
         }, 1L, 1L);
     }
 

@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class WitherBomb extends EnemyProjectile {
 
     public WitherBomb(Plugin plugin) {
-        super(plugin, 0,0,  "wither_bomb", "WitherBomb",0,0, DamageType.GENERIC);
+        super(plugin, 0,0,  "wither_bomb", "WitherBomb",0,0, DamageType.GENERIC,null);
     }
 
     @Override

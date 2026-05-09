@@ -22,8 +22,6 @@ public class MagicDagger extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new MagicDaggerProjectile(plugin).createGravProjectile(player,speed,damage,spread,duration,20,0.1f);
             player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 0.75F, 1.0F);

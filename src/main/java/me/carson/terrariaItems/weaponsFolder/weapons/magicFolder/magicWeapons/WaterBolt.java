@@ -22,8 +22,6 @@ public class WaterBolt extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new WaterBoltProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
             player.getWorld().playSound(player.getLocation(), "terraria:water_bolt_use", 1.0F, 1.0F);

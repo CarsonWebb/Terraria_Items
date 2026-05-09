@@ -17,8 +17,6 @@ public class RubyStaff extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new RubyBolt(plugin).createProjectile(player,speed,damage,spread,duration);
             player.getWorld().playSound(player.getLocation(), "terraria:magic_use", 1.0F, 1.0F);

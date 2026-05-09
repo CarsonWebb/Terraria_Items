@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class SandBall extends Projectile {
 
     public SandBall(Plugin plugin) {
-        super(plugin, 0,  "sand_ball", "SandBall",0,0, DamageType.ARROW);
+        super(plugin, 0,  "sand_ball", "SandBall",0,0, DamageType.ARROW,null);
     }
 
 

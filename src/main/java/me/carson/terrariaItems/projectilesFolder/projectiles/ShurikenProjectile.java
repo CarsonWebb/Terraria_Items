@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class ShurikenProjectile extends Projectile {
 
     public ShurikenProjectile(Plugin plugin) {
-        super(plugin, 0,  "shuriken", "ShurikenProjectile",3,0, DamageType.ARROW);
+        super(plugin, 0,  "shuriken", "ShurikenProjectile",3,0, DamageType.ARROW,null);
     }
 
     @Override

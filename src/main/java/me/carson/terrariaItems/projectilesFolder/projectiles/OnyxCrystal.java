@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class OnyxCrystal extends Projectile {
 
     public OnyxCrystal(Plugin plugin) {
-        super(plugin, 0, "onyx_crystal", "OnyxCrystal",0,0, DamageType.ARROW);
+        super(plugin, 0, "onyx_crystal", "OnyxCrystal",0,0, DamageType.ARROW,null);
     }
 
     @Override

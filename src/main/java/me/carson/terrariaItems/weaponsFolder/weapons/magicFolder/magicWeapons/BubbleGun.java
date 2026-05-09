@@ -23,8 +23,6 @@ public class BubbleGun extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);
             new Bubble(plugin).createProjectile(player,speed,damage,spread,duration);

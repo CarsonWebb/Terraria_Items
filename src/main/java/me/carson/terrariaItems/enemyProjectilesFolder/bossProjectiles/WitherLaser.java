@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class WitherLaser extends EnemyProjectile {
 
     public WitherLaser(Plugin plugin) {
-        super(plugin, 0,0,  "wither_laser", "WitherLaser",0,0, DamageType.GENERIC);
+        super(plugin, 0,0,  "wither_laser", "WitherLaser",0,0, DamageType.GENERIC,null);
     }
 
     @Override

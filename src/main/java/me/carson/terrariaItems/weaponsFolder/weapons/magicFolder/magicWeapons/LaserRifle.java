@@ -22,8 +22,6 @@ public class LaserRifle extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new LaserRifleProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
             player.getWorld().playSound(player.getLocation(), "terraria:laser_2", 1.0F, 1.0F);

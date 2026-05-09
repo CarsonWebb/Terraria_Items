@@ -17,8 +17,6 @@ public class CrystalStorm extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new CrystalStormProjectile(plugin).createProjectile(player,speed,damage,spread,duration);
             player.getWorld().playSound(player.getLocation(), "terraria:falling_star", 0.75F, 1.0F);

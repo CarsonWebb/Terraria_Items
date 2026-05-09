@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class DragonLaser extends EnemyProjectile {
 
     public DragonLaser(Plugin plugin) {
-        super(plugin, 0, 0, "dragon_laser", "DragonLaser",99,0, DamageType.GENERIC);
+        super(plugin, 0, 0, "dragon_laser", "DragonLaser",99,0, DamageType.GENERIC,null);
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class Bubble extends Projectile {
 
     public Bubble(Plugin plugin) {
-        super(plugin, 0,  "bubble", "Bubble",0,0, DamageType.LIGHTNING_BOLT);
+        super(plugin, 0,  "bubble", "Bubble",0,0, DamageType.LIGHTNING_BOLT,null);
     }
 
     @Override

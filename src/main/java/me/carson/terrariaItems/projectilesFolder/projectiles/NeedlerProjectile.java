@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
+import org.bukkit.Color;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
@@ -12,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NeedlerProjectile extends Projectile {
 
     public NeedlerProjectile(Plugin plugin) {
-        super(plugin, 0, "needler_projectile", "NeedlerProjectile", 0,0,DamageType.ARROW);
+        super(plugin, 0, "needler_projectile", "NeedlerProjectile", 0,0,DamageType.ARROW,null);
     }
 
     @Override

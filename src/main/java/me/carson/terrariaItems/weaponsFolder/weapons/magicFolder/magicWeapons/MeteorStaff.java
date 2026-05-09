@@ -23,8 +23,6 @@ public class MeteorStaff extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         RayTraceResult result= player.getWorld().rayTrace(player.getEyeLocation(),player.getEyeLocation().getDirection(),150,FluidCollisionMode.NEVER,true,0.1,e -> (e!=player));
         if (result == null) {return;}
         Location hit=result.getHitPosition().toLocation(player.getWorld());

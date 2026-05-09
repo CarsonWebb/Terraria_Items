@@ -18,8 +18,6 @@ public class MagicalHarp extends Magic {
 
     @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             int note = ThreadLocalRandom.current().nextInt(1, 4);
             switch (note){

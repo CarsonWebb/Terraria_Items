@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class MagicDaggerProjectile extends Projectile {
 
     public MagicDaggerProjectile(Plugin plugin) {
-        super(plugin, 0,  "magic_dagger_projectile", "MagicDaggerProjectile",1,0, DamageType.LIGHTNING_BOLT);
+        super(plugin, 0,  "magic_dagger_projectile", "MagicDaggerProjectile",1,0, DamageType.LIGHTNING_BOLT,null);
     }
 
     @Override

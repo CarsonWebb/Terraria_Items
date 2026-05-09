@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class VampireKnife extends Projectile {
 
     public VampireKnife(Plugin plugin) {
-        super(plugin, 0,  "vampire_knife", "VampireKnife",0,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "vampire_knife", "VampireKnife",0,0, DamageType.PLAYER_ATTACK,null);
     }
 
 

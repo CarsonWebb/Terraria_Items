@@ -334,3 +334,9 @@ spiky_ball:
     - "&7Enemies who pass over"
     - "&7them will take damage"
     - "&73 Damage"
+wand_of_sparking:
+  name: "Wand of Sparking"
+  lore:
+    - "&7Shoots a small spark"
+    - "&72 Damage"
+    - "&72 Mana"

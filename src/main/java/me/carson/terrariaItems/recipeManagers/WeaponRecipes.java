@@ -79,6 +79,18 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         //registerDynamiteRecipe();
         //registerTNTRecipe();
         registerSpikyBallRecipe();
+        registerWandOfSparkingRecipe();
+    }
+
+    private void registerWandOfSparkingRecipe(){
+        ItemStack item= WandOfSparking.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "WandOfSparking");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","  T"," S ");
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('T',Material.TORCH);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerSpikyBallRecipe(){

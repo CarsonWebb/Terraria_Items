@@ -26,8 +26,9 @@ public abstract class Projectile implements Listener {
     protected final int peirce;
     protected final int bounces;
     protected final DamageType damageType;
+    protected final Particle.DustOptions particle;
 
-    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType) {
+    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
         this.plugin = plugin;
         this.texture = texture;
         this.id = id;
@@ -35,6 +36,7 @@ public abstract class Projectile implements Listener {
         this.peirce = peirce;
         this.bounces = bounces;
         this.damageType = damageType;
+        this.particle = particle;
     }
 
     public void createProjectile(Player player,float speed,float weaponDamage, float spread,float duration){
@@ -124,7 +126,6 @@ public abstract class Projectile implements Listener {
             Location next = now.clone().add(direction[0]);
             float dist= (float) now.distance(next);
 
-
             RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1,e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
             if(result!=null){
                 if(result.getHitBlock()!=null){
@@ -166,6 +167,10 @@ public abstract class Projectile implements Listener {
             next.setYaw(yaw);
             next.setPitch(pitch);
             proj.teleport(next);
+
+            if (particle != null&&tick[0]>2) {
+                proj.getWorld().spawnParticle(Particle.DUST, now, 1, 0, 0, 0, 0,particle);
+            }
         }, 1L, 1L);
     }
 
@@ -197,10 +202,10 @@ public abstract class Projectile implements Listener {
         proj.setTeleportDuration(2);
         proj.setInterpolationDelay(-1);
         faceDirection(proj, dir);
-        moveGravProj(player,speed,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
+        moveGravProj(player,weaponDamage,duration,proj,dir,gravDuration,gravStrength);
     }
 
-    private void moveGravProj(Player player,float speed,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength){
+    private void moveGravProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
@@ -270,6 +275,10 @@ public abstract class Projectile implements Listener {
             next.setYaw(yaw);
             next.setPitch(pitch);
             proj.teleport(next);
+
+            if (particle != null&&tick[0]>2) {
+                proj.getWorld().spawnParticle(Particle.DUST, now, 1, 0, 0, 0, 0,particle);
+            }
         }, 1L, 1L);
     }
 

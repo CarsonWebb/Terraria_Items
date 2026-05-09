@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
+import org.bukkit.Color;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.Item;
@@ -14,7 +16,7 @@ import org.bukkit.plugin.Plugin;
 public class Meteor extends Projectile {
 
     public Meteor(Plugin plugin) {
-        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.LIGHTNING_BOLT);
+        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(40, 40, 40), 2f));
     }
 
 

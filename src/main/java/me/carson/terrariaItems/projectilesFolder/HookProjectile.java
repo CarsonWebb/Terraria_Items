@@ -222,7 +222,7 @@ public abstract class HookProjectile implements Listener {
                 if (player.getGameMode() == GameMode.SURVIVAL || player.getGameMode() == GameMode.ADVENTURE){
                     player.setAllowFlight(false);
                     player.setFlying(false);
-                    player.setVelocity(new Vector(0, 0.25, 0));
+                    player.setVelocity(new Vector(0, 0.5, 0));
                 }
                 removeHook(player,proj);
             }

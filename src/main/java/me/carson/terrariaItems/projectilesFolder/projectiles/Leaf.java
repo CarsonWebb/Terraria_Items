@@ -1,6 +1,8 @@
 package me.carson.terrariaItems.projectilesFolder.projectiles;
 
 import me.carson.terrariaItems.projectilesFolder.Projectile;
+import org.bukkit.Color;
+import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
@@ -12,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Leaf extends Projectile {
 
     public Leaf(Plugin plugin) {
-        super(plugin, 0,  "leaf_blade_projectile", "Leaf",0,0, DamageType.PLAYER_ATTACK);
+        super(plugin, 0,  "leaf_blade_projectile", "Leaf",0,0, DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(46, 84, 29), 0.5f));
     }
 
     @Override

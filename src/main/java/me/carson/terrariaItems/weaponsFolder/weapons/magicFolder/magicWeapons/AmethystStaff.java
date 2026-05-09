@@ -16,14 +16,7 @@ public class AmethystStaff extends Magic {
     }
 
     @Override
-    public void leftActivate(Player player) {
-
-    }
-
-    @Override
     public void rightActivate(Player player) {
-        if(!isThisItem(player.getInventory().getItemInMainHand())){return;}
-
         if(manaManagerInstance.useMana(player,cost)){
             new AmethystBolt(plugin).createProjectile(player,speed,damage,spread,duration);
             player.getWorld().playSound(player.getLocation(), "terraria:magic_use", 1.0F, 1.0F);
