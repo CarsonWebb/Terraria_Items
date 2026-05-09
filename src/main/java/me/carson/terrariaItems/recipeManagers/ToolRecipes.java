@@ -5,6 +5,7 @@ import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.*;
+import me.carson.terrariaItems.toolFolder.tools.hooks.*;
 import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
@@ -47,6 +48,66 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         registerManaPotionRecipe();
         registerSuperManaPotionRecipe();
         registerBloodyTearRecipe();
+        registerGrapplingHookRecipe();
+        registerAmethystHookRecipe();
+        registerEmeraldHookRecipe();
+        registerDiamondHookRecipe();
+        registerRubyHookRecipe();
+    }
+
+    private void registerRubyHookRecipe(){
+        ItemStack item= RubyHook.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "RubyHook");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" RH","CCR","CC ");
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDiamondHookRecipe(){
+        ItemStack item= DiamondHook.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "DiamondHook");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" DH","CCD","CC ");
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+    }
+
+    private void registerEmeraldHookRecipe(){
+        ItemStack item= EmeraldHook.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "EmeraldHook");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" EH","CCE","CC ");
+        recipe.setIngredient('E', Material.EMERALD);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+    }
+
+    private void registerAmethystHookRecipe(){
+        ItemStack item= AmethystHook.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "AmethystHook");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" AH","CCA","CC ");
+        recipe.setIngredient('A', Material.AMETHYST_SHARD);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+    }
+
+    private void registerGrapplingHookRecipe(){
+        ItemStack item= GrapplingHook.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "GrapplingHook");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" IH","CCI","CC ");
+        recipe.setIngredient('I', Material.IRON_INGOT);
+        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
     private void registerBloodyTearRecipe(){

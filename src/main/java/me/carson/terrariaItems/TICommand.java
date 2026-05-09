@@ -15,8 +15,7 @@ import me.carson.terrariaItems.armorFolder.armors.necroArmor.NecroLeggings;
 import me.carson.terrariaItems.armorFolder.armors.timArmor.WizardHat;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.handlers.ResetHandler;
-import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
-import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.miscFolder.BasicItems.BonePickaxe;
 import me.carson.terrariaItems.miscFolder.fishingRods.*;
 import me.carson.terrariaItems.miscFolder.hats.GoldenCrown;
@@ -30,13 +29,11 @@ import me.carson.terrariaItems.armorFolder.armors.shadowArmor.*;
 import me.carson.terrariaItems.blocksFolder.blocks.Hellforge;
 import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import me.carson.terrariaItems.handlers.VanityManager;
-import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
-import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.miscFolder.BasicItems.PickaxeAxe;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
-import me.carson.terrariaItems.toolFolder.tools.hooks.GrapplingHook;
+import me.carson.terrariaItems.toolFolder.tools.hooks.*;
 import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
@@ -643,6 +640,18 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     case "grappling_hook"-> {
                         player.getInventory().addItem(GrapplingHook.getItem(plugin));
                     }
+                    case "amethyst_hook"-> {
+                        player.getInventory().addItem(AmethystHook.getItem(plugin));
+                    }
+                    case "emerald_hook"-> {
+                        player.getInventory().addItem(EmeraldHook.getItem(plugin));
+                    }
+                    case "diamond_hook"-> {
+                        player.getInventory().addItem(DiamondHook.getItem(plugin));
+                    }
+                    case "ruby_hook"-> {
+                        player.getInventory().addItem(RubyHook.getItem(plugin));
+                    }
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
             }
@@ -677,7 +686,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
             StringUtil.copyPartialMatches(args[0], subCommands, completions);
         } else if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             // Second argument: item names
-            List<String> items = Arrays.asList("cosmolight","warrior_emblem","grappling_hook","bundle_of_horseshoe_balloons","bundle_of_balloons","yellow_horseshoe_balloon","bouncy_grenade","white_horseshoe_balloon","amber_horseshoe_balloon","blue_horseshoe_balloon","sandstorm_in_a_balloon","blizzard_in_a_balloon","cloud_in_a_balloon","spiky_ball","sticky_dynamite","bouncy_dynamite","dynamite","bomb","sticky_bomb","bouncy_bomb","grenade","sticky_grenade","sitting_ducks_fishing_pole","fiberglass_fishing_pole","mana_flower","scarab_fishing_rod","chum_caster","mana_cloak","mechanics_rod","natures_gift","fisher_of_souls","golden_fishing_rod","stinger_necklace","ice_sickle","shark_tooth_necklace","blood_rain_bow","bloody_tear","star_veil","life_crystal","star_cloak","magic_dagger","cross_necklace","titan_glove","mechanical_glove","obsidian_shield","power_glove","ankh_shield","ankh_charm","honey_comb","sweetheart_necklace","honey_balloon","magic_cuffs","band_of_starpower","panic_necklace","mana_potion","feral_claws","greater_mana_potion","super_mana_potion","laser_rifle","lesser_mana_potion","clockwork_assault_rifle","slap_hand","wizard_hat","breaker_blade","frost_elytra","caustic_edge","tainted_blade","forbidden_elytra","vampire_knives","magic_quiver","mechanical_skull","frost_armor","frost_core","forbidden_fragment","forbidden_armor","necro_armor","jungle_armor","sand_gun","night_vision_helmet","mechanical_egg","bone_pickaxe","pulse_bow","golden_crown","mechanical_shrieker","souls","hoarfrost_bow","onyx_blaster","enchanted_sword","crystal_storm","magical_harp","sandstorm_in_a_bottle","thunder_zapper","blizzard_in_a_bottle","anklet_of_the_wind","tsunami_in_a_bottle","wooden_crate","falcon_blade","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","momentum_Capacitor","stormbow","demonite_bar","cloud_bottle","aglet","obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield");
+            List<String> items = Arrays.asList("cosmolight","warrior_emblem","diamond_hook","ruby_hook","emerald_hook","emerald_hook","grappling_hook","amethyst_hook","bundle_of_horseshoe_balloons","bundle_of_balloons","yellow_horseshoe_balloon","bouncy_grenade","white_horseshoe_balloon","amber_horseshoe_balloon","blue_horseshoe_balloon","sandstorm_in_a_balloon","blizzard_in_a_balloon","cloud_in_a_balloon","spiky_ball","sticky_dynamite","bouncy_dynamite","dynamite","bomb","sticky_bomb","bouncy_bomb","grenade","sticky_grenade","sitting_ducks_fishing_pole","fiberglass_fishing_pole","mana_flower","scarab_fishing_rod","chum_caster","mana_cloak","mechanics_rod","natures_gift","fisher_of_souls","golden_fishing_rod","stinger_necklace","ice_sickle","shark_tooth_necklace","blood_rain_bow","bloody_tear","star_veil","life_crystal","star_cloak","magic_dagger","cross_necklace","titan_glove","mechanical_glove","obsidian_shield","power_glove","ankh_shield","ankh_charm","honey_comb","sweetheart_necklace","honey_balloon","magic_cuffs","band_of_starpower","panic_necklace","mana_potion","feral_claws","greater_mana_potion","super_mana_potion","laser_rifle","lesser_mana_potion","clockwork_assault_rifle","slap_hand","wizard_hat","breaker_blade","frost_elytra","caustic_edge","tainted_blade","forbidden_elytra","vampire_knives","magic_quiver","mechanical_skull","frost_armor","frost_core","forbidden_fragment","forbidden_armor","necro_armor","jungle_armor","sand_gun","night_vision_helmet","mechanical_egg","bone_pickaxe","pulse_bow","golden_crown","mechanical_shrieker","souls","hoarfrost_bow","onyx_blaster","enchanted_sword","crystal_storm","magical_harp","sandstorm_in_a_bottle","thunder_zapper","blizzard_in_a_bottle","anklet_of_the_wind","tsunami_in_a_bottle","wooden_crate","falcon_blade","iron_crate","golden_crate","oasis_crate","sky_crate","ocean_crate","jungle_crate","frozen_crate","sorcerer_emblem","super_star_shooter","star_cannon","fallen_star","cactus_armor","terra_blade","icicle_staff","bubble_gun","ancient_fossil","neptunes_shell","water_bolt","mana_crystal","meteor_staff","christmastreesword","ruby_staff","amethyst_staff","torrential_tear","phoenix_blaster","sniper_rifle","mega_shark","needler","minishark","shotgun","handgun","ice_blade","blowpipe","blade_of_grass","avenger_emblem","hallowed_elytra","pickaxe_axe","hallowed_armour","hallowed_repeater","excalibur","snowball_cannon","might","shackle","molten_elytra","ranger_emblem","shadow_elytra","blindfold","vitamins","fast_clock","Rod_of_Discord","bezoar","hellforge","molten_fury","volcano","counter_scarf","molten_armour","lights_bane","shadow_armour","momentum_Capacitor","stormbow","demonite_bar","cloud_bottle","aglet","obsidian_Skull","red_balloon","band_of_regeneration","lucky_horseshoe","magic_mirror","cobalt_shield");
             StringUtil.copyPartialMatches(args[1], items, completions);
         }
 

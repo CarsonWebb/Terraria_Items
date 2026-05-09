@@ -100,4 +100,25 @@ bloody_tear:
 grappling_hook:
   name: "Grappling Hook"
   lore:
-    - "&7"
+    - "&7Reach: 8 Blocks"
+    - "&7Speed: 0.75"
+amethyst_hook:
+  name: "Amethyst Hook"
+  lore:
+    - "&7Reach 10 Blocks"
+    - "&7Speed: 0.8"
+emerald_hook:
+  name: "Emerald Hook"
+  lore:
+    - "&7Reach 14 Blocks"
+    - "&7Speed: 0.9"
+diamond_hook:
+  name: "Diamond Hook"
+  lore:
+    - "&7Reach 18 Blocks"
+    - "&7Speed: 1"
+ruby_hook:
+  name: "Ruby Hook"
+  lore:
+    - "&7Reach 18 Blocks"
+    - "&7Speed: 1"
