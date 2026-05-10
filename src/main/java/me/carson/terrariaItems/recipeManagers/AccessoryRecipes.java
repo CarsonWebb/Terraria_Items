@@ -84,11 +84,27 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
 
         NamespacedKey key1 = new NamespacedKey(plugin, "BundleOfHorseshoeBalloons1");
         ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
-        recipe1.addIngredient(new RecipeChoice.ExactChoice(BlueHorseshoeBalloon.getItem(plugin),CloudInABalloon.getItem(plugin)));
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(BlueHorseshoeBalloon.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin),WhiteHorseshoeBalloon.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin),YellowHorseshoeBalloon.getItem(plugin)));
         recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "BundleOfHorseshoeBalloons2");
+        ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(BlueHorseshoeBalloon.getItem(plugin),CloudInABalloon.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(WhiteHorseshoeBalloon.getItem(plugin)));
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin),YellowHorseshoeBalloon.getItem(plugin)));
+        recipe2.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe2);
+
+        NamespacedKey key3 = new NamespacedKey(plugin, "BundleOfHorseshoeBalloons3");
+        ShapelessRecipe recipe3 = new ShapelessRecipe(key3, item);
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(BlueHorseshoeBalloon.getItem(plugin),CloudInABalloon.getItem(plugin)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin),WhiteHorseshoeBalloon.getItem(plugin)));
+        recipe3.addIngredient(new RecipeChoice.ExactChoice(YellowHorseshoeBalloon.getItem(plugin)));
+        recipe3.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe3);
     }
 
     private void registerBundleOfBalloonsRecipe(){

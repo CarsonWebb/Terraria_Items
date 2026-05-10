@@ -122,3 +122,7 @@ ruby_hook:
   lore:
     - "&7Reach 18 Blocks"
     - "&7Speed: 1"
+step_stool:
+  name: "Step Stool"
+  lore:
+    - "&7NOT FUNCTIONAL YET, WIP"

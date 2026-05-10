@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Step;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -59,6 +60,7 @@ public class ToolManager implements Listener {
         toolList.put("EmeraldHook",new EmeraldHook(plugin));
         toolList.put("RubyHook",new RubyHook(plugin));
         toolList.put("DiamondHook",new DiamondHook(plugin));
+        toolList.put("StepStool",new StepStool(plugin));
     }
 
     public Tool getTool(ItemStack item){

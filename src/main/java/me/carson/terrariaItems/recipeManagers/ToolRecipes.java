@@ -53,6 +53,30 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         registerEmeraldHookRecipe();
         registerDiamondHookRecipe();
         registerRubyHookRecipe();
+        //registerStepStoolRecipe();
+    }
+
+    private void registerStepStoolRecipe(){
+        ItemStack item=StepStool.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "StepStool");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("PPP","S S","S S");
+        recipe.setIngredient('P', new RecipeChoice.MaterialChoice(
+                Material.OAK_PLANKS,
+                Material.SPRUCE_PLANKS,
+                Material.BIRCH_PLANKS,
+                Material.JUNGLE_PLANKS,
+                Material.ACACIA_PLANKS,
+                Material.DARK_OAK_PLANKS,
+                Material.MANGROVE_PLANKS,
+                Material.CHERRY_PLANKS,
+                Material.BAMBOO_PLANKS,
+                Material.CRIMSON_PLANKS,
+                Material.WARPED_PLANKS
+        ));
+        recipe.setIngredient('S', Material.STICK);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerRubyHookRecipe(){
