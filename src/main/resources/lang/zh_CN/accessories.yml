@@ -227,3 +227,55 @@ mana_cloak:
     - "&7法力消耗降低8%"
     - "&7在需要时自动使用法力药水"
     - "&7受到伤害后召唤星星降落"
+cloud_in_a_balloon:
+  name: "气球云朵"
+  lore:
+    - "&7允许持有者二段跳"
+    - "&7增加跳跃高度"
+sandstorm_in_a_balloon:
+  name: "气球沙尘暴"
+  lore:
+    - "&7允许持有者进行"
+    - "&7强化二段跳"
+    - "&7增加跳跃高度"
+blizzard_in_a_balloon:
+  name: "气球暴风雪"
+  lore:
+    - "&7允许持有者二段跳"
+    - "&7增加跳跃高度"
+amber_horseshoe_balloon:
+  name: "琥珀马蹄气球"
+  lore:
+    - "&7受伤时将用户浸入蜂蜜中"
+    - "&7增加跳跃高度"
+    - "&7免疫坠落伤害"
+blue_horseshoe_balloon:
+  name: "蓝色马蹄气球"
+  lore:
+    - "&7允许持有者二段跳"
+    - "&7增加跳跃高度"
+    - "&7免疫坠落伤害"
+white_horseshoe_balloon:
+  name: "白色马蹄气球"
+  lore:
+    - "&7允许持有者二段跳"
+    - "&7增加跳跃高度"
+    - "&7免疫坠落伤害"
+yellow_horseshoe_balloon:
+  name: "黄色马蹄气球"
+  lore:
+    - "&7允许持有者进行"
+    - "&7强化二段跳"
+    - "&7增加跳跃高度"
+    - "&7免疫坠落伤害"
+bundle_of_balloons:
+  name: "气球束"
+  lore:
+    - "&7允许持有者四段跳"
+    - "&7增加跳跃高度"
+bundle_of_horseshoe_balloons:
+  name: "马蹄气球束"
+  lore:
+    - "&7允许持有者四段跳"
+    - "&7增加跳跃高度"
+    - "&7免疫坠落伤害"

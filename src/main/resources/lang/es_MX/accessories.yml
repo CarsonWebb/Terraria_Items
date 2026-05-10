@@ -229,3 +229,55 @@ mana_cloak:
     - "&7Usa automáticamente pociones de maná "
     - "&7cuando sea necesario"
     - "&7Hace que caigan estrellas después de recibir daño"
+cloud_in_a_balloon:
+  name: "Nube en un Globo"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+    - "&7Aumenta la altura del salto"
+sandstorm_in_a_balloon:
+  name: "Tormenta de Arena en un Globo"
+  lore:
+    - "&7Permite al portador hacer un"
+    - "&7doble salto mejorado"
+    - "&7Aumenta la altura del salto"
+blizzard_in_a_balloon:
+  name: "Ventisca en un Globo"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+    - "&7Aumenta la altura del salto"
+amber_horseshoe_balloon:
+  name: "Globo Herradura de Ámbar"
+  lore:
+    - "&7Baña al usuario en miel al recibir daño"
+    - "&7Aumenta la altura del salto"
+    - "&7Niega el daño de caída"
+blue_horseshoe_balloon:
+  name: "Globo Herradura Azul"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+    - "&7Aumenta la altura del salto"
+    - "&7Niega el daño de caída"
+white_horseshoe_balloon:
+  name: "Globo Herradura Blanco"
+  lore:
+    - "&7Permite al portador hacer doble salto"
+    - "&7Aumenta la altura del salto"
+    - "&7Niega el daño de caída"
+yellow_horseshoe_balloon:
+  name: "Globo Herradura Amarillo"
+  lore:
+    - "&7Permite al portador hacer un"
+    - "&7doble salto mejorado"
+    - "&7Aumenta la altura del salto"
+    - "&7Niega el daño de caída"
+bundle_of_balloons:
+  name: "Manojo de Globos"
+  lore:
+    - "&7Permite al portador hacer cuádruple salto"
+    - "&7Aumenta la altura del salto"
+bundle_of_horseshoe_balloons:
+  name: "Manojo de Globos Herradura"
+  lore:
+    - "&7Permite al portador hacer cuádruple salto"
+    - "&7Aumenta la altura del salto"
+    - "&7Niega el daño de caída"

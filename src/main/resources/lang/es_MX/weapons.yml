@@ -334,3 +334,9 @@ spiky_ball:
     - "&7Los enemigos que pasen"
     - "&7sobre ellas recibirán daño"
     - "&73 de Daño"
+wand_of_sparking:
+  name: "Varita de Chispas"
+  lore:
+    - "&7Dispara una pequeña chispa"
+    - "&72 de Daño"
+    - "&72 de Maná"

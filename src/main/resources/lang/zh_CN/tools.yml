@@ -96,3 +96,32 @@ bloody_tear:
     - "&7'多么可怕的夜晚，竟然有诅咒。'"
     - "&7必须在夜晚使用"
     - "&7消耗品"
+grappling_hook:
+  name: "抓钩"
+  lore:
+    - "&7射程：8 格"
+    - "&7速度：0.75"
+amethyst_hook:
+  name: "紫水晶钩"
+  lore:
+    - "&7射程：10 格"
+    - "&7速度：0.8"
+emerald_hook:
+  name: "翡翠钩"
+  lore:
+    - "&7射程：14 格"
+    - "&7速度：0.9"
+diamond_hook:
+  name: "钻石钩"
+  lore:
+    - "&7射程：18 格"
+    - "&7速度：1"
+ruby_hook:
+  name: "红宝石钩"
+  lore:
+    - "&7射程：18 格"
+    - "&7速度：1"
+step_stool:
+  name: "踏脚凳"
+  lore:
+    - "&7尚未实装，开发中"

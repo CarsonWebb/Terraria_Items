@@ -96,3 +96,32 @@ bloody_tear:
     - "&7'Qué noche tan horrible para tener una maldición.'"
     - "&7Debe usarse de noche"
     - "&7Consumible"
+grappling_hook:
+  name: "Gancho de Agarre"
+  lore:
+    - "&7Alcance: 8 Bloques"
+    - "&7Velocidad: 0.75"
+amethyst_hook:
+  name: "Gancho de Amatista"
+  lore:
+    - "&7Alcance: 10 Bloques"
+    - "&7Velocidad: 0.8"
+emerald_hook:
+  name: "Gancho de Esmeralda"
+  lore:
+    - "&7Alcance: 14 Bloques"
+    - "&7Velocidad: 0.9"
+diamond_hook:
+  name: "Gancho de Diamante"
+  lore:
+    - "&7Alcance: 18 Bloques"
+    - "&7Velocidad: 1"
+ruby_hook:
+  name: "Gancho de Rubí"
+  lore:
+    - "&7Alcance: 18 Bloques"
+    - "&7Velocidad: 1"
+step_stool:
+  name: "Escalón"
+  lore:
+    - "&7AÚN NO FUNCIONAL, EN DESARROLLO"
