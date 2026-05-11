@@ -47,6 +47,15 @@ public class PlayerDataHandler implements Listener {
         config.set(id +".max_mana",Math.max(x,20));
     }
 
+    public double getMaxStealth(UUID id){
+        return config.getDouble(id +".max_stealth",0);
+    }
+    public void setMaxStealth(UUID id, double x){
+        config.set(id +".max_stealth",Math.max(x,0));
+    }
+    public void addMaxStealth(UUID id, double add){setMaxStealth(id,getMaxStealth(id)+add);}
+    public void subtractMaxStealth(UUID id, double minus){setMaxStealth(id,Math.max((getMaxStealth(id)-minus),0));}
+
     public double getExtraMana(UUID id){
         return config.getDouble(id +".extra_mana",0);
     }

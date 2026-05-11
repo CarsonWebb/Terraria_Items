@@ -64,8 +64,7 @@ public class ManaManager {
     }
 
     public Double getMaxMana(UUID uuid) {
-        PlayerDataHandler instance= PlayerDataHandler.getInstance();
-        return instance.getMaxMana(uuid)+instance.getExtraMana(uuid);
+        return playerDataHandler.getMaxMana(uuid)+playerDataHandler.getExtraMana(uuid);
     }
 
     public void addMana(UUID uuid, double amount) {
