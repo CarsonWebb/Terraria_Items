@@ -40,6 +40,7 @@ public class ResetHandler implements Listener {
         playerDataHandler.setExtraMana(id,0);
         playerDataHandler.setCritChance(id,0);
         playerDataHandler.setManaReduction(id,0);
+        playerDataHandler.setMaxStealth(id,0);
         player.setWalkSpeed(0.2f);
         Objects.requireNonNull(player.getAttribute(Attribute.ATTACK_SPEED)).setBaseValue(4);
 

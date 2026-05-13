@@ -91,6 +91,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("YellowHorseshoeBalloon",new YellowHorseshoeBalloon(plugin));
         accessoryList.put("BundleOfBalloons",new BundleOfBalloons(plugin));
         accessoryList.put("BundleOfHorseshoeBalloons",new BundleOfHorseshoeBalloons(plugin));
+        accessoryList.put("TestStealth",new TestStealth(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

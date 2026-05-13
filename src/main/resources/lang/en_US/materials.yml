@@ -7,7 +7,7 @@ bubonic_round:
 empty_bullet:
   name: "Empty Bullet"
   lore:
-    - "&Used to craft various types of ammo"
+    - "&7Used to craft various types of ammo"
 exploding_bullet:
   name: "Exploding Bullet"
   lore:

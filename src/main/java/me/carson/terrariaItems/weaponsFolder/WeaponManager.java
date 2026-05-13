@@ -4,6 +4,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -11,7 +12,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -89,6 +89,7 @@ public class WeaponManager implements Listener {
         weaponList.put("BouncyDynamite",new BouncyDynamite(plugin));
         weaponList.put("SpikyBall",new SpikyBall(plugin));
         weaponList.put("WandOfSparking",new WandOfSparking(plugin));
+        weaponList.put("IronFrancisca",new IronFrancisca(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

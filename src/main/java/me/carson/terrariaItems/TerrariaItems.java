@@ -94,6 +94,7 @@ public final class TerrariaItems extends JavaPlugin{
 
         StealthManager stealthManager=StealthManager.getInstance();
         stealthManager.startStealthRegen(this);
+        stealthManager.startMovementChecks(this);
     }
 
     @Override

@@ -340,3 +340,7 @@ wand_of_sparking:
     - "&7Shoots a small spark"
     - "&72 Damage"
     - "&72 Mana"
+"iron_francisca":
+  name: "Iron Francisca"
+  lore:
+    - "&7"

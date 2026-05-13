@@ -282,3 +282,7 @@ bundle_of_horseshoe_balloons:
     - "&7Allows the holder to quadruple jump"
     - "&7Increases jump height"
     - "&7Negates fall damage"
+test:
+  name: "Test"
+  lore:
+    - "test +40 Stealth"
