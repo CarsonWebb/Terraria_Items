@@ -13,6 +13,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.PulseBow;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Minishark;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.Shotgun;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.SlapHand;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.Glaive;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Dynamite;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Grenade;
@@ -86,6 +87,8 @@ public class VillagerTradingListeners implements Listener {
             recipes.add(addGrenade());
             recipes.add(addBomb());
             recipes.add(addDynamite());
+        }else if (profession == Villager.Profession.MASON) {
+            recipes.add(addGlaive());
         }
 
         villager.setRecipes(recipes);
@@ -135,6 +138,15 @@ public class VillagerTradingListeners implements Listener {
     public boolean isNight(World world) {
         long time = world.getTime();
         return time >= 13000 && time < 23000;
+    }
+
+    public MerchantRecipe addGlaive(){
+        MerchantRecipe recipe = new MerchantRecipe(
+                Glaive.getItem(plugin),
+                0, 999, true, 1, 0.05f
+        );
+        recipe.addIngredient(new ItemStack(Material.EMERALD, 10));
+        return recipe;
     }
 
     public MerchantRecipe addShotgun(){

@@ -1,18 +1,16 @@
 package me.carson.terrariaItems.projectilesFolder.rougeProjectiles;
 
 import me.carson.terrariaItems.projectilesFolder.RougeProjectiles;
-import org.bukkit.Color;
-import org.bukkit.Particle;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class IronFranciscaProjectile extends RougeProjectiles {
+public class GlaiveProjectile extends RougeProjectiles {
 
-    public IronFranciscaProjectile(Plugin plugin) {
-        super(plugin, 0,  "iron_francisca", "IronFranciscaProjectile",0,0, DamageType.TRIDENT,null);
+    public GlaiveProjectile(Plugin plugin) {
+        super(plugin, 0,  "glaive", "GlaiveProjectile",3,3, DamageType.TRIDENT,null);
     }
 
     @Override
@@ -27,8 +25,8 @@ public class IronFranciscaProjectile extends RougeProjectiles {
 
     @Override
     public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed) {
-        peirce=6;
-        createProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed);
+        peirce=99;
+        createGlaiveProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed);
     }
 
 }

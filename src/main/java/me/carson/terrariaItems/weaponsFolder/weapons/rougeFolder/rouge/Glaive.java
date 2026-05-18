@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge;
 
+import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.GlaiveProjectile;
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.IronFranciscaProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.Rouge;
 import org.bukkit.Material;
@@ -7,14 +8,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-public class IronFrancisca extends Rouge {
+public class Glaive extends Rouge {
 
-    public IronFrancisca(Plugin plugin) {
-        super(plugin,"iron_francisca.name","#9696FF", Material.SCRAPE_POTTERY_SHERD,"iron_francisca","IronFrancisca",10,1.2f,4,0,50,"iron_francisca.lore");
+    public Glaive(Plugin plugin) {
+        super(plugin,"glaive.name","#FFC896", Material.SCRAPE_POTTERY_SHERD,"glaive","Glaive",15,0.75f,3,0,150,"glaive.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        return new IronFrancisca(plugin).createItem();
+        return new Glaive(plugin).createItem();
     }
 
     @Override
@@ -23,7 +24,7 @@ public class IronFrancisca extends Rouge {
         if(stealthManager.isMaxStealth(player)){
             stealthAttack(player);
         }else{
-            new IronFranciscaProjectile(plugin).createProjectile(player,speed,damage,spread,duration,0,0.03f,15);
+            new GlaiveProjectile(plugin).createGlaiveProjectile(player,speed,damage,spread,duration,0,0.04f,15);
         }
         stealthManager.removeStealth(player);
         stealthManager.startStealthRegenDelay(player);
@@ -36,6 +37,6 @@ public class IronFrancisca extends Rouge {
 
     @Override
     public void stealthAttack(Player player) {
-        new IronFranciscaProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.03f,15);
+        new GlaiveProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.04f,15);
     }
 }

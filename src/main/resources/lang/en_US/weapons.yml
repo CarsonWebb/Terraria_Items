@@ -340,7 +340,20 @@ wand_of_sparking:
     - "&7Shoots a small spark"
     - "&72 Damage"
     - "&72 Mana"
-"iron_francisca":
+iron_francisca:
   name: "Iron Francisca"
   lore:
+    - "&7Throws an axe"
+    - "&74 Damage"
+    - "&7Stealth strikes pierce 6 times"
+glaive:
+  name: "Glaive"
+  lore:
+    - "&7Throws Glaive that bounces at enemies"
+    - "&73 Damage"
+    - "&7Stealth Strikes pierce infinitely"
+consecrated_water:
+  name: "Consecrated Water"
+  lore:
     - "&7"
+

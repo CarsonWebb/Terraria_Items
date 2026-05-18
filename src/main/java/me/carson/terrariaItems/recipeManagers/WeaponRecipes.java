@@ -11,6 +11,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -80,6 +81,19 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         //registerTNTRecipe();
         registerSpikyBallRecipe();
         registerWandOfSparkingRecipe();
+        registerIronFranciscaRecipe();
+    }
+
+    private void registerIronFranciscaRecipe(){
+        ItemStack item= IronFrancisca.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "IronFrancisca");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("NII"," S "," S ");
+        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('N',Material.IRON_NUGGET);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerWandOfSparkingRecipe(){
