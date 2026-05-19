@@ -23,7 +23,7 @@ public class IronFrancisca extends Rouge {
         if(stealthManager.isMaxStealth(player)){
             stealthAttack(player);
         }else{
-            new IronFranciscaProjectile(plugin).createProjectile(player,speed,damage,spread,duration,0,0.03f,15);
+            new IronFranciscaProjectile(plugin).createProjectile(player,speed,damage,spread,duration,0,0.03f,15,stealthManager.getStealth(player.getUniqueId()));
         }
         stealthManager.removeStealth(player);
         stealthManager.startStealthRegenDelay(player);
@@ -36,6 +36,6 @@ public class IronFrancisca extends Rouge {
 
     @Override
     public void stealthAttack(Player player) {
-        new IronFranciscaProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.03f,15);
+        new IronFranciscaProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.03f,15,stealthManager.getStealth(player.getUniqueId()));
     }
 }

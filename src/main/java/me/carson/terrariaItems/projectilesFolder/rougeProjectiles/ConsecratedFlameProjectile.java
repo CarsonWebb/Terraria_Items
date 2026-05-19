@@ -7,25 +7,25 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class ConsecratedWaterProjectile extends RougeProjectiles {
+public class ConsecratedFlameProjectile extends RougeProjectiles {
 
-    public ConsecratedWaterProjectile(Plugin plugin) {
-        super(plugin, 0,  "consecrated_water", "ConsecratedWaterProjectile",0,0, DamageType.TRIDENT,null);
+    public ConsecratedFlameProjectile(Plugin plugin) {
+        super(plugin, 10,  "consecrated_flame", "ConsecratedFlameProjectile",0,0, DamageType.TRIDENT,null);
     }
 
     @Override
     public void hitEntityEffect(LivingEntity entity, Player player) {
-        entity.getWorld().playSound(entity.getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
+
     }
 
     @Override
     public void hitBlockEffect(Block block) {
-        block.getWorld().playSound(block.getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
+
     }
 
     @Override
     public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed,double currentStealth) {
-        createConsecratedWaterProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed,currentStealth);
+
     }
 
 }

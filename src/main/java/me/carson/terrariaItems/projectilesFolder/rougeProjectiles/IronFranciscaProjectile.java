@@ -26,9 +26,9 @@ public class IronFranciscaProjectile extends RougeProjectiles {
     }
 
     @Override
-    public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed) {
+    public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed,double currentStealth) {
         peirce=6;
-        createProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed);
+        createProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed,currentStealth);
     }
 
 }

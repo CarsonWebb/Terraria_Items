@@ -59,7 +59,7 @@ public class MobDeathListeners implements Listener {
     public void onMobDeath(EntityDeathEvent e) {
         EntityType entityType = e.getEntity().getType();
         double rand=Math.random();
-        if (e.getEntity().getType() != EntityType.ZOMBIE){
+        if (e.getEntity().getType() == EntityType.ZOMBIE){
             if(rand<0.02){
                 e.getDrops().add(Shackle.getItem(plugin));
                 return;

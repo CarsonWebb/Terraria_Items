@@ -2,6 +2,7 @@ package me.carson.terrariaItems.projectilesFolder;
 
 import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import me.carson.terrariaItems.handlers.StealthManager;
+import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.ConsecratedFlameProjectile;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -30,6 +31,7 @@ public abstract class RougeProjectiles {
     protected final DamageType damageType;
     protected final Particle.DustOptions particle;
     private final StealthManager stealthManager=StealthManager.getInstance();
+    private final PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
     public record Result(ItemDisplay proj, Vector dir) {}
 
     public RougeProjectiles(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
@@ -75,12 +77,12 @@ public abstract class RougeProjectiles {
         return new Result(proj,dir);
     }
 
-    public void createProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed){
+    public void createProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
         Result r = createDefaultProjectile(player,speed,spread);
-        moveProj(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed);
+        moveProj(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth);
     }
 
-    private void moveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed){
+    private void moveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
@@ -133,7 +135,7 @@ public abstract class RougeProjectiles {
                     if(result.getHitEntity() instanceof LivingEntity target){
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
-                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage,player)),source);
+                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(20);
                         hitEntities.add(target);
@@ -162,12 +164,12 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
-    public void createGlaiveProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed){
+    public void createGlaiveProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
         Result r = createDefaultProjectile(player,speed,spread);
-        moveGlaiveProj(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed);
+        moveGlaiveProj(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth);
     }
 
-    private void moveGlaiveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed){
+    private void moveGlaiveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
@@ -224,7 +226,7 @@ public abstract class RougeProjectiles {
                     if(result.getHitEntity() instanceof LivingEntity target){
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
-                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,player)),source);
+                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
                         target.setMaximumNoDamageTicks(20);
                         hitEntities.add(target);
@@ -253,8 +255,143 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
-    private double getStealthDamage(double base,Player player){
-        return base*(stealthManager.getStealth(player.getUniqueId())*0.01);
+    public void createConsecratedWaterProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
+        Result r = createDefaultProjectile(player,speed,spread);
+        moveConsecratedWaterProjectile(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth);
+    }
+
+    private void moveConsecratedWaterProjectile(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
+        final int[] tick = {0};
+        final Vector[] direction = {dir};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                proj.remove();
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            if (tick[0] >= gravDuration) {
+                direction[0] = new Vector(direction[0].getX(), direction[0].getY() - gravStrength, direction[0].getZ());
+            }
+
+            //block handling
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction[0]);
+            float dist= (float) now.distance(next);
+
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
+            if(result!=null){
+                if(result.getHitBlock()!=null){
+                    if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
+                        result.getHitBlock().getWorld().playSound(result.getHitBlock().getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
+                        Location location =result.getHitPosition().toLocation(proj.getWorld());
+                        if(playerDataHandler.getMaxStealth(player.getUniqueId())==currentStealth){
+                            createStealthConsecratedFlames(player,weaponDamage,location,currentStealth);
+                        }else{
+                            new ConsecratedFlameProjectile(plugin).createConsecratedFlame(player,weaponDamage,location, 15,currentStealth);
+                        }
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    }
+                }
+                if(result.getHitEntity()!=null){
+                    result.getHitEntity().getWorld().playSound(result.getHitEntity().getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
+                    Location location = new Location(proj.getWorld(), result.getHitPosition().getX(),result.getHitEntity().getLocation().getY(),result.getHitPosition().getZ());
+                    if(playerDataHandler.getMaxStealth(player.getUniqueId())==currentStealth){
+                        createStealthConsecratedFlames(player,weaponDamage,result.getHitEntity().getLocation(),currentStealth);
+                    }else{
+                        new ConsecratedFlameProjectile(plugin).createConsecratedFlame(player,weaponDamage,location, 15,currentStealth);
+                    }
+                    proj.remove();
+                    task.cancel();
+                    return;
+                }
+            }
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+            proj.teleport(next);
+            //proj.setInterpolationDelay(0);
+
+            if (particle != null&&tick[0]>2) {
+                proj.getWorld().spawnParticle(Particle.DUST, now, 1, 0, 0, 0, 0,particle);
+            }
+        }, 1L, 1L);
+    }
+
+    private void createStealthConsecratedFlames(Player player,float weaponDamage,Location center, double currentStealth){
+        Vector toPlayer = player.getLocation().toVector().subtract(center.toVector());
+        double baseAngle = Math.atan2(toPlayer.getZ(), toPlayer.getX());
+        double radius=1.5;
+
+        Vector[] points = new Vector[3];
+        for (int i = 0; i < 3; i++) {
+            double angle = baseAngle + Math.toRadians(i * 120);
+            points[i] = new Vector(
+                    center.getX() + radius * Math.cos(angle),
+                    center.getY(),
+                    center.getZ() + radius * Math.sin(angle)
+            );
+            new ConsecratedFlameProjectile(plugin).createConsecratedFlame(player,weaponDamage,points[i].toLocation(player.getWorld()), 15,currentStealth);
+        }
+    }
+
+    public void createConsecratedFlame(Player player,float weaponDamage,Location loc, float duration,double currentStealth){
+        ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc, EntityType.ITEM_DISPLAY);
+
+        ItemStack item = new ItemStack(Material.IRON_NUGGET);
+        ItemMeta meta=item.getItemMeta();
+        meta.setItemModel(new NamespacedKey("terraria", texture));
+        item.setItemMeta(meta);
+
+        proj.setItemStack(item);
+        proj.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.HEAD);
+        NamespacedKey key = new NamespacedKey(plugin, id);
+        proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
+
+        final int[] tick = {0};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                proj.remove();
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            for (Entity e : proj.getNearbyEntities(1, 2, 1)) {
+                if (e instanceof LivingEntity target && e!=player) {
+                    DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                    target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
+                }
+            }
+
+        }, 1L, 1L);
+    }
+
+    private double getStealthDamage(double damage,double stealth){
+        return damage*(stealth*0.01);
     }
 
     private void spinProjectile(ItemDisplay proj, float[] spinAngle, float spinSpeed) {
@@ -312,6 +449,6 @@ public abstract class RougeProjectiles {
 
     public abstract void hitBlockEffect(Block block);
 
-    public abstract void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength, float spinSpeed);
+    public abstract void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength, float spinSpeed,double currentStealth);
 
 }

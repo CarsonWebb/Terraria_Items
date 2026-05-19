@@ -24,7 +24,7 @@ public class Glaive extends Rouge {
         if(stealthManager.isMaxStealth(player)){
             stealthAttack(player);
         }else{
-            new GlaiveProjectile(plugin).createGlaiveProjectile(player,speed,damage,spread,duration,0,0.04f,15);
+            new GlaiveProjectile(plugin).createGlaiveProjectile(player,speed,damage,spread,duration,0,0.04f,15,stealthManager.getStealth(player.getUniqueId()));
         }
         stealthManager.removeStealth(player);
         stealthManager.startStealthRegenDelay(player);
@@ -37,6 +37,6 @@ public class Glaive extends Rouge {
 
     @Override
     public void stealthAttack(Player player) {
-        new GlaiveProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.04f,15);
+        new GlaiveProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.04f,15,stealthManager.getStealth(player.getUniqueId()));
     }
 }

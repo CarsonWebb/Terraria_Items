@@ -24,9 +24,9 @@ public class GlaiveProjectile extends RougeProjectiles {
     }
 
     @Override
-    public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed) {
+    public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed,double currentStealth) {
         peirce=99;
-        createGlaiveProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed);
+        createGlaiveProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed,currentStealth);
     }
 
 }

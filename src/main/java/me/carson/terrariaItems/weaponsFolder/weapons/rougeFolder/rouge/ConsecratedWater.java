@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class ConsecratedWater extends Rouge {
 
     public ConsecratedWater(Plugin plugin) {
-        super(plugin,"consecrated_water.name","#FFC896", Material.SCRAPE_POTTERY_SHERD,"consecrated_water","ConsecratedWater",20,1f,0,0,50,"consecrated_water.lore");
+        super(plugin,"consecrated_water.name","#FFC896", Material.BURN_POTTERY_SHERD,"consecrated_water","ConsecratedWater",20,1f,0,0,50,"consecrated_water.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -24,7 +24,7 @@ public class ConsecratedWater extends Rouge {
         if(stealthManager.isMaxStealth(player)){
             stealthAttack(player);
         }else{
-            new ConsecratedWaterProjectile(plugin).createProjectile(player,speed,damage,spread,duration,0,0.05f,0);
+            new ConsecratedWaterProjectile(plugin).createConsecratedWaterProjectile(player,speed,damage,spread,duration,0,0.05f,0,stealthManager.getStealth(player.getUniqueId()));
         }
         stealthManager.removeStealth(player);
         stealthManager.startStealthRegenDelay(player);
@@ -37,6 +37,6 @@ public class ConsecratedWater extends Rouge {
 
     @Override
     public void stealthAttack(Player player) {
-        new ConsecratedWaterProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.05f,0);
+        new ConsecratedWaterProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.05f,0,stealthManager.getStealth(player.getUniqueId()));
     }
 }
