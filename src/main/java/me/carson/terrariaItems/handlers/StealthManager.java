@@ -58,8 +58,10 @@ public class StealthManager implements Listener {
         setStealth(uuid, getStealth(uuid) + amount);
     }
 
-    public void removeStealth(Player player) {
-        setStealth(player.getUniqueId(), 0);
+    public void reduceStealth(Player player) {
+        UUID id = player.getUniqueId();
+        setStealth(player.getUniqueId(), Math.max(getStealth(id)-(playerDataHandler.getMaxStealth(id)*playerDataHandler.getStealthThreshold(id)),0));
+        updateStealthBar(player);
     }
 
     public void updateStealthBar(Player player) {
@@ -91,6 +93,11 @@ public class StealthManager implements Listener {
         }, 0L, 1L);
     }
 
+    public boolean isStealthStrike(Player player){
+        UUID id =player.getUniqueId();
+        return getStealth(id)>=(playerDataHandler.getMaxStealth(id)*playerDataHandler.getStealthThreshold(id));
+    }
+
     public boolean isMaxStealth(Player player){
         double max =playerDataHandler.getMaxStealth(player.getUniqueId());
         return instance.getStealth(player.getUniqueId())==max&&max>0;
@@ -104,7 +111,7 @@ public class StealthManager implements Listener {
     }
 
     public void startStealthRegenDelay(Player player){
-        stealthDelay.put(player.getUniqueId(),1.0);
+        stealthDelay.put(player.getUniqueId(),5.0);
     }
 
     public Double getStealthDelay(UUID id){

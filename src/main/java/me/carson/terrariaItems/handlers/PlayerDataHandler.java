@@ -114,6 +114,15 @@ public class PlayerDataHandler implements Listener {
     public void addCritChance(UUID id,double add){setCritChance(id,getCritChance(id)+add);}
     public void subtractCritChance(UUID id,double minus){setCritChance(id,Math.max(getCritChance(id)-minus,0));}
 
+    public double getStealthThreshold(UUID id){
+        return config.getDouble(id +".stealth_threshold",1);
+    }
+    public void setStealthThreshold(UUID id, double x){
+        config.set(id +".stealth_threshold",Math.max(x,0));
+    }
+    public void addStealthThreshold(UUID id, double add){setStealthThreshold(id,getStealthThreshold(id)+add);}
+    public void subtractStealthThreshold(UUID id, double minus){setStealthThreshold(id,Math.max((getStealthThreshold(id)-minus),0));}
+
     public void save() {
         try {
             config.save(file);

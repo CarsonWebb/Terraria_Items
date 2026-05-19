@@ -2,6 +2,7 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
+import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
@@ -70,6 +71,18 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         registerBlizzardInABottleRecipe();
         registerBundleOfBalloonsRecipe();
         registerBundleOfHorseshoeBalloonsRecipe();
+        registerCoinOfDeceitRecipe();
+    }
+
+    private void registerCoinOfDeceitRecipe(){
+        ItemStack item=CoinOfDeceit.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "CoinOfDeceit");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" C ","CDC"," C ");
+        recipe.setIngredient('C', Material.COPPER_INGOT);
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerBundleOfHorseshoeBalloonsRecipe(){

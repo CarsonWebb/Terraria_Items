@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge;
 
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.GlaiveProjectile;
-import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.IronFranciscaProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.Rouge;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,12 +20,12 @@ public class Glaive extends Rouge {
     @Override
     public void leftActivate(Player player) {
         player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 1.0F, 1.0F);
-        if(stealthManager.isMaxStealth(player)){
+        if(stealthManager.isStealthStrike(player)){
             stealthAttack(player);
         }else{
             new GlaiveProjectile(plugin).createGlaiveProjectile(player,speed,damage,spread,duration,0,0.04f,15,stealthManager.getStealth(player.getUniqueId()));
         }
-        stealthManager.removeStealth(player);
+        stealthManager.reduceStealth(player);
         stealthManager.startStealthRegenDelay(player);
     }
 

@@ -11,6 +11,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.ConsecratedWater;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
@@ -82,6 +83,20 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerSpikyBallRecipe();
         registerWandOfSparkingRecipe();
         registerIronFranciscaRecipe();
+        registerConsecratedWaterRecipe();
+    }
+
+    private void registerConsecratedWaterRecipe(){
+        ItemStack item= ConsecratedWater.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "ConsecratedWater");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("SGS","AWA","SAS");
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
+        recipe.setIngredient('A',Material.AMETHYST_SHARD);
+        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('W',Material.POTION);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerIronFranciscaRecipe(){

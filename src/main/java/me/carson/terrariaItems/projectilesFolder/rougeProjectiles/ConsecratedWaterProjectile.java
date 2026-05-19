@@ -25,7 +25,7 @@ public class ConsecratedWaterProjectile extends RougeProjectiles {
 
     @Override
     public void onStealthThrow(Player player,float speed, float damage, float spread, float duration,float gravDuration, float gravStrength,float spinSpeed,double currentStealth) {
-        createConsecratedWaterProjectile(player,speed,damage,spread,duration,gravDuration,gravStrength,spinSpeed,currentStealth);
+
     }
 
 }

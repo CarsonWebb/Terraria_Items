@@ -1,7 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge;
 
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.ConsecratedWaterProjectile;
-import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.GlaiveProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.Rouge;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,12 +20,8 @@ public class ConsecratedWater extends Rouge {
     @Override
     public void leftActivate(Player player) {
         player.getWorld().playSound(player.getLocation(), "terraria:bottle_throw", 1.0F, 1.0F);
-        if(stealthManager.isMaxStealth(player)){
-            stealthAttack(player);
-        }else{
-            new ConsecratedWaterProjectile(plugin).createConsecratedWaterProjectile(player,speed,damage,spread,duration,0,0.05f,0,stealthManager.getStealth(player.getUniqueId()));
-        }
-        stealthManager.removeStealth(player);
+        new ConsecratedWaterProjectile(plugin).createConsecratedWaterProjectile(player,speed,damage,spread,duration,0,0.05f,0,stealthManager.getStealth(player.getUniqueId()),stealthManager.isStealthStrike(player));
+        stealthManager.reduceStealth(player);
         stealthManager.startStealthRegenDelay(player);
     }
 
@@ -37,6 +32,6 @@ public class ConsecratedWater extends Rouge {
 
     @Override
     public void stealthAttack(Player player) {
-        new ConsecratedWaterProjectile(plugin).onStealthThrow(player,speed,damage,spread,duration,0,0.05f,0,stealthManager.getStealth(player.getUniqueId()));
+
     }
 }

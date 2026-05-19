@@ -31,7 +31,6 @@ public abstract class RougeProjectiles {
     protected final DamageType damageType;
     protected final Particle.DustOptions particle;
     private final StealthManager stealthManager=StealthManager.getInstance();
-    private final PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
     public record Result(ItemDisplay proj, Vector dir) {}
 
     public RougeProjectiles(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
@@ -255,12 +254,12 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
-    public void createConsecratedWaterProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
+    public void createConsecratedWaterProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth,boolean isStealthStrike){
         Result r = createDefaultProjectile(player,speed,spread);
-        moveConsecratedWaterProjectile(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth);
+        moveConsecratedWaterProjectile(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth,isStealthStrike);
     }
 
-    private void moveConsecratedWaterProjectile(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth){
+    private void moveConsecratedWaterProjectile(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth,boolean isStealthStrike){
         final int[] tick = {0};
         final Vector[] direction = {dir};
         ArrayList<Entity> hitEntities=new ArrayList<>();
@@ -295,7 +294,7 @@ public abstract class RougeProjectiles {
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
                         result.getHitBlock().getWorld().playSound(result.getHitBlock().getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
                         Location location =result.getHitPosition().toLocation(proj.getWorld());
-                        if(playerDataHandler.getMaxStealth(player.getUniqueId())==currentStealth){
+                        if(isStealthStrike){
                             createStealthConsecratedFlames(player,weaponDamage,location,currentStealth);
                         }else{
                             new ConsecratedFlameProjectile(plugin).createConsecratedFlame(player,weaponDamage,location, 15,currentStealth);
@@ -308,7 +307,7 @@ public abstract class RougeProjectiles {
                 if(result.getHitEntity()!=null){
                     result.getHitEntity().getWorld().playSound(result.getHitEntity().getLocation(), "terraria:bottle_break", 0.5F, 1.0F);
                     Location location = new Location(proj.getWorld(), result.getHitPosition().getX(),result.getHitEntity().getLocation().getY(),result.getHitPosition().getZ());
-                    if(playerDataHandler.getMaxStealth(player.getUniqueId())==currentStealth){
+                    if(isStealthStrike){
                         createStealthConsecratedFlames(player,weaponDamage,result.getHitEntity().getLocation(),currentStealth);
                     }else{
                         new ConsecratedFlameProjectile(plugin).createConsecratedFlame(player,weaponDamage,location, 15,currentStealth);

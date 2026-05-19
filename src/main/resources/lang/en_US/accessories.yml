@@ -286,3 +286,9 @@ test:
   name: "Test"
   lore:
     - "test +40 Stealth"
+coin_of_deceit:
+  name: "Coin of Deceit"
+  lore:
+    - "&7Stealth strikes only expend 90%"
+    - "&7of your max stealth"
+    - "&76% increased crit chance"
