@@ -356,4 +356,7 @@ consecrated_water:
   name: "Consecrated Water"
   lore:
     - "&7"
-
+desecrated_water:
+  name: "Desecrated Water"
+  lore:
+    - "&7"

@@ -5,6 +5,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.ConsecratedWater;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.DesecratedWater;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.Glaive;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
@@ -95,6 +96,7 @@ public class WeaponManager implements Listener {
         weaponList.put("IronFrancisca",new IronFrancisca(plugin));
         weaponList.put("Glaive",new Glaive(plugin));
         weaponList.put("ConsecratedWater",new ConsecratedWater(plugin));
+        weaponList.put("DesecratedWater",new DesecratedWater(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
