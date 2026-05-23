@@ -93,10 +93,10 @@ public class WeaponManager implements Listener {
         weaponList.put("BouncyDynamite",new BouncyDynamite(plugin));
         weaponList.put("SpikyBall",new SpikyBall(plugin));
         weaponList.put("WandOfSparking",new WandOfSparking(plugin));
-        weaponList.put("IronFrancisca",new IronFrancisca(plugin));
-        weaponList.put("Glaive",new Glaive(plugin));
-        weaponList.put("ConsecratedWater",new ConsecratedWater(plugin));
-        weaponList.put("DesecratedWater",new DesecratedWater(plugin));
+        //weaponList.put("IronFrancisca",new IronFrancisca(plugin));
+        //weaponList.put("Glaive",new Glaive(plugin));
+        //weaponList.put("ConsecratedWater",new ConsecratedWater(plugin));
+        //weaponList.put("DesecratedWater",new DesecratedWater(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

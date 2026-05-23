@@ -666,19 +666,19 @@ public class TICommand implements CommandExecutor, TabCompleter {
                         player.getInventory().addItem(TestStealth.getItem(plugin));
                     }
                     case "iron_francisca"-> {
-                        player.getInventory().addItem(IronFrancisca.getItem(plugin));
+                        //player.getInventory().addItem(IronFrancisca.getItem(plugin));
                     }
                     case "glaive"-> {
-                        player.getInventory().addItem(Glaive.getItem(plugin));
+                       // player.getInventory().addItem(Glaive.getItem(plugin));
                     }
                     case "consecrated_water"-> {
-                        player.getInventory().addItem(ConsecratedWater.getItem(plugin));
+                        //player.getInventory().addItem(ConsecratedWater.getItem(plugin));
                     }
                     case "desecrated_water"-> {
-                        player.getInventory().addItem(DesecratedWater.getItem(plugin));
+                        //player.getInventory().addItem(DesecratedWater.getItem(plugin));
                     }
                     case "coin_of_deceit"-> {
-                        player.getInventory().addItem(CoinOfDeceit.getItem(plugin));
+                        //player.getInventory().addItem(CoinOfDeceit.getItem(plugin));
                     }
                     default -> player.sendMessage("§cUnknown item: " + itemName);
                 }
