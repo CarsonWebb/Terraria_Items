@@ -31,7 +31,7 @@ public class BlocksRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");
         recipe.setIngredient('M', new RecipeChoice.ExactChoice( Hellstone.getItem(plugin)));
-        recipe.setIngredient('F', Material.FURNACE);
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.FURNACE)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }

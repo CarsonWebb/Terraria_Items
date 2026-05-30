@@ -741,7 +741,7 @@ public abstract class RougeProjectiles {
             tick[0]++;
             if (tick[0] >= 40) {
                 if(isStealthStrike){
-                    proj.getWorld().createExplosion(proj.getLocation(), 4.0F, false, false);
+                    proj.getWorld().createExplosion(proj.getLocation(), 5.0F, false, false);
                 }
                 proj.remove();
                 task.cancel();

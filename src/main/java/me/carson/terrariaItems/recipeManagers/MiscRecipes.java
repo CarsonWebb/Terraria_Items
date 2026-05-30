@@ -35,7 +35,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "GoldenFishingRod");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("  H"," HS","H S");
-        recipe.setIngredient('S', Material.STRING);
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(HallowedBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -46,7 +46,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "FisherOfSouls");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("  D"," DS","D S");
-        recipe.setIngredient('S', Material.STRING);
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( DemoniteBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -57,7 +57,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "PickaxeAxe");
         ShapedRecipe recipe = new ShapedRecipe(key, axe);
         recipe.shape("HHH","HS "," S ");
-        recipe.setIngredient('S', Material.STICK);
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);

@@ -85,8 +85,8 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" RH","CCR","CC ");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
-        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
-        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -95,9 +95,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "DiamondHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" DH","CCD","CC ");
-        recipe.setIngredient('D', Material.DIAMOND);
-        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
-        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -106,9 +106,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "EmeraldHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" EH","CCE","CC ");
-        recipe.setIngredient('E', Material.EMERALD);
-        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
-        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('E', new RecipeChoice.ExactChoice(new ItemStack(Material.EMERALD)));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -117,9 +117,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "AmethystHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" AH","CCA","CC ");
-        recipe.setIngredient('A', Material.AMETHYST_SHARD);
-        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
-        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('A', new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -128,9 +128,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "GrapplingHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" IH","CCI","CC ");
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('H', Material.TRIPWIRE_HOOK);
-        recipe.setIngredient('C', Material.CHAIN);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -139,10 +139,10 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "BloodyTear");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("RSR","RGR","BBB");
-        recipe.setIngredient('B', Material.BONE);
-        recipe.setIngredient('G', Material.GHAST_TEAR);
-        recipe.setIngredient('R', Material.REDSTONE);
-        recipe.setIngredient('S', Material.BEEF);
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.BEEF)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
 
@@ -151,9 +151,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "MagicMirror");
         ShapedRecipe recipe = new ShapedRecipe(key, mirror);
         recipe.shape("IDI","IGI","IDI");
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('G', Material.GLASS);
-        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GLASS)));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
         recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
     }
     private void registerCosmolightRecipe(){
@@ -161,7 +161,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Cosmolight");
         ShapedRecipe recipe = new ShapedRecipe(key, cosmolight);
         recipe.shape("LSL","SCS","NSN");
-        recipe.setIngredient('C', Material.CLOCK);
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CLOCK)));
         recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
@@ -173,8 +173,8 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "MomentumCapacitor");
         ShapedRecipe recipe = new ShapedRecipe(key, capacitor);
         recipe.shape("WWW","WNW","WWW");
-        recipe.setIngredient('W', Material.WIND_CHARGE);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WIND_CHARGE)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_INGOT)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -184,8 +184,8 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, rod);
         recipe.shape("ECE","ENE","ENE");
         recipe.setIngredient('E', Material.ENDER_PEARL);
-        recipe.setIngredient('C', Material.CHORUS_FRUIT);
-        recipe.setIngredient('N', Material.NETHERITE_INGOT);
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHORUS_FRUIT)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_INGOT)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -196,7 +196,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, lifeCrystal);
         recipe.shape("DCD","DDD"," D ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
-        recipe.setIngredient('C', Material.COBBLESTONE);
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.COBBLESTONE)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -216,9 +216,9 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "TorrentialTear");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" D ","WCW"," D ");
-        recipe.setIngredient('C', Material.CLOCK);
-        recipe.setIngredient('D', Material.SPONGE);
-        recipe.setIngredient('W', Material.WET_SPONGE);
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CLOCK)));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.SPONGE)));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WET_SPONGE)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -229,7 +229,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape(" L ","NSN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
-        recipe.setIngredient('S', Material.SCULK_SHRIEKER);
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SCULK_SHRIEKER)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -241,7 +241,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape(" L ","NCN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
-        recipe.setIngredient('C', Material.CHORUS_FRUIT);
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHORUS_FRUIT)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -253,7 +253,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape(" L ","NSN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
-        recipe.setIngredient('S', Material.WITHER_SKELETON_SKULL);
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.WITHER_SKELETON_SKULL)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -264,14 +264,14 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key1 = new NamespacedKey(plugin, "ManaPotion1");
         ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
         recipe1.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
-        recipe1.addIngredient(Material.WARPED_FUNGUS);
+        recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.WARPED_FUNGUS)));
         recipe1.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe1);
 
         NamespacedKey key2 = new NamespacedKey(plugin, "ManaPotion2");
         ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
         recipe2.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
-        recipe2.addIngredient(Material.CRIMSON_FUNGUS);
+        recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_FUNGUS)));
         recipe2.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe2);
 
@@ -282,7 +282,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "SuperManaPotion");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(GreaterManaPotion.getItem(plugin)));
-        recipe.addIngredient(Material.AMETHYST_SHARD);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);

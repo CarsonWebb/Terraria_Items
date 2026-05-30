@@ -12,6 +12,8 @@ import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.ConsecratedWater;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.DesecratedWater;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.Exorcism;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
@@ -84,6 +86,32 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerWandOfSparkingRecipe();
         registerIronFranciscaRecipe();
         registerConsecratedWaterRecipe();
+        registerDesecratedWaterRecipe();
+        registerExorcismRecipe();
+    }
+
+    private void registerExorcismRecipe(){
+        ItemStack item= Exorcism.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "Exorcism");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" H ","HRH"," H ");
+        recipe.setIngredient('H',new RecipeChoice.ExactChoice(HallowedBar.getItem(plugin)));
+        recipe.setIngredient('R',new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDesecratedWaterRecipe(){
+        ItemStack item= DesecratedWater.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "DesecratedWater");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("SNS","AWA","SAS");
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.NETHER_BRICK)));
+        recipe.setIngredient('A',new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
+        recipe.setIngredient('W',Material.POTION);
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerConsecratedWaterRecipe(){
@@ -92,8 +120,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("SGS","AWA","SAS");
         recipe.setIngredient('S',new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
-        recipe.setIngredient('A',Material.AMETHYST_SHARD);
-        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('A',new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
         recipe.setIngredient('W',Material.POTION);
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -104,9 +132,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "IronFrancisca");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("NII"," S "," S ");
-        recipe.setIngredient('S',Material.STICK);
-        recipe.setIngredient('I',Material.IRON_INGOT);
-        recipe.setIngredient('N',Material.IRON_NUGGET);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -116,8 +144,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "WandOfSparking");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","  T"," S ");
-        recipe.setIngredient('S',Material.STICK);
-        recipe.setIngredient('T',Material.TORCH);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
+        recipe.setIngredient('T',new RecipeChoice.ExactChoice(new ItemStack(Material.TORCH)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -128,8 +156,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "SpikyBall");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" N ","NIN"," N ");
-        recipe.setIngredient('N',Material.IRON_NUGGET);
-        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -161,7 +189,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack item= StickyDynamite.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "StickyDynamite");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(Material.HONEY_BOTTLE);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.HONEY_BOTTLE)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(Dynamite.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -171,7 +199,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack item= BouncyDynamite.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "BouncyDynamite");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
-        recipe.addIngredient(Material.SLIME_BALL);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SLIME_BALL)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(Dynamite.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -183,7 +211,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "BouncyBomb");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","BSB","   ");
-        recipe.setIngredient('S',Material.SLIME_BALL);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SLIME_BALL)));
         recipe.setIngredient('B',new RecipeChoice.ExactChoice(Bomb.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -195,7 +223,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "StickyBomb");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","BHB","   ");
-        recipe.setIngredient('H',Material.HONEY_BOTTLE);
+        recipe.setIngredient('H',new RecipeChoice.ExactChoice(new ItemStack(Material.HONEY_BOTTLE)));
         recipe.setIngredient('B',new RecipeChoice.ExactChoice(Bomb.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -207,7 +235,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "BouncyGrenade");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" G ","GSG"," G ");
-        recipe.setIngredient('S',Material.SLIME_BALL);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SLIME_BALL)));
         recipe.setIngredient('G',new RecipeChoice.ExactChoice(Grenade.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -219,7 +247,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "StickyGrenade");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" G ","GHG"," G ");
-        recipe.setIngredient('H',Material.HONEY_BOTTLE);
+        recipe.setIngredient('H',new RecipeChoice.ExactChoice(new ItemStack(Material.HONEY_BOTTLE)));
         recipe.setIngredient('G',new RecipeChoice.ExactChoice(Grenade.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -230,7 +258,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Grenade");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" I ","IGI"," I ");
-        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('G',Material.GUNPOWDER);
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -242,7 +270,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Shuriken");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" C ","C C"," C ");
-        recipe.setIngredient('C',Material.COBBLESTONE);
+        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.COBBLESTONE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -253,8 +281,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "BoneThrowingKnife");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   "," B "," G ");
-        recipe.setIngredient('B',Material.BONE);
-        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -265,9 +293,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "PoisonedKnife");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" E "," C "," S ");
-        recipe.setIngredient('C',Material.COBBLESTONE);
-        recipe.setIngredient('S',Material.STICK);
-        recipe.setIngredient('E',Material.SPIDER_EYE);
+        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.COBBLESTONE)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
+        recipe.setIngredient('E',new RecipeChoice.ExactChoice(new ItemStack(Material.SPIDER_EYE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -278,8 +306,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "ThrowingKnife");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   "," C "," S ");
-        recipe.setIngredient('C',Material.COBBLESTONE);
-        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.COBBLESTONE)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -290,7 +318,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe = new ShapedRecipe(key, bane);
         recipe.shape(" D "," D "," S ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( DemoniteBar.getItem(plugin)));
-        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -300,8 +328,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "DaedalusStormbow");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("FFF","LBL","FFF");
-        recipe.setIngredient('B',Material.BOW);
-        recipe.setIngredient('F',Material.FEATHER);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BOW)));
+        recipe.setIngredient('F',new RecipeChoice.ExactChoice(new ItemStack(Material.FEATHER)));
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -312,7 +340,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack volcano = Volcano.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Volcano");
         ShapelessRecipe recipe = new ShapelessRecipe(key, volcano);
-        recipe.addIngredient(Material.DIAMOND_SWORD);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND_SWORD)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -323,9 +351,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "MoltenFury");
         ShapedRecipe recipe =new ShapedRecipe(key,fury);
         recipe.shape(" WS","WNS"," WS");
-        recipe.setIngredient('W',Material.STICK);
+        recipe.setIngredient('W',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
-        recipe.setIngredient('S',Material.STRING);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -335,7 +363,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Excalibur");
         ShapedRecipe recipe =new ShapedRecipe(key,sword);
         recipe.shape(" H "," H "," S ");
-        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -345,10 +373,10 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "HallowedRepeater");
         ShapedRecipe recipe =new ShapedRecipe(key,repeater);
         recipe.shape("SHS","TKT"," S ");
-        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
-        recipe.setIngredient('T', Material.STRING);
-        recipe.setIngredient('K', Material.TRIPWIRE_HOOK);
+        recipe.setIngredient('T', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
+        recipe.setIngredient('K', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -358,10 +386,10 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "SnowballCannon");
         ShapedRecipe recipe =new ShapedRecipe(key,snowball);
         recipe.shape(" IB","SCI","SS ");
-        recipe.setIngredient('S',Material.SNOW_BLOCK);
-        recipe.setIngredient('C', Material.CROSSBOW);
-        recipe.setIngredient('B', Material.BLUE_ICE);
-        recipe.setIngredient('I', Material.ICE);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SNOW_BLOCK)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CROSSBOW)));
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BLUE_ICE)));
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.ICE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -371,9 +399,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "BladeOfGrass");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("BSB","BIB","BSB");
-        recipe.setIngredient('B',Material.BAMBOO);
-        recipe.setIngredient('S',Material.SPIDER_EYE);
-        recipe.setIngredient('I',Material.IRON_SWORD);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SPIDER_EYE)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_SWORD)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -383,8 +411,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "IceBlade");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("CCC","CIC","CCC");
-        recipe.setIngredient('C',Material.SNOW_BLOCK);
-        recipe.setIngredient('I',Material.IRON_SWORD);
+        recipe.setIngredient('C',new RecipeChoice.ExactChoice(new ItemStack(Material.SNOW_BLOCK)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_SWORD)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -394,7 +422,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Blowpipe");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("S S","S S","S S");
-        recipe.setIngredient('S',Material.STICK);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -404,9 +432,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Minishark");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("   ","FBI","   ");
-        recipe.setIngredient('F',Material.COD);
-        recipe.setIngredient('B',Material.IRON_BLOCK);
-        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('F',new RecipeChoice.ExactChoice(new ItemStack(Material.COD)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_BLOCK)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -417,9 +445,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("A A","BII","L  ");
         recipe.setIngredient('L',Material.LEATHER);
-        recipe.setIngredient('B',Material.IRON_BLOCK);
-        recipe.setIngredient('I',Material.IRON_INGOT);
-        recipe.setIngredient('A',Material.IRON_BARS);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_BLOCK)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('A',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_BARS)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -441,10 +469,10 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Needler");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("L  ","BBE","T  ");
-        recipe.setIngredient('T',Material.TWISTING_VINES);
-        recipe.setIngredient('B',Material.BAMBOO_PLANKS);
-        recipe.setIngredient('E',Material.SPIDER_EYE);
-        recipe.setIngredient('L',Material.JUNGLE_LEAVES);
+        recipe.setIngredient('T',new RecipeChoice.ExactChoice(new ItemStack(Material.TWISTING_VINES)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO_PLANKS)));
+        recipe.setIngredient('E',new RecipeChoice.ExactChoice(new ItemStack(Material.SPIDER_EYE)));
+        recipe.setIngredient('L',new RecipeChoice.ExactChoice(new ItemStack(Material.JUNGLE_LEAVES)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -464,7 +492,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Shotgun");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("IIN","I W","   ");
-        recipe.setIngredient('I',Material.IRON_INGOT);
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('N',Material.NETHER_BRICK);
         recipe.setIngredient('W',Material.OAK_LOG);
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
@@ -476,9 +504,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "SniperRifle");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape(" S ","HHH","G  ");
-        recipe.setIngredient('S',Material.SPYGLASS);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SPYGLASS)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
-        recipe.setIngredient('G',Material.GREEN_DYE);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GREEN_DYE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -504,7 +532,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "AmethystStaff");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("  A"," C ","C  ");
-        recipe.setIngredient('A',Material.AMETHYST_SHARD);
+        recipe.setIngredient('A',new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
         recipe.setIngredient('C',Material.COPPER_INGOT);
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -515,7 +543,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("  R"," G ","G  ");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
-        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -525,8 +553,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "IcicleStaff");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("  I"," S ","S  ");
-        recipe.setIngredient('I', Material.ICE);
-        recipe.setIngredient('S',Material.SNOW_BLOCK);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.ICE)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SNOW_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -537,7 +565,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("SSM","SNS","NSS");
         recipe.setIngredient('M', Material.MAGMA_BLOCK);
-        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_SCRAP)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
@@ -563,7 +591,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape("WDW","WBW","WWW");
         recipe.setIngredient('W',Material.WATER_BUCKET);
         recipe.setIngredient('D',Material.DIAMOND);
-        recipe.setIngredient('B',Material.BOOK);
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BOOK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -597,8 +625,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("GGG","GNG","SGG");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
-        recipe.setIngredient('G',Material.GOLD_INGOT);
-        recipe.setIngredient('N',Material.NOTE_BLOCK);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.NOTE_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -609,8 +637,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("SAS","ABA","SAS");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
-        recipe.setIngredient('A',Material.AMETHYST_SHARD);
-        recipe.setIngredient('B',Material.BOOK);
+        recipe.setIngredient('A',new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BOOK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -631,9 +659,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "HoarfrostBow");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape(" IS","ILS"," IS");
-        recipe.setIngredient('S',Material.STRING);
-        recipe.setIngredient('I',Material.ICE);
-        recipe.setIngredient('L',Material.SOUL_LANTERN);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.ICE)));
+        recipe.setIngredient('L',new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_LANTERN)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -643,9 +671,9 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "SandGun");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("  S","GGG","I S");
-        recipe.setIngredient('S',Material.SANDSTONE);
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SANDSTONE)));
         recipe.setIngredient('I',new RecipeChoice.ExactChoice(IllegalGunParts.getItem(plugin)));
-        recipe.setIngredient('G',Material.GOLD_INGOT);
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -656,10 +684,10 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape("ISM","RIS","NRI");
         recipe.setIngredient('S',new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
-        recipe.setIngredient('I',Material.IRON_SWORD);
-        recipe.setIngredient('M',Material.GLISTERING_MELON_SLICE);
-        recipe.setIngredient('R',Material.REDSTONE);
-        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_SWORD)));
+        recipe.setIngredient('M',new RecipeChoice.ExactChoice(new ItemStack(Material.GLISTERING_MELON_SLICE)));
+        recipe.setIngredient('R',new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_SCRAP)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -669,11 +697,11 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "TaintedBlade");
         ShapedRecipe recipe =new ShapedRecipe(key,item);
         recipe.shape(" FC","PWF","NP ");
-        recipe.setIngredient('F',Material.CRIMSON_FUNGUS);
-        recipe.setIngredient('P',Material.WARPED_FUNGUS);
+        recipe.setIngredient('F',new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_FUNGUS)));
+        recipe.setIngredient('P',new RecipeChoice.ExactChoice(new ItemStack(Material.WARPED_FUNGUS)));
         recipe.setIngredient('W',Material.WARPED_PLANKS);
         recipe.setIngredient('C',Material.CRIMSON_PLANKS);
-        recipe.setIngredient('N',Material.NETHERITE_SCRAP);
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_SCRAP)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }
@@ -686,7 +714,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('T',new RecipeChoice.ExactChoice(TaintedBlade.getItem(plugin)));
         recipe.setIngredient('N',new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setIngredient('L',new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
-        recipe.setIngredient('E',Material.SPIDER_EYE);
+        recipe.setIngredient('E',new RecipeChoice.ExactChoice(new ItemStack(Material.SPIDER_EYE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
     }

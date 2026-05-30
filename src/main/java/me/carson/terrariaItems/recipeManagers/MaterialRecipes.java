@@ -42,8 +42,8 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "DemoniteBar");
         ShapedRecipe recipe = new ShapedRecipe(key, demoniteBar);
         recipe.shape(" S ","SIS"," S ");
-        recipe.setIngredient('I', Material.IRON_INGOT);
-        recipe.setIngredient('S', Material.SOUL_SAND);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SAND)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -52,9 +52,9 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack hellstone=Hellstone.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "Hellstone");
         ShapelessRecipe recipe = new ShapelessRecipe(key, hellstone);
-        recipe.addIngredient(Material.NETHERITE_SCRAP);
-        recipe.addIngredient(Material.LAVA_BUCKET);
-        recipe.addIngredient(Material.OBSIDIAN);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_SCRAP)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.LAVA_BUCKET)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.OBSIDIAN)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -64,8 +64,8 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "Ruby");
         ShapedRecipe recipe = new ShapedRecipe(key,ruby);
         recipe.shape("RRR","RDR","RRR");
-        recipe.setIngredient('R', Material.REDSTONE);
-        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
+        recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -99,7 +99,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         bullet.setAmount(9);
         NamespacedKey key = new NamespacedKey(plugin, "MusketBall");
         ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
-        recipe.addIngredient(Material.IRON_NUGGET);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -110,7 +110,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         NamespacedKey key = new NamespacedKey(plugin, "EmptyBullet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","I I"," I ");
-        recipe.setIngredient('I', Material.IRON_NUGGET);
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -124,7 +124,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         for(int i=0;i<8;i++){
             recipe.addIngredient(choice);
         }
-        recipe.addIngredient(Material.GUNPOWDER);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GUNPOWDER)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
@@ -138,7 +138,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         for(int i=0;i<8;i++){
             recipe.addIngredient(choice);
         }
-        recipe.addIngredient(Material.WITHER_ROSE);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.WITHER_ROSE)));
         recipe.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe);
     }
