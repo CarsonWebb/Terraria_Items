@@ -82,8 +82,8 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         //registerTNTRecipe();
         registerSpikyBallRecipe();
         registerWandOfSparkingRecipe();
-        //registerIronFranciscaRecipe();
-        //registerConsecratedWaterRecipe();
+        registerIronFranciscaRecipe();
+        registerConsecratedWaterRecipe();
     }
 
     private void registerConsecratedWaterRecipe(){

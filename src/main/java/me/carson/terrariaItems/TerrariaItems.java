@@ -51,7 +51,7 @@ public final class TerrariaItems extends JavaPlugin{
         ResetHandler.initialize(this);
         BloodMoonManager.initialize(this);
         ToolManager.initialize(this);
-        //StealthManager.initialize(this);
+        StealthManager.initialize(this);
 
         CustomRecipeManager.initialize(this);
         CustomRecipeManager.getInstance().registerAll(
@@ -92,9 +92,9 @@ public final class TerrariaItems extends JavaPlugin{
         manaManagerInstance.startManaRegen(this);
         manaManagerInstance.startFallingStartTask(this);
 
-        //StealthManager stealthManager=StealthManager.getInstance();
-        //stealthManager.startStealthRegen(this);
-        //stealthManager.startMovementChecks(this);
+        StealthManager stealthManager=StealthManager.getInstance();
+        stealthManager.startStealthRegen(this);
+        stealthManager.startMovementChecks(this);
     }
 
     @Override

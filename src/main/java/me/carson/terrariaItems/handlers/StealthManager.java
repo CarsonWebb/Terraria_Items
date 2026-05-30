@@ -111,7 +111,7 @@ public class StealthManager implements Listener {
     }
 
     public void startStealthRegenDelay(Player player){
-        stealthDelay.put(player.getUniqueId(),5.0);
+        stealthDelay.put(player.getUniqueId(),10.0);
     }
 
     public Double getStealthDelay(UUID id){

@@ -7,15 +7,15 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class DesecratedBubbleProjectile extends RougeProjectiles {
+public class ExorcismProjectile extends RougeProjectiles {
 
-    public DesecratedBubbleProjectile(Plugin plugin) {
-        super(plugin, 2,  "desecrated_bubble", "DesecratedBubbleProjectile",0,0, DamageType.TRIDENT,null);
+    public ExorcismProjectile(Plugin plugin) {
+        super(plugin, 20,  "exorcism", "ExorcismProjectile",0,0, DamageType.TRIDENT,null);
     }
 
     @Override
     public void hitEntityEffect(LivingEntity entity, Player player) {
-        entity.getWorld().playSound(entity.getLocation(), "terraria:bubble_pop", 2.0F, 1.0F);
+
     }
 
     @Override

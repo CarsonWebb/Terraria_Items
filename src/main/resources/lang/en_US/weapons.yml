@@ -355,8 +355,16 @@ glaive:
 consecrated_water:
   name: "Consecrated Water"
   lore:
-    - "&7"
+    - "&7Explodes into holy fire"
+    - "&710 Damage"
+    - "&7Stealth Strikes create 3 flames"
 desecrated_water:
   name: "Desecrated Water"
+  lore:
+    - "&7Explodes into homing bubbles"
+    - "&72 Damage"
+    - "&7Stealth Strikes create 12 bubbles"
+exorcism:
+  name: "Exorcism"
   lore:
     - "&7"

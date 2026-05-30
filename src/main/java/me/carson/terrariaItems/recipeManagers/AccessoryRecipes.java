@@ -71,7 +71,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         registerBlizzardInABottleRecipe();
         registerBundleOfBalloonsRecipe();
         registerBundleOfHorseshoeBalloonsRecipe();
-        //registerCoinOfDeceitRecipe();
+        registerCoinOfDeceitRecipe();
     }
 
     private void registerCoinOfDeceitRecipe(){
