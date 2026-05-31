@@ -8,6 +8,7 @@ commands:
     usage: /ti <subcommand>
     permission: terrariaitems.ti
     permission-message: You don't have permission to use this.
+
 permissions:
   terrariaitems.ti:
     description: Allows access to /ti command
@@ -27,3 +28,9 @@ permissions:
   terrariaitems.sub.undiscover:
     description: Terraria Items Commands
     default: true
+  terrariaitems.sub.toggle_prehardmode_crafting:
+    description: Terraria Items Commands
+    default: op
+  terrariaitems.sub.toggle_hardmode_crafting:
+    description: Terraria Items Commands
+    default: op

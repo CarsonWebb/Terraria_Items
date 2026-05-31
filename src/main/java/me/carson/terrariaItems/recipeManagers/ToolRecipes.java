@@ -81,7 +81,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerRubyHookRecipe(){
         ItemStack item= RubyHook.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "RubyHook");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_RubyHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" RH","CCR","CC ");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
@@ -92,7 +92,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerDiamondHookRecipe(){
         ItemStack item= DiamondHook.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "DiamondHook");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DiamondHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" DH","CCD","CC ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
@@ -103,7 +103,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerEmeraldHookRecipe(){
         ItemStack item= EmeraldHook.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "EmeraldHook");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_EmeraldHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" EH","CCE","CC ");
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(new ItemStack(Material.EMERALD)));
@@ -114,7 +114,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerAmethystHookRecipe(){
         ItemStack item= AmethystHook.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "AmethystHook");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_AmethystHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" AH","CCA","CC ");
         recipe.setIngredient('A', new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
@@ -125,7 +125,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerGrapplingHookRecipe(){
         ItemStack item= GrapplingHook.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "GrapplingHook");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_GrapplingHook");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" IH","CCI","CC ");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
@@ -136,7 +136,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerBloodyTearRecipe(){
         ItemStack item= BloodyTear.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "BloodyTear");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_BloodyTear");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("RSR","RGR","BBB");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
@@ -148,7 +148,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMirrorRecipe(){
         ItemStack mirror=MagicMirror.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MagicMirror");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MagicMirror");
         ShapedRecipe recipe = new ShapedRecipe(key, mirror);
         recipe.shape("IDI","IGI","IDI");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
@@ -158,7 +158,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
     }
     private void registerCosmolightRecipe(){
         ItemStack cosmolight=Cosmolight.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "Cosmolight");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_Cosmolight");
         ShapedRecipe recipe = new ShapedRecipe(key, cosmolight);
         recipe.shape("LSL","SCS","NSN");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CLOCK)));
@@ -170,7 +170,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
     }
     private void registerCapacitorRecipe(){
         ItemStack capacitor=MomentumCapacitor.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MomentumCapacitor");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_MomentumCapacitor");
         ShapedRecipe recipe = new ShapedRecipe(key, capacitor);
         recipe.shape("WWW","WNW","WWW");
         recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WIND_CHARGE)));
@@ -180,7 +180,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
     }
     private void registerRodRecipe(){
         ItemStack rod=RodOfDiscord.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "RodOfDiscord");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_RodOfDiscord");
         ShapedRecipe recipe = new ShapedRecipe(key, rod);
         recipe.shape("ECE","ENE","ENE");
         recipe.setIngredient('E', Material.ENDER_PEARL);
@@ -192,7 +192,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerLifeCrystalRecipe(){
         ItemStack lifeCrystal=LifeCrystal.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "LifeCrystal");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_LifeCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, lifeCrystal);
         recipe.shape("DCD","DDD"," D ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
@@ -203,7 +203,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerManaCrystalRecipe(){
         ItemStack crystal= ManaCrystal.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ManaCrystal");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ManaCrystal");
         ShapedRecipe recipe = new ShapedRecipe(key, crystal);
         recipe.shape(" S ","SSS"," S ");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( FallenStar.getItem(plugin)));
@@ -213,7 +213,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerTorrentialTearRecipe(){
         ItemStack item= TorrentialTear.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "TorrentialTear");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_TorrentialTear");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" D ","WCW"," D ");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CLOCK)));
@@ -224,7 +224,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
     }
     private void registerMechanicalShriekerRecipe(){
         ItemStack item= MechanicalShrieker.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MechanicalShrieker");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_MechanicalShrieker");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" L ","NSN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
@@ -236,7 +236,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMechanicalEggRecipe(){
         ItemStack item= MechanicalEgg.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MechanicalEgg");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_MechanicalEgg");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" L ","NCN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
@@ -248,7 +248,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMechanicalSkullRecipe(){
         ItemStack item= MechanicalSkull.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MechanicalSkull");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_MechanicalSkull");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" L ","NSN"," L ");
         recipe.setIngredient('L', new RecipeChoice.ExactChoice( SoulOfLight.getItem(plugin)));
@@ -261,14 +261,14 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
     private void registerManaPotionRecipe(){
         ItemStack item= ManaPotion.getItem(plugin);
 
-        NamespacedKey key1 = new NamespacedKey(plugin, "ManaPotion1");
+        NamespacedKey key1 = new NamespacedKey(plugin, "pre_ManaPotion1");
         ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
         recipe1.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.WARPED_FUNGUS)));
         recipe1.setCategory(CraftingBookCategory.MISC);
         Bukkit.addRecipe(recipe1);
 
-        NamespacedKey key2 = new NamespacedKey(plugin, "ManaPotion2");
+        NamespacedKey key2 = new NamespacedKey(plugin, "pre_ManaPotion2");
         ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
         recipe2.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_FUNGUS)));
@@ -279,7 +279,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerSuperManaPotionRecipe(){
         ItemStack item = SuperManaPotion.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "SuperManaPotion");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_SuperManaPotion");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(GreaterManaPotion.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));

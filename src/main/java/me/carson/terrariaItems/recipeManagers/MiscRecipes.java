@@ -32,7 +32,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerGoldenFishingRodRecipe(){
         ItemStack item= GoldenFishingRod.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "GoldenFishingRod");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_GoldenFishingRod");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("  H"," HS","H S");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
@@ -43,7 +43,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFisherOfSoulsRecipe(){
         ItemStack item= FisherOfSouls.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FisherOfSouls");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_FisherOfSouls");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("  D"," DS","D S");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
@@ -54,7 +54,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerPickaxeAxeRecipe(){
         ItemStack axe= PickaxeAxe.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "PickaxeAxe");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_PickaxeAxe");
         ShapedRecipe recipe = new ShapedRecipe(key, axe);
         recipe.shape("HHH","HS "," S ");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));

@@ -41,7 +41,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
     private void registerUnholyCoreRecipe(){
         ItemStack item=UnholyCore.getItem(plugin);
         item.setAmount(2);
-        NamespacedKey key = new NamespacedKey(plugin, "UnholyCore");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_UnholyCore");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(Hellstone.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POPPED_CHORUS_FRUIT)));
@@ -51,7 +51,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerDemoniteBarRecipe(){
         ItemStack demoniteBar=DemoniteBar.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "DemoniteBar");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DemoniteBar");
         ShapedRecipe recipe = new ShapedRecipe(key, demoniteBar);
         recipe.shape(" S ","SIS"," S ");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
@@ -62,7 +62,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHellstoneRecipe(){
         ItemStack hellstone=Hellstone.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "Hellstone");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_Hellstone");
         ShapelessRecipe recipe = new ShapelessRecipe(key, hellstone);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_SCRAP)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.LAVA_BUCKET)));
@@ -73,7 +73,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerRubyRecipe(){
         ItemStack ruby=Ruby.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "Ruby");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_Ruby");
         ShapedRecipe recipe = new ShapedRecipe(key,ruby);
         recipe.shape("RRR","RDR","RRR");
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
@@ -97,7 +97,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedBarRecipe(){
         ItemStack hallow=HallowedBar.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedBar");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedBar");
         ShapelessRecipe recipe = new ShapelessRecipe(key, hallow);
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfFright.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
@@ -109,7 +109,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
     private void registerMusketBallRecipe(){
         ItemStack bullet= MusketBall.getItem(plugin);
         bullet.setAmount(9);
-        NamespacedKey key = new NamespacedKey(plugin, "MusketBall");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MusketBall");
         ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.MISC);
@@ -119,7 +119,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
     private void registerEmptyBulletRecipe(){
         ItemStack item= EmptyBullet.getItem(plugin);
         item.setAmount(8);
-        NamespacedKey key = new NamespacedKey(plugin, "EmptyBullet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_EmptyBullet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","I I"," I ");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
@@ -131,7 +131,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack item= ExplodingBullet.getItem(plugin);
         item.setAmount(50);
         RecipeChoice choice = new RecipeChoice.ExactChoice(EmptyBullet.getItem(plugin));
-        NamespacedKey key = new NamespacedKey(plugin, "ExplodingBullet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ExplodingBullet");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         for(int i=0;i<8;i++){
             recipe.addIngredient(choice);
@@ -145,7 +145,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack item= BubonicRound.getItem(plugin);
         item.setAmount(50);
         RecipeChoice choice = new RecipeChoice.ExactChoice(EmptyBullet.getItem(plugin));
-        NamespacedKey key = new NamespacedKey(plugin, "BubonicRound");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_BubonicRound");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         for(int i=0;i<8;i++){
             recipe.addIngredient(choice);

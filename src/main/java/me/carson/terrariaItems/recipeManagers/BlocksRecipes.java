@@ -27,7 +27,7 @@ public class BlocksRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHellforgeRecipe(){
         ItemStack forge=Hellforge.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "Hellforge");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_Hellforge");
         ShapedRecipe recipe = new ShapedRecipe(key, forge);
         recipe.shape(" M ","MFM"," M ");
         recipe.setIngredient('M', new RecipeChoice.ExactChoice( Hellstone.getItem(plugin)));

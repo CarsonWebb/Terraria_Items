@@ -84,7 +84,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerShadowHelmetRecipe(){
         ItemStack helmet=ShadowHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ShadowHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, helmet);
         recipe.shape("DDD","D D","   ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
@@ -94,7 +94,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerShadowScalemailRecipe(){
         ItemStack scalemail=ShadowScalemail.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ShadowScalemail");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowScalemail");
         ShapedRecipe recipe = new ShapedRecipe(key, scalemail);
         recipe.shape("D D","DDD","DDD");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
@@ -104,7 +104,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerShadowLeggingsRecipe(){
         ItemStack leggings=ShadowLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ShadowLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, leggings);
         recipe.shape("DDD","D D","D D");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
@@ -114,7 +114,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerShadowGreavesRecipe(){
         ItemStack greaves=ShadowGreaves.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ShadowGreaves");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowGreaves");
         ShapedRecipe recipe = new ShapedRecipe(key, greaves);
         recipe.shape("   ","D D","D D");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
@@ -124,7 +124,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerShadowElytraRecipe(){
         ItemStack elytra=ShadowElytra.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ShadowElytra");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowElytra");
         ShapedRecipe recipe = new ShapedRecipe(key, elytra);
         recipe.shape(" D ","DED"," D ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
@@ -135,7 +135,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMoltenHelmRecipe(){
         ItemStack helm= MoltenHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MoltenHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenHelmet");
         ShapelessRecipe recipe = new ShapelessRecipe(key,helm);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND_HELMET)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
@@ -145,7 +145,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMoltenChestplateRecipe(){
         ItemStack chestplate= MoltenChestplate.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MoltenChestplate");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenChestplate");
         ShapelessRecipe recipe = new ShapelessRecipe(key,chestplate);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND_CHESTPLATE)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
@@ -155,7 +155,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMoltenLeggingsRecipe(){
         ItemStack leggings= MoltenLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MoltenLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenLeggings");
         ShapelessRecipe recipe = new ShapelessRecipe(key,leggings);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND_LEGGINGS)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
@@ -165,7 +165,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMoltenBootsRecipe(){
         ItemStack boots= MoltenBoots.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MoltenBoots");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenBoots");
         ShapelessRecipe recipe = new ShapelessRecipe(key,boots);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND_BOOTS)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
@@ -175,7 +175,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerMoltenElytraRecipe(){
         ItemStack elytra= MoltenElytra.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "MoltenElytra");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MoltenElytra");
         ShapelessRecipe recipe = new ShapelessRecipe(key,elytra);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ELYTRA)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( HellstoneBar.getItem(plugin)));
@@ -185,7 +185,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedMaskRecipe(){
         ItemStack item= HallowedMask.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedMask");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedMask");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","HBH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -196,7 +196,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedHelmetRecipe(){
         ItemStack item= HallowedHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","HAH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -207,7 +207,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedHeadgearRecipe(){
         ItemStack item= HallowedHeadgear.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedHeadgear");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedHeadgear");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","HEH","   ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -219,7 +219,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedChestplateRecipe(){
         ItemStack item= HallowedChestplate.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedChestplate");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedChestplate");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("H H","HHH","HHH");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -230,7 +230,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedLeggingsRecipe(){
         ItemStack item= HallowedLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("HHH","H H","H H");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -241,7 +241,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedBootsRecipe(){
         ItemStack item= HallowedBoots.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedBoots");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedBoots");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","H H","H H");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -252,7 +252,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerHallowedElytraRecipe(){
         ItemStack item= HallowedElytra.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "HallowedElytra");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_HallowedElytra");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" H ","HEH"," H ");
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
@@ -264,7 +264,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerCactusHelmetRecipe(){
         ItemStack item= CactusHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "CactusHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_CactusHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CCC","C C","   ");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CACTUS)));
@@ -275,7 +275,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerCactusChestplateRecipe(){
         ItemStack item= CactusChestplate.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "CactusChestplate");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_CactusChestplate");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("C C","CCC","CCC");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CACTUS)));
@@ -286,7 +286,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerCactusLeggingsRecipe(){
         ItemStack item= CactusLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "CactusLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_CactusLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CCC","C C","C C");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CACTUS)));
@@ -297,7 +297,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerCactusBootsRecipe(){
         ItemStack item= CactusBoots.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "CactusBoots");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_CactusBoots");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","C C","C C");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CACTUS)));
@@ -308,7 +308,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerGoldenCrownRecipe(){
         ItemStack item= GoldenCrown.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "GoldenCrown");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_GoldenCrown");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("GGG","GRG","   ");
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
@@ -320,7 +320,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerJungleHatRecipe(){
         ItemStack item= JungleHat.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "JungleHat");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_JungleHat");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("BVB","I I","   ");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
@@ -333,7 +333,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerJungleShirtRecipe(){
         ItemStack item= JungleShirt.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "JungleShirt");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_JungleShirt");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("V V","BIB","BCB");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
@@ -347,7 +347,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerJungleLeggingsRecipe(){
         ItemStack item= JungleLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "JungleLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_JungleLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("VIV","B B","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
@@ -360,7 +360,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerJunglePantsRecipe(){
         ItemStack item= JunglePants.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "JunglePants");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_JunglePants");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","V V","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
@@ -372,7 +372,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerNecroHelmetRecipe(){
         ItemStack item= NecroHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "NecroHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_NecroHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("CSC","B B","   ");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
@@ -385,7 +385,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerNecroBreastplateRecipe(){
         ItemStack item= NecroBreastplate.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "NecroBreastplate");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_NecroBreastplate");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("B B","CSC","CSC");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
@@ -398,7 +398,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerNecroLeggingsRecipe(){
         ItemStack item= NecroLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "NecroLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_NecroLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("SBS","C C","C C");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
@@ -411,7 +411,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerNecroGreavesRecipe(){
         ItemStack item= NecroGreaves.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "NecroGreaves");
+        NamespacedKey key = new NamespacedKey(plugin, "pre_NecroGreaves");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("   ","S S","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
@@ -423,7 +423,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerForbiddenMaskRecipe(){
         ItemStack item= ForbiddenMask.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenMask");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenMask");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("GFG","B B","   ");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BLACK_WOOL)));
@@ -436,7 +436,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerForbiddenRobesRecipe(){
         ItemStack item= ForbiddenRobes.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenRobes");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenRobes");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("G G","GFG","BBB");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BLACK_WOOL)));
@@ -449,7 +449,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerForbiddenLeggingsRecipe(){
         ItemStack item= ForbiddenLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("GFG","B B","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BLACK_WOOL)));
@@ -461,7 +461,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
     }
     private void registerForbiddenTreadsRecipe(){
         ItemStack item= ForbiddenTreads.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenTreads");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenTreads");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" F ","G G","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BLACK_WOOL)));
@@ -474,7 +474,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerForbiddenElytraRecipe(){
         ItemStack item= ForbiddenElytra.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "ForbiddenElytra");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenElytra");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ELYTRA)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
@@ -485,7 +485,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFrostHelmetRecipe(){
         ItemStack item= FrostHelmet.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FrostHelmet");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_FrostHelmet");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("DFD","I I","   ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
@@ -498,7 +498,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFrostBreastplateRecipe(){
         ItemStack item= FrostBreastplate.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FrostBreastplate");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_FrostBreastplate");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("D D","DFD","III");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
@@ -511,7 +511,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFrostLeggingsRecipe(){
         ItemStack item= FrostLeggings.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FrostLeggings");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_FrostLeggings");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("DFD","I I","I I");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
@@ -524,7 +524,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFrostBootsRecipe(){
         ItemStack item= FrostBoots.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FrostBoots");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_FrostBoots");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape(" F ","D D","I I");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
@@ -537,7 +537,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
 
     private void registerFrostElytraRecipe(){
         ItemStack item= FrostElytra.getItem(plugin);
-        NamespacedKey key = new NamespacedKey(plugin, "FrostElytra");
+        NamespacedKey key = new NamespacedKey(plugin, "hm_FrostElytra");
         ShapelessRecipe recipe = new ShapelessRecipe(key, item);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ELYTRA)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));

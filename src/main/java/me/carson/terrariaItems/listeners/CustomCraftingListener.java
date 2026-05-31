@@ -2,6 +2,7 @@ package me.carson.terrariaItems.listeners;
 
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +17,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CustomCraftingListener implements Listener {
 
@@ -76,10 +78,35 @@ public class CustomCraftingListener implements Listener {
         if(result!=null){
             if(hasCustom(matrix)&&getCustomKey(result)==null){
                 inv.setResult(null);
+            } else if (event.getRecipe() instanceof Keyed keyed) {
+                String key = keyed.getKey().getKey();
+                if(!isAllowed(getPrefix(key))){
+                    inv.setResult(null);
+                }
             }
         }
     }
-    
+
+    public Boolean isAllowed(String prefix){
+        if(!worldDataHandler.getPreHardmodeRecipes()){
+            if(Objects.equals(prefix, "pre")){
+                return false;
+            }
+        }
+        if(!worldDataHandler.getHardmodeRecipes()){
+            if(Objects.equals(prefix, "hm")){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String getPrefix(String key){
+        if(key==null){return "";}
+        int idx = key.indexOf('_');
+        return idx != -1 ? key.substring(0, idx) : "";
+    }
+
     public Boolean hasCustom(ItemStack[] matrix){
         for (ItemStack item : matrix) {
             if(item!=null){
