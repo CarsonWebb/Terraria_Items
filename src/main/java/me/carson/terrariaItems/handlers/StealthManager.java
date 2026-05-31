@@ -105,9 +105,9 @@ public class StealthManager implements Listener {
 
     public double getStealthRegen(Player player){
         if(isMoving(player)){
-            return playerDataHandler.getMaxStealth(player.getUniqueId())/80;
+            return playerDataHandler.getMaxStealth(player.getUniqueId())/(80*playerDataHandler.getStealthGeneration(player.getUniqueId()));
         }
-        return playerDataHandler.getMaxStealth(player.getUniqueId())/40;
+        return playerDataHandler.getMaxStealth(player.getUniqueId())/(40*playerDataHandler.getStealthGeneration(player.getUniqueId()));
     }
 
     public void startStealthRegenDelay(Player player){

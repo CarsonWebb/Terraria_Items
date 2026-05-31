@@ -101,6 +101,12 @@ public class MobDeathListeners implements Listener {
                         e.getDrops().add(getMimicLoot());
                     }
                 }
+                case BREEZE -> {
+                    if(rand<0.05){
+                        ItemStack custom = RougeEmblem.getItem(plugin);
+                        e.getDrops().add(custom);
+                    }
+                }
                 case ENDER_DRAGON -> {
                     worldDataInstance.setHardmode(true);
                 }

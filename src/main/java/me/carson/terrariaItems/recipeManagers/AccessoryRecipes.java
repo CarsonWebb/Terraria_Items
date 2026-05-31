@@ -2,10 +2,7 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
-import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
-import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
-import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
-import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
 import org.bukkit.Bukkit;
@@ -72,6 +69,30 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         registerBundleOfBalloonsRecipe();
         registerBundleOfHorseshoeBalloonsRecipe();
         registerCoinOfDeceitRecipe();
+        registerRuinMedallionRecipe();
+        registerSilencingSheathRecipe();
+    }
+
+    private void registerSilencingSheathRecipe(){
+        ItemStack item=SilencingSheath.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "SilencingSheath");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  W"," W ","N  ");
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WHITE_WOOL)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHER_BRICK)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerRuinMedallionRecipe(){
+        ItemStack item=RuinMedallion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "RuinMedallion");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" U ","UCU"," U ");
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(CoinOfDeceit.getItem(plugin)));
+        recipe.setIngredient('U', new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerCoinOfDeceitRecipe(){

@@ -41,6 +41,9 @@ public class PlayerDamageHandler implements Listener {
         if(type==DamageType.LIGHTNING_BOLT){
             extraDamage+=originalDamage *playerInstance.getBonusMagic(id);
         }
+        if(type==DamageType.TRIDENT){
+            extraDamage+=originalDamage *playerInstance.getBonusRouge(id);
+        }
         if(event.getDamager() instanceof Projectile projectile) {
             ProjectileSource source = projectile.getShooter();
             if (!(source ==player)) {return;}

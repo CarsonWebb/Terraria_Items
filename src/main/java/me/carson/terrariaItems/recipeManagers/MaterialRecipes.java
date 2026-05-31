@@ -35,6 +35,18 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         registerEmptyBulletRecipe();
         registerExplodingBulletRecipe();
         registerBubonicRoundRecipe();
+        registerUnholyCoreRecipe();
+    }
+
+    private void registerUnholyCoreRecipe(){
+        ItemStack item=UnholyCore.getItem(plugin);
+        item.setAmount(2);
+        NamespacedKey key = new NamespacedKey(plugin, "UnholyCore");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Hellstone.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POPPED_CHORUS_FRUIT)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerDemoniteBarRecipe(){

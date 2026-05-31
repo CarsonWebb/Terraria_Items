@@ -292,3 +292,19 @@ coin_of_deceit:
     - "&7Stealth strikes only expend 90%"
     - "&7of your max stealth"
     - "&76% increased crit chance"
+ruin_medallion:
+  name: "Ruin Medallion"
+  lore:
+    - "&7Stealth strikes only expend 90%"
+    - "&7of your max stealth"
+    - "&76% increased crit chance"
+    - "&76% increased rogue damage"
+rogue_emblem:
+  name: "Rogue Emblem"
+  lore:
+    - "&720% increased rogue damage"
+silencing_sheath:
+  name: "Silencing Sheath"
+  lore:
+    - "&7+10 maximum stealth"
+    - "&7Stealth generates 4% faster"

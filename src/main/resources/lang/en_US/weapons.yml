@@ -367,4 +367,7 @@ desecrated_water:
 exorcism:
   name: "Exorcism"
   lore:
-    - "&7"
+    - "&7Rains down holy crosses"
+    - "&720 Damage"
+    - "&7Stealth Strikes cause"
+    - "&7crosses to explode"

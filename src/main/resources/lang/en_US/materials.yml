@@ -74,3 +74,7 @@ ruby:
   name: "Ruby"
   lore:
     - "&7Bright Red Gem"
+unholy_core:
+  name: "Unholy Core"
+  lore:
+    - "&7An uncanny mix of Nether and End"

@@ -35,6 +35,7 @@ public class ResetHandler implements Listener {
         playerDataHandler.setBonusMelee(id,0.0);
         playerDataHandler.setBonusRanged(id,0.0);
         playerDataHandler.setBonusMagic(id,0.0);
+        playerDataHandler.setBonusRouge(id,0.0);
         playerDataHandler.setBonusDamage(id,0.0);
         playerDataHandler.setDamageReduction(id,0.0);
         playerDataHandler.setExtraMana(id,0);
@@ -42,6 +43,7 @@ public class ResetHandler implements Listener {
         playerDataHandler.setManaReduction(id,0);
         playerDataHandler.setMaxStealth(id,0);
         playerDataHandler.setStealthThreshold(id,1);
+        playerDataHandler.setStealthGeneration(id,1);
         player.setWalkSpeed(0.2f);
         Objects.requireNonNull(player.getAttribute(Attribute.ATTACK_SPEED)).setBaseValue(4);
 
