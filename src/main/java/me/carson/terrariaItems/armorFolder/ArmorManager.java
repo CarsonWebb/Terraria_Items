@@ -5,6 +5,9 @@ import me.carson.terrariaItems.armorFolder.armors.cactusArmor.CactusChestplate;
 import me.carson.terrariaItems.armorFolder.armors.cactusArmor.CactusHelmet;
 import me.carson.terrariaItems.armorFolder.armors.cactusArmor.CactusLeggings;
 import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerHat;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerLeggings;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerPants;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerShirt;
 import me.carson.terrariaItems.armorFolder.armors.forbiddenArmor.ForbiddenLeggings;
 import me.carson.terrariaItems.armorFolder.armors.forbiddenArmor.ForbiddenMask;
 import me.carson.terrariaItems.armorFolder.armors.forbiddenArmor.ForbiddenRobes;
@@ -91,6 +94,9 @@ public class ArmorManager implements Listener {
         armorList.put("FrostBoots",new FrostBoots(plugin));
         armorList.put("WizardHat",new WizardHat(plugin));
         armorList.put("DesertProwlerHat",new DesertProwlerHat(plugin));
+        armorList.put("DesertProwlerShirt",new DesertProwlerShirt(plugin));
+        armorList.put("DesertProwlerLeggings",new DesertProwlerLeggings(plugin));
+        armorList.put("DesertProwlerPants",new DesertProwlerPants(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
         Bukkit.getPluginManager().registerEvents(new MoltenHelmet(plugin), plugin);

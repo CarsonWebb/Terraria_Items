@@ -221,3 +221,23 @@ wizard_hat:
   lore:
     - "&75% increased magic damage"
     - "&7+1 Armor"
+desert_prowler_hat:
+  name: "Desert Prowler Hat"
+  lore:
+    - "&7+10 Stealth"
+    - "&7+4% Critical Strike chance"
+desert_prowler_shirt:
+  name: "Desert Prowler Shirt"
+  lore:
+    - "&7+20 Stealth"
+    - "&7+5% Rogue Damage"
+desert_prowler_leggings:
+  name: "Desert Prowler Leggings"
+  lore:
+    - "&7+10 Stealth"
+    - "&7+5% Rogue Damage"
+desert_prowler_pants:
+  name: "Desert Prowler Pants"
+  lore:
+    - "&7+10 Stealth"
+    - "&7+4% Critical Strike chance"

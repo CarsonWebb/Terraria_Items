@@ -1,5 +1,9 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerHat;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerLeggings;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerPants;
+import me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor.DesertProwlerShirt;
 import me.carson.terrariaItems.armorFolder.armors.forbiddenArmor.*;
 import me.carson.terrariaItems.armorFolder.armors.frostArmor.*;
 import me.carson.terrariaItems.armorFolder.armors.jungleArmor.JungleHat;
@@ -80,12 +84,62 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
         registerFrostLeggingsRecipe();
         registerFrostBootsRecipe();
         registerFrostElytraRecipe();
+        registerDesertProwlerHatRecipe();
+        registerDesertProwlerShirtRecipe();
+        registerDesertProwlerLeggingsRecipe();
+        registerDesertProwlerPantsRecipe();
+    }
+
+    private void registerDesertProwlerHatRecipe(){
+        ItemStack item= DesertProwlerHat.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DesertProwlerHat");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("BBB","S S"," W ");
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BROWN_WOOL)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SOIL)));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.BLACK_WOOL)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDesertProwlerShirtRecipe(){
+        ItemStack item= DesertProwlerShirt.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DesertProwlerShirt");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("B B","BGB","SSS");
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BROWN_WOOL)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SOIL)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_NUGGET)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDesertProwlerLeggingsRecipe(){
+        ItemStack item= DesertProwlerLeggings.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DesertProwlerLeggings");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("SGS","S S","S S");
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_NUGGET)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SOIL)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
+    private void registerDesertProwlerPantsRecipe(){
+        ItemStack item= DesertProwlerPants.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DesertProwlerPants");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("   ","S S","B B");
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BROWN_WOOL)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SOIL)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerShadowHelmetRecipe(){
-        ItemStack helmet=ShadowHelmet.getItem(plugin);
+        ItemStack item=ShadowHelmet.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_ShadowHelmet");
-        ShapedRecipe recipe = new ShapedRecipe(key, helmet);
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
         recipe.shape("DDD","D D","   ");
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
