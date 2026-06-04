@@ -95,6 +95,7 @@ public class WeaponManager implements Listener {
         weaponList.put("ConsecratedWater",new ConsecratedWater(plugin));
         weaponList.put("DesecratedWater",new DesecratedWater(plugin));
         weaponList.put("Exorcism",new Exorcism(plugin));
+        weaponList.put("LifeDrain",new LifeDrain(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

@@ -371,3 +371,9 @@ exorcism:
     - "&720 Damage"
     - "&7Stealth Strikes cause"
     - "&7crosses to explode"
+life_drain:
+  name: "Life Drain"
+  lore:
+    - "&7Drains life from enemies"
+    - "&74 Damage"
+    - "&710 Mana"

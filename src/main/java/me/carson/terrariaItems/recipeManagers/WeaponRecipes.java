@@ -88,6 +88,20 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerConsecratedWaterRecipe();
         registerDesecratedWaterRecipe();
         registerExorcismRecipe();
+        registerLifeDrainRecipe();
+    }
+
+    private void registerLifeDrainRecipe(){
+        ItemStack item= LifeDrain.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_LifeDrain");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("NGS","NBG","BNN");
+        recipe.setIngredient('N',new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
+        recipe.setIngredient('G',new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.SKELETON_SKULL)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerExorcismRecipe(){

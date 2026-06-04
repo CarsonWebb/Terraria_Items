@@ -33,4 +33,6 @@ public abstract class Magic extends Weapon {
     public void rightActivate(Player player) {
 
     }
+
+
 }
