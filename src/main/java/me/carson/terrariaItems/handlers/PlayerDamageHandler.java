@@ -42,7 +42,7 @@ public class PlayerDamageHandler implements Listener {
             extraDamage+=originalDamage *playerInstance.getBonusMagic(id);
         }
         if(type==DamageType.TRIDENT){
-            extraDamage+=originalDamage *playerInstance.getBonusRouge(id);
+            extraDamage+=originalDamage *playerInstance.getBonusRogue(id);
         }
         if(event.getDamager() instanceof Projectile projectile) {
             ProjectileSource source = projectile.getShooter();

@@ -16,12 +16,12 @@ public class RougeEmblem extends Accessory {
 
     @Override
     public void activateEffect(Player player) {
-        playerInstance.addBonusRouge(player.getUniqueId(),0.2);
+        playerInstance.addBonusRogue(player.getUniqueId(),0.2);
     }
 
     @Override
     public void deactivateEffect(Player player) {
-        playerInstance.subtractBonusRouge(player.getUniqueId(),0.2);
+        playerInstance.subtractBonusRogue(player.getUniqueId(),0.2);
     }
 
     @Override

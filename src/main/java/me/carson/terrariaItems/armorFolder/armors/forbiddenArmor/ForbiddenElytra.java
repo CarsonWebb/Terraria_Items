@@ -33,11 +33,13 @@ public class ForbiddenElytra extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addExtraMana(player.getUniqueId(),20);
+        playerInstance.addMaxStealth(player.getUniqueId(),20);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractExtraMana(player.getUniqueId(),20);
+        playerInstance.subtractMaxStealth(player.getUniqueId(),20);
     }
 
 }

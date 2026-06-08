@@ -104,10 +104,10 @@ public class PlayerDataHandler implements Listener {
     public void addBonusMagic(UUID id,double add){setBonusMagic(id,getBonusMagic(id)+add);}
     public void subtractBonusMagic(UUID id,double minus){setBonusMagic(id,Math.max(getBonusMagic(id)-minus,0));}
 
-    public double getBonusRouge(UUID id){return config.getDouble(id +".bonus_rouge",0);}
-    public void setBonusRouge(UUID id, double bonus){config.set(id +".bonus_rouge",bonus);}
-    public void addBonusRouge(UUID id,double add){setBonusRouge(id,getBonusRouge(id)+add);}
-    public void subtractBonusRouge(UUID id,double minus){setBonusRouge(id,Math.max(getBonusRouge(id)-minus,0));}
+    public double getBonusRogue(UUID id){return config.getDouble(id +".bonus_rouge",0);}
+    public void setBonusRogue(UUID id, double bonus){config.set(id +".bonus_rouge",bonus);}
+    public void addBonusRogue(UUID id, double add){setBonusRogue(id, getBonusRogue(id)+add);}
+    public void subtractBonusRogue(UUID id, double minus){setBonusRogue(id,Math.max(getBonusRogue(id)-minus,0));}
 
     public double getDamageReduction(UUID id){return config.getDouble(id +".damage_reduction",0);}
     public void setDamageReduction(UUID id, double bonus){config.set(id +".damage_reduction",bonus);}

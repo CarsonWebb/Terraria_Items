@@ -1,3 +1,11 @@
 blood_moon_msg:
   rising: "The Blood Moon is rising..."
   falling: "The Blood Moon has fallen..."
+give: "give"
+toggle_message: "toggle_message"
+accessory: "accessory"
+vanity: "vanity"
+reset_bonuses: "reset_bonuses"
+undiscover: "undiscover"
+toggle_prehardmode_crafting: "toggle_prehardmode_crafting"
+toggle_hardmode_crafting: "toggle_hardmode_crafting"

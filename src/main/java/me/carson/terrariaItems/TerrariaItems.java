@@ -52,6 +52,7 @@ public final class TerrariaItems extends JavaPlugin{
         BloodMoonManager.initialize(this);
         ToolManager.initialize(this);
         StealthManager.initialize(this);
+        VanityManager.initialize(this);
 
         CustomRecipeManager.initialize(this);
         CustomRecipeManager.getInstance().registerAll(
@@ -73,7 +74,6 @@ public final class TerrariaItems extends JavaPlugin{
         new FishingManager(this);
         new ItemPlaceListener(this);
         new MessageHandler(this);
-        new VanityManager(this);
         new EnemyManager(this);
         new AccessoryListeners(this);
         new CustomBlockListeners(this);

@@ -23,15 +23,21 @@ cactus_leggings:
   lore:
     - "&7Set Bonus: Attackers take damage from the cactus spines"
     - "&7+2 Armor"
+forbidden_circlet:
+  name: "Forbidden Circlet"
+  lore:
+    - "&715% increased rogue damage"
+    - "&7+3 Armor"
 forbidden_elytra:
   name: "Forbidden Elytra"
   lore:
     - "&7Increases maximum mana by 20"
+    - "&7Increases maximum stealth by 20"
     - "&7+4 Armor"
 forbidden_leggings:
   name: "Forbidden Leggings"
   lore:
-    - "&710% increased magic damage"
+    - "&710% increased magic and rogue damage"
     - "&7+6 Armor"
 forbidden_mask:
   name: "Forbidden Mask"
@@ -42,12 +48,14 @@ forbidden_robes:
   name: "Forbidden Robes"
   lore:
     - "&7Increases maximum mana by 40"
+    - "&7Increases maximum stealth by 40"
     - "&7+8 Armor"
 forbidden_treads:
   name: "Forbidden Treads"
   lore:
     - "&7Increases maximum mana by 40"
-    - "&710% increased magic damage"
+    - "&7Increases maximum stealth by 20"
+    - "&710% increased magic and rogue damage"
     - "&7+3 Armor"
 frost_boots:
   name: "Frost_Boots"

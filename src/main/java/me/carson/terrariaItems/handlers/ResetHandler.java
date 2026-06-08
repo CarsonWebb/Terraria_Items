@@ -35,7 +35,7 @@ public class ResetHandler implements Listener {
         playerDataHandler.setBonusMelee(id,0.0);
         playerDataHandler.setBonusRanged(id,0.0);
         playerDataHandler.setBonusMagic(id,0.0);
-        playerDataHandler.setBonusRouge(id,0.0);
+        playerDataHandler.setBonusRogue(id,0.0);
         playerDataHandler.setBonusDamage(id,0.0);
         playerDataHandler.setDamageReduction(id,0.0);
         playerDataHandler.setExtraMana(id,0);

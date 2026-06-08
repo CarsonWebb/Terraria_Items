@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class VanityManager implements Listener {
     private final NamespacedKey unmovableKey;
     private final PlayerDataHandler playerDataInstance = PlayerDataHandler.getInstance();
     private final Plugin plugin;
+    private static VanityManager instance;
 
     public VanityManager(Plugin plugin) {
         this.plugin=plugin;
@@ -125,5 +127,13 @@ public class VanityManager implements Listener {
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             applyVanity(invList, player);
         }, 1);
+    }
+
+    public static void initialize(JavaPlugin plugin) {
+        instance = new VanityManager(plugin);
+    }
+
+    public static VanityManager getInstance() {
+        return instance;
     }
 }

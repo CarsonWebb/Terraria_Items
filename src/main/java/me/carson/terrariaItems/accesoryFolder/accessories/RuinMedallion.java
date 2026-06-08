@@ -18,7 +18,7 @@ public class RuinMedallion extends Accessory  {
     @Override
     public void activateEffect(Player player){
         playerInstance.setStealthThreshold(player.getUniqueId(),0.75);
-        playerInstance.addBonusRouge(player.getUniqueId(),0.06);
+        playerInstance.addBonusRogue(player.getUniqueId(),0.06);
         playerInstance.addCritChance(player.getUniqueId(),0.06);
     }
 
@@ -26,7 +26,7 @@ public class RuinMedallion extends Accessory  {
     public void deactivateEffect(Player player) {
         playerInstance.setStealthThreshold(player.getUniqueId(),1);
         playerInstance.subtractCritChance(player.getUniqueId(),0.06);
-        playerInstance.subtractBonusRouge(player.getUniqueId(),0.06);
+        playerInstance.subtractBonusRogue(player.getUniqueId(),0.06);
     }
 
     @Override

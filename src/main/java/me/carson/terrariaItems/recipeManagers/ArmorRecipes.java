@@ -75,6 +75,7 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
         registerNecroLeggingsRecipe();
         registerNecroGreavesRecipe();
         registerForbiddenMaskRecipe();
+        registerForbiddenCircletRecipe();
         registerForbiddenRobesRecipe();
         registerForbiddenLeggingsRecipe();
         registerForbiddenTreadsRecipe();
@@ -475,6 +476,17 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
         
     }
 
+    private void registerForbiddenCircletRecipe(){
+        ItemStack item= ForbiddenCirclet.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenCirclet");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("GFG","   ","   ");
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
+    }
+
     private void registerForbiddenMaskRecipe(){
         ItemStack item= ForbiddenMask.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenMask");
@@ -485,7 +497,6 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
-        
     }
 
     private void registerForbiddenRobesRecipe(){
@@ -511,8 +522,8 @@ public class ArmorRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         Bukkit.addRecipe(recipe);
-        
     }
+
     private void registerForbiddenTreadsRecipe(){
         ItemStack item= ForbiddenTreads.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "hm_ForbiddenTreads");

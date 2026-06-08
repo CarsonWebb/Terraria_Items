@@ -70,7 +70,8 @@ public class TICommand implements CommandExecutor, TabCompleter {
     private final PlayerDataHandler playerInstance= PlayerDataHandler.getInstance();
     private final ResetHandler resetInstance=ResetHandler.getInstance();
     private final WorldDataHandler worldDataHandler=WorldDataHandler.getInstance();
-    public final TILangManager lang =TILangManager.getInstance();
+    private final VanityManager vanityManagerInstance=VanityManager.getInstance();
+    private final TILangManager lang =TILangManager.getInstance();
 
     public TICommand(TerrariaItems plugin) {
         this.plugin = plugin;
@@ -420,6 +421,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
                         player.getInventory().addItem(NecroGreaves.getItem(plugin));
                     }
                     case "forbidden_armor"-> {
+                        player.getInventory().addItem(ForbiddenCirclet.getItem(plugin));
                         player.getInventory().addItem(ForbiddenMask.getItem(plugin));
                         player.getInventory().addItem(ForbiddenRobes.getItem(plugin));
                         player.getInventory().addItem(ForbiddenLeggings.getItem(plugin));
@@ -713,8 +715,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
                 accessoryManagerInstance.openMenu(player);
             }
             case "vanity"->{
-                VanityManager vanityManager=new VanityManager(plugin);
-                vanityManager.openVanity(player);
+                vanityManagerInstance.openVanity(player);
             }
             case "reset_bonuses"->{
                 resetInstance.resetBonuses(player);

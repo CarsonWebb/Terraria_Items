@@ -31,10 +31,12 @@ public class ForbiddenLeggings extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addBonusMagic(player.getUniqueId(),0.1);
+        playerInstance.addBonusRogue(player.getUniqueId(),0.1);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractBonusMagic(player.getUniqueId(),0.1);
+        playerInstance.subtractBonusRogue(player.getUniqueId(),0.1);
     }
 }

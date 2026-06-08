@@ -2,11 +2,9 @@ package me.carson.terrariaItems.armorFolder.armors.desertProwlerArmor;
 
 import me.carson.terrariaItems.armorFolder.Armor;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 public class DesertProwlerShirt extends Armor {
@@ -22,12 +20,12 @@ public class DesertProwlerShirt extends Armor {
     @Override
     public void activateArmorEffect(Player player) {
         playerInstance.addMaxStealth(player.getUniqueId(),20);
-        playerInstance.addBonusRouge(player.getUniqueId(),0.05);
+        playerInstance.addBonusRogue(player.getUniqueId(),0.05);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractMaxStealth(player.getUniqueId(),20);
-        playerInstance.subtractBonusRouge(player.getUniqueId(),0.05);
+        playerInstance.subtractBonusRogue(player.getUniqueId(),0.05);
     }
 }

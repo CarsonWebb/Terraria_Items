@@ -32,11 +32,15 @@ public class ForbiddenTreads extends Armor {
     public void activateArmorEffect(Player player) {
         playerInstance.addExtraMana(player.getUniqueId(),40);
         playerInstance.addBonusMagic(player.getUniqueId(),0.1);
+        playerInstance.addMaxStealth(player.getUniqueId(),40);
+        playerInstance.addBonusRogue(player.getUniqueId(),0.1);
     }
 
     @Override
     public void deactivateArmorEffect(Player player) {
         playerInstance.subtractExtraMana(player.getUniqueId(),40);
         playerInstance.subtractBonusMagic(player.getUniqueId(),0.1);
+        playerInstance.subtractMaxStealth(player.getUniqueId(),40);
+        playerInstance.subtractBonusRogue(player.getUniqueId(),0.1);
     }
 }
