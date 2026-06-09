@@ -36,6 +36,7 @@ public class MechanicalSkull extends Tool {
             }
         }
         new MechanicalWither(plugin).summonBoss(player);
+        player.getInventory().removeItem(MechanicalSkull.getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:boss_spawn", 1.0F, 1.0F);
     }
 

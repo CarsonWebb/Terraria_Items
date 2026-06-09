@@ -95,7 +95,7 @@ public class StealthManager implements Listener {
 
     public boolean isStealthStrike(Player player){
         UUID id =player.getUniqueId();
-        return getStealth(id)>=(playerDataHandler.getMaxStealth(id)*playerDataHandler.getStealthThreshold(id));
+        return getStealth(id)!=0&&(getStealth(id)>=(playerDataHandler.getMaxStealth(id)*playerDataHandler.getStealthThreshold(id)));
     }
 
     public boolean isMaxStealth(Player player){

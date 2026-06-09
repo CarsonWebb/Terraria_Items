@@ -11,10 +11,7 @@ import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.*;
-import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.ConsecratedWater;
-import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.DesecratedWater;
-import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.Exorcism;
-import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.IronFrancisca;
+import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge.*;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -89,6 +86,17 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerDesecratedWaterRecipe();
         registerExorcismRecipe();
         registerLifeDrainRecipe();
+        registerBlazingStarRecipe();
+    }
+
+    private void registerBlazingStarRecipe(){
+        ItemStack item= BlazingStar.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_BlazingStar");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Glaive.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(HellstoneBar.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerLifeDrainRecipe(){

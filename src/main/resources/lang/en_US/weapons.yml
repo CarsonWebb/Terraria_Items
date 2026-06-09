@@ -12,7 +12,7 @@ hoarfrost_bow:
   lore:
     - "&7Fires two arrows at once"
     - "&7Converts wooden arrows into mist arrows"
-    - "&76 Damage"
+    - "&76 Ranged Damage"
 molten_fury:
   name: "Molten Fury"
   lore:
@@ -21,119 +21,119 @@ pulse_bow:
   name: "Pulse Bow"
   lore:
     - "&7Shoots a charged arrow"
-    - "&710 Damage"
+    - "&710 Ranged Damage"
 blowpipe:
   name: "Blowpipe"
   lore:
     - "&7Uses seeds for Ammo"
-    - "&71 Damage"
+    - "&71 Ranged Damage"
 boomstick:
   name: "Boomstick"
   lore:
     - "&7Fires a spread of bullets"
-    - "&73 Damage"
+    - "&73 Ranged Damage"
 clockwork_assault_rifle:
   name: "Clockwork Assault Rifle"
   lore:
     - "&7Three round burst"
     - "&7Only the first shot consumes ammo"
-    - "&75 Damage"
+    - "&75 Ranged Damage"
 handgun:
   name: "Handgun"
   lore:
     - "&7Shoots Bullets"
-    - "&74 Damage"
+    - "&74 Ranged Damage"
 megashark:
   name: "Megashark"
   lore:
     - "&750% chance to save ammo"
     - "&7Minishark's older brother"
-    - "&76 Damage"
+    - "&76 Ranged Damage"
 minishark:
   name: "Minishark"
   lore:
     - "&733% chance to save ammo"
     - "&7Half shark, half gun, completely awesome"
-    - "&72 Damage"
+    - "&72 Ranged Damage"
 needler:
   name: "Needler"
   lore:
     - "&7Converts musket balls into poison needles"
-    - "&76 Damage"
+    - "&76 Ranged Damage"
 onyx_blaster:
   name: "Onyx Blaster"
   lore:
     - "&7Fires a spread of bullets and an"
     - "&7onyx crystal that explodes upon impact"
-    - "&74 Damage"
+    - "&74 Ranged Damage"
 phoenix_blaster:
   name: "Phoenix Blaster"
   lore:
     - "&7Shoots Bullets"
-    - "&78 Damage"
+    - "&78 Ranged Damage"
 sand_gun:
   name: "Sand Gun"
   lore:
     - "&7This is a good idea!"
-    - "&77 Damage"
+    - "&77 Ranged Damage"
 shotgun:
   name: "Shotgun"
   lore:
     - "&7Fires a spread of bullets"
-    - "&73.5 Damage"
+    - "&73.5 Ranged Damage"
 sniper_rifle:
   name: "Sniper Rifle"
   lore:
     - "&7Shoots a powerful, high velocity bullet"
     - "&7Crouch to zoom"
-    - "&730 Damage"
+    - "&730 Ranged Damage"
 snowball_cannon:
   name: "Snowball Cannon"
   lore:
     - "&7Launches Snowballs"
-    - "&78 Damage"
+    - "&78 Ranged Damage"
 star_cannon:
   name: "Star Cannon"
   lore:
     - "&7Shoots fallen stars"
     - "&7Pierces infinitely"
-    - "&710 Damage"
+    - "&710 Ranged Damage"
 super_star_shooter:
   name: "Super Star Shooter"
   lore:
     - "&7Shoots fallen stars"
     - "&7Pierces infinitely"
-    - "&720 Damage"
+    - "&720 Ranged Damage"
 amethyst_staff:
   name: "Amethyst Staff"
   lore:
     - "&7Fires a amethyst bolt"
     - "&7Costs 5 Mana"
-    - "&74 Damage"
+    - "&74 Magic Damage"
 bubble_gun:
   name: "Bubble Gun"
   lore:
     - "&7Rapidly shoots forceful bubbles"
     - "&7Costs 5 Mana"
-    - "&710 Damage"
+    - "&710 Magic Damage"
 crystal_storm:
   name: "Crystal Storm"
   lore:
     - "&7Summons rapid fire crystal shards"
     - "&7Costs 5 Mana"
-    - "&76 Damage"
+    - "&76 Magic Damage"
 icicle_staff:
   name: "Icicle Staff"
   lore:
     - "&7Casts icicles from the sky"
     - "&7Costs 6 Mana"
-    - "&78 Damage"
+    - "&78 Magic Damage"
 laser_rifle:
   name: "Laser Rifle"
   lore:
     - "&7Fires fast-moving purple lasers"
     - "&7Costs 8 Mana"
-    - "&78 Damage"
+    - "&78 Magic Damage"
 magical_harp:
   name: "Magical Harp"
   lore:
@@ -145,77 +145,77 @@ magic_dagger:
   lore:
     - "&7A magical returning dagger"
     - "&7Costs 6 Mana"
-    - "&79 Damage"
+    - "&79 Magic Damage"
 meteor_staff:
   name: "Meteor Staff"
   lore:
     - "&7Showers meteors"
     - "&7Costs 9 Mana"
-    - "&710 Damage"
+    - "&710 Magic Damage"
 ruby_staff:
   name: "Ruby Staff"
   lore:
     - "&7Fires a ruby bolt"
     - "&7Costs 7 Mana"
-    - "&76 Damage"
+    - "&76 Magic Damage"
 thunder_zapper:
   name: "Thunder Zapper"
   lore:
     - "&7Fires a lightning bolt"
     - "&7Costs 6 Mana"
-    - "&79 Damage"
+    - "&79 Magic Damage"
 water_bolt:
   name: "Water Bolt"
   lore:
     - "&7Casts a slow moving bolt of water"
     - "&7Costs 10 Mana"
-    - "&75 Damage"
+    - "&75 Magic Damage"
 blade_of_grass:
   name: "Blade of Grass"
   lore:
     - "&7Has a chance to poison enemies"
-    - "&76 Damage"
+    - "&76 Melee Damage"
 breaker_blade:
   name: "Breaker Blade"
   lore:
     - "&7Deals more damage to unhurt enemies"
-    - "&714 Damage, +3 Range"
+    - "&714 Melee Damage, +3 Range"
 caustic_edge:
   name: "Caustic Edge"
   lore:
     - "&7Fires a bouncing caustic beam"
     - "&7Inflicts acid venom and slows down on enemy hits"
-    - "&718 Damage"
+    - "&718 Melee Damage"
 christmas_tree_sword:
   name: "Christmas Tree Sword"
   lore:
     - "&7Shoots Christmas ornaments"
-    - "&76 Damage"
+    - "&76 Melee Damage"
 enchanted_sword:
   name: "Enchanted Sword"
   lore:
     - "&7Shoots an enchanted sword beam"
-    - "&78 Damage"
+    - "&78 Melee Damage"
 excalibur:
   name: "Excalibur"
   lore:
     - "&7The holy sword of legend"
-    - "&725 Damage, +1 Range"
+    - "&725 Melee Damage, +1 Range"
 falcon_blade:
   name: "Falcon Blade"
   lore:
     - "&7Rapid Attacking Sword"
-    - "&76 Damage"
+    - "&76 Melee Damage"
 ice_blade:
   name: "Ice Blade"
   lore:
     - "&7Shoots an icy bolt"
-    - "&77 Damage"
+    - "&77 Melee Damage"
 ice_sickle:
   name: "Ice Sickle"
   lore:
     - "&7Shoots an icy sickle"
-    - "&717 Damage"
+    - "&717 Melee Damage"
 lights_bane:
   name: "Lights Bane"
   lore:
@@ -224,58 +224,58 @@ slap_hand:
   name: "Slap Hand"
   lore:
     - "&7BEGONE"
-    - "&79 Damage"
+    - "&79 Melee Damage"
 starfury:
   name: "Starfury"
   lore:
     - "&7Causes stars to rain from the sky"
     - "&7Forged with the fury of heaven"
-    - "&78 Damage"
+    - "&78 Melee Damage"
 tainted_blade:
   name: "Tainted Blade"
   lore:
     - "&7Inflicts poison on enemy hits"
-    - "&712 Damage"
+    - "&712 Melee Damage"
 terra_blade:
   name: "Terra Blade"
   lore:
     - "&7Forged from the finest blades of light and darkness"
-    - "&71000 Damage, +3 Range"
+    - "&71000 Melee Damage, +3 Range"
 vampire_knives:
   name: "Vampire Knives"
   lore:
     - "&7Rapidly throw life stealing daggers"
-    - "&78 Damage"
+    - "&78 Melee Damage"
 volcano:
   name: "Volcano"
   lore:
     - "&7It's made out of fire!"
-    - "&715 Damage"
+    - "&715 Melee Damage"
 blood_rain_bow:
   name: "Blood Rain Bow"
   lore:
     - "&7Rains blood from the sky"
     - "&7'Reign in Blood'"
-    - "&76 Damage"
+    - "&76 Ranged Damage"
 throwing_knife:
   name: "Throwing Knife"
   lore:
-    - "&74 Damage"
+    - "&74 Ranged Damage"
 poisoned_knife:
   name: "Poisoned Knife"
   lore:
     - "&7Chance to poison enemies"
-    - "&74.5 Damage"
+    - "&74.5 Ranged Damage"
 bone_throwing_knife:
   name: "Bone Throwing Knife"
   lore:
     - "&7Pierces 6 times"
-    - "&75 Damage"
+    - "&75 Ranged Damage"
 shuriken:
   name: "Shuriken"
   lore:
     - "&7Pierces 3 times"
-    - "&73 Damage"
+    - "&73 Ranged Damage"
 grenade:
   name: "Grenade"
   lore:
@@ -333,47 +333,54 @@ spiky_ball:
   lore:
     - "&7Enemies who pass over"
     - "&7them will take damage"
-    - "&73 Damage"
+    - "&73 Ranged Damage"
 wand_of_sparking:
   name: "Wand of Sparking"
   lore:
     - "&7Shoots a small spark"
-    - "&72 Damage"
+    - "&72 Magic Damage"
     - "&72 Mana"
 iron_francisca:
   name: "Iron Francisca"
   lore:
     - "&7Throws an axe"
-    - "&74 Damage"
+    - "&74 Rogue Damage"
     - "&7Stealth strikes pierce 6 times"
 glaive:
   name: "Glaive"
   lore:
     - "&7Throws Glaive that bounces at enemies"
-    - "&73 Damage"
+    - "&73 Rogue Damage"
     - "&7Stealth Strikes pierce infinitely"
 consecrated_water:
   name: "Consecrated Water"
   lore:
     - "&7Explodes into holy fire"
-    - "&710 Damage"
+    - "&710 Rogue Damage"
     - "&7Stealth Strikes create 3 flames"
 desecrated_water:
   name: "Desecrated Water"
   lore:
     - "&7Explodes into homing bubbles"
-    - "&72 Damage"
+    - "&72 Rogue Damage"
     - "&7Stealth Strikes create 12 bubbles"
 exorcism:
   name: "Exorcism"
   lore:
     - "&7Rains down holy crosses"
-    - "&720 Damage"
+    - "&720 Rogue Damage"
     - "&7Stealth Strikes cause"
     - "&7crosses to explode"
 life_drain:
   name: "Life Drain"
   lore:
     - "&7Drains life from enemies"
-    - "&74 Damage"
+    - "&74 Magic Damage"
     - "&710 Mana"
+blazing_star:
+  name: "Blazing Star"
+  lore:
+    - "&7Throws fiery glaive that bounces at enemies"
+    - "&76 Rogue Damage"
+    - "&7Stealth Strikes pierce infinitely"
+    - "&7and set enemies ablaze"

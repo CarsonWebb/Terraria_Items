@@ -51,14 +51,17 @@ mechanical_egg:
   name: "Mechanical Egg"
   lore:
     - "&7Summons the Mechanical Dragon"
+    - "&7Consumable"
 mechanical_shrieker:
   name: "Mechanical Shrieker"
   lore:
     - "&7Summons the Mechanical Warden"
+    - "&7Consumable"
 mechanical_skull:
   name: "Mechanical Skull"
   lore:
     - "&7Summons the Mechanical Wither"
+    - "&7Consumable"
 cosmolight:
   name: "Cosmolight"
   lore:

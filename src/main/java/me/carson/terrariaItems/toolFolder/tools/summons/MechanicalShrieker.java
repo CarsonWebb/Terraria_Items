@@ -33,6 +33,7 @@ public class MechanicalShrieker extends Tool {
             }
         }
         new MechanicalWarden(plugin).summonBoss(player);
+        player.getInventory().removeItem(MechanicalShrieker.getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:boss_spawn", 1.0F, 1.0F);
     }
 

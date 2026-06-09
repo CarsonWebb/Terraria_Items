@@ -757,6 +757,104 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
+    public void createBlazingStarProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float gravDuration,float gravStrength,float spinSpeed,double currentStealth,boolean isStealthStrike){
+        Result r = createDefaultProjectile(player,speed,spread);
+        moveBlazingStarProj(player,weaponDamage,duration,r.proj,r.dir,gravDuration,gravStrength,spinSpeed,currentStealth,isStealthStrike);
+    }
+
+    private void moveBlazingStarProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir, float gravDuration,float gravStrength,float spinSpeed,double currentStealth,boolean isStealthStrike){
+        final int[] tick = {0};
+        final int[] enemiesHit = {0};
+        final int[] blocksBounced = {0};
+        final Vector[] direction = {dir};
+        final float[] spinAngle = {0f};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
+        if(isStealthStrike){
+            peirce=99;
+        }
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                proj.remove();
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            if (tick[0] >= gravDuration) {
+                direction[0] = new Vector(direction[0].getX(), direction[0].getY() - gravStrength, direction[0].getZ());
+            }
+
+            //block handling
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction[0]);
+            float dist= (float) now.distance(next);
+
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
+            if(result!=null){
+                if(result.getHitBlock()!=null){
+                    if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
+                        hitBlockEffect(result.getHitBlock());
+                        if(blocksBounced[0]>=bounces){
+                            proj.remove();
+                            task.cancel();
+                            return;
+                        }else{
+                            blocksBounced[0]++;
+                            hitEntities.clear();
+                            LivingEntity target=getClosestEntity(proj,player,15);
+                            if (target == null) {
+                                direction[0] =bounce(direction[0],result.getHitBlockFace());
+                            }else{
+                                direction[0]=target.getEyeLocation().toVector().subtract(proj.getLocation().toVector()).normalize();
+                            }
+                            next = now.clone().add(direction[0]);
+                        }
+                    }
+                }
+                if(result.getHitEntity()!=null){
+                    if(result.getHitEntity() instanceof LivingEntity target){
+                        target.setMaximumNoDamageTicks(0);
+                        DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
+                        hitEntityEffect(target,player);
+                        target.setMaximumNoDamageTicks(20);
+                        if(isStealthStrike){
+                            target.setFireTicks(100);
+                        }
+                        hitEntities.add(target);
+                    }
+                    if(enemiesHit[0] >=peirce) {
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    }else {
+                        enemiesHit[0]++;
+                    }
+                }
+            }
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+            proj.teleport(next);
+            proj.setInterpolationDelay(0);
+            spinProjectile(proj, spinAngle, spinSpeed);
+
+            if (particle != null&&tick[0]>2) {
+                proj.getWorld().spawnParticle(Particle.DUST, now, 1, 0, 0, 0, 0,particle);
+            }
+        }, 1L, 1L);
+    }
+
     private double getStealthDamage(double damage,double stealth){
         return damage*(stealth*0.01);
     }

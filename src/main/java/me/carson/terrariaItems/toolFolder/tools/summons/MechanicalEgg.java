@@ -38,6 +38,7 @@ public class MechanicalEgg extends Tool {
             }
         }
         new MechanicalDragon(plugin).summonBoss(player);
+        player.getInventory().removeItem(MechanicalEgg.getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:boss_spawn", 1.0F, 1.0F);
     }
 
