@@ -855,6 +855,71 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
+    public void createEnchantedAxeProjectile(Player player,float speed,float weaponDamage, float spread,float duration,float spinSpeed,double currentStealth,boolean isStealthStrike){
+        Result r = createDefaultProjectile(player,speed,spread);
+        moveEnchantedAxeStage1(player,weaponDamage,duration,r.proj,r.dir,spinSpeed,currentStealth,isStealthStrike);
+    }
+
+    private void moveEnchantedAxeStage1(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir,float spinSpeed,double currentStealth,boolean isStealthStrike){
+        final int[] tick = {0};
+        final Vector[] direction = {dir};
+        final float[] spinAngle = {0f};
+        ArrayList<Entity> hitEntities=new ArrayList<>();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                moveEnchantedAxeStage2(player,weaponDamage,duration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                task.cancel();
+                hitEntities.clear();
+                return;
+            }
+
+            //block handling
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction[0]);
+            float dist= (float) now.distance(next);
+
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player)&&!(hitEntities.contains(e)));
+            if(result!=null){
+                if(result.getHitBlock()!=null){
+                    if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
+                        moveEnchantedAxeStage2(player,weaponDamage,duration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                        task.cancel();
+                        return;
+                    }
+                }
+                if(result.getHitEntity()!=null){
+                    if(result.getHitEntity() instanceof LivingEntity target){
+                        target.setMaximumNoDamageTicks(0);
+                        DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                        target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
+                        hitEntityEffect(target,player);
+                        target.setMaximumNoDamageTicks(20);
+                        hitEntities.add(target);
+                    }
+                }
+            }
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+            proj.teleport(next);
+            spinProjectile(proj, spinAngle, spinSpeed);
+        }, 1L, 1L);
+    }
+
+    private void moveEnchantedAxeStage2(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir,float spinSpeed,double currentStealth,boolean isStealthStrike){
+
+    }
+
     private double getStealthDamage(double damage,double stealth){
         return damage*(stealth*0.01);
     }

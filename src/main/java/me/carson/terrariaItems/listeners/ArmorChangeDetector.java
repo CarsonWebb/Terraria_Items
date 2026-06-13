@@ -7,16 +7,19 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.InventoryAction;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.block.BlockDispenseArmorEvent;
+import org.bukkit.event.inventory.*;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ArmorMeta;
 import org.bukkit.plugin.Plugin;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ArmorChangeDetector implements Listener {
 
@@ -27,6 +30,8 @@ public class ArmorChangeDetector implements Listener {
     //private static final int BOOTS_SLOT      = 36;
     private final Plugin plugin;
 
+    private final Set<EquipmentSlot> armorSlots = new HashSet<>(Arrays.asList(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
+
     public ArmorChangeDetector(Plugin plugin){
         this.plugin=plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -36,26 +41,25 @@ public class ArmorChangeDetector implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
 
-        InventoryAction action = event.getAction();
-
         if (event.getSlotType() == InventoryType.SlotType.ARMOR) {
-            EquipmentSlot equipSlot = rawSlotToArmorSlot(event.getRawSlot());
-            if (equipSlot == null) return;
-            ItemStack newItem;
-            ItemStack oldItem =event.getCurrentItem();
 
-            if (action == InventoryAction.PLACE_ALL || action == InventoryAction.PLACE_ONE
-                    || action == InventoryAction.PLACE_SOME || action == InventoryAction.SWAP_WITH_CURSOR) {
-                newItem = nullToAir(event.getCursor());
-            } else if (action == InventoryAction.PICKUP_ALL || action == InventoryAction.PICKUP_HALF
-                    || action == InventoryAction.PICKUP_ONE || action == InventoryAction.PICKUP_SOME) {
-                newItem = new ItemStack(Material.AIR);
-            } else {
-                return;
+            EquipmentSlot equipSlot = rawSlotToArmorSlot(event.getSlot());
+            ItemStack newItem=event.getCursor();
+            ItemStack oldItem=event.getCurrentItem();
+
+            if(!armorSlots.contains(equipSlot)){return;}
+
+            if(newItem.getType()==Material.AIR||oldItem.getType()==Material.AIR){
+                if (newItem.getType().getEquipmentSlot()==equipSlot||oldItem.getType().getEquipmentSlot()==equipSlot){
+                    fireAndCancel(event, player, equipSlot, oldItem, newItem);
+                    return;
+                }
+            }else{
+                if (newItem.getType().getEquipmentSlot()==equipSlot&&oldItem.getType().getEquipmentSlot()==equipSlot){
+                    fireAndCancel(event, player, equipSlot, oldItem, newItem);
+                    return;
+                }
             }
-
-            fireAndCancel(event, player, equipSlot, oldItem, newItem);
-            return;
         }
 
         if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
@@ -69,24 +73,43 @@ public class ArmorChangeDetector implements Listener {
 
             ItemStack currentlyWearing = getArmorInSlot(player.getInventory(), targetSlot);
             ItemStack oldItem = nullToAir(currentlyWearing);
+            if(oldItem.getType()!=Material.AIR){return;}
             ItemStack newItem = item.clone();
 
             fireAndCancel(event, player, targetSlot, oldItem, newItem);
+            return;
         }
+
+    }
+
+    @EventHandler
+    public void onDrop(PlayerDropItemEvent event){
+        EquipmentSlot slot=event.getItemDrop().getItemStack().getType().getEquipmentSlot();
+        if(!armorSlots.contains(slot)){return;}
+        fireAndCancel(event, event.getPlayer(), slot, event.getItemDrop().getItemStack(), null);
     }
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
-        if (!(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
-        if (event.getHand() != EquipmentSlot.HAND) return;
-        ItemStack newItem=event.getItem();
-        if(!isArmor(newItem)){return;}
-        EquipmentSlot targetSlot=getArmorSlotForItem(newItem);
-        Player player=event.getPlayer();
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            ItemStack oldItem= event.getPlayer().getInventory().getItemInMainHand();
-            fireAndCancel(event, player, targetSlot, oldItem, newItem);
-        }, 1L);
+        if (event.getAction() == Action.PHYSICAL || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) return;
+        if (!event.hasItem()) return;
+
+        Player player = event.getPlayer();
+        final ItemStack newItem = event.getHand() == EquipmentSlot.HAND ? player.getEquipment().getItemInMainHand() : player.getEquipment().getItemInOffHand();
+        if (!isNotNullOrAir(newItem) || newItem.getType() == Material.CARVED_PUMPKIN)
+            return;
+        EquipmentSlot targetSlot = newItem.getType().getEquipmentSlot();
+        if (!armorSlots.contains(targetSlot))
+            return;
+        ItemStack oldItem = player.getEquipment().getItem(targetSlot);
+        fireAndCancel(event, player, targetSlot, oldItem, newItem);
+    }
+
+    @EventHandler
+    private void onBlockDispenseArmor(BlockDispenseArmorEvent event) {
+        if (event.getTargetEntity() instanceof Player player) {
+            fireAndCancel(event, player, event.getItem().getType().getEquipmentSlot(), null, event.getItem());
+        }
     }
 
     @EventHandler
@@ -102,9 +125,7 @@ public class ArmorChangeDetector implements Listener {
         }
     }
 
-    private void fireAndCancel(Cancellable trigger, Player player,
-                               EquipmentSlot slot,
-                               ItemStack oldItem, ItemStack newItem) {
+    private void fireAndCancel(Cancellable trigger, Player player, EquipmentSlot slot, ItemStack oldItem, ItemStack newItem) {
         ArmorChangeEvent armorEvent = new ArmorChangeEvent(player, slot, oldItem, newItem);
         player.getServer().getPluginManager().callEvent(armorEvent);
 
@@ -126,7 +147,8 @@ public class ArmorChangeDetector implements Listener {
             case 39 -> EquipmentSlot.HEAD;
             case 38 -> EquipmentSlot.CHEST;
             case 37 -> EquipmentSlot.LEGS;
-            default -> EquipmentSlot.FEET;
+            case 36 -> EquipmentSlot.FEET;
+            default -> null;
         };
     }
 
@@ -165,5 +187,8 @@ public class ArmorChangeDetector implements Listener {
         if (item.getItemMeta().getEquippable().getSlot()== EquipmentSlot.FEET)
             return true;
         return false;
+    }
+    private boolean isNotNullOrAir(ItemStack item) {
+        return item == null ? false : item.getType() != Material.AIR;
     }
 }

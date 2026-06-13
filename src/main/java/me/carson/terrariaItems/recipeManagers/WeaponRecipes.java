@@ -87,6 +87,20 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerExorcismRecipe();
         registerLifeDrainRecipe();
         registerBlazingStarRecipe();
+        registerEnchantedAxeRecipe();
+    }
+
+    private void registerEnchantedAxeRecipe(){
+        ItemStack item= EnchantedAxe.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_EnchantedAxe");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("SDD","SID","BSS");
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
+        recipe.setIngredient('D',new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(IronFrancisca.getItem(plugin)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerBlazingStarRecipe(){
@@ -153,7 +167,7 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         ItemStack item= IronFrancisca.getItem(plugin);
         NamespacedKey key = new NamespacedKey(plugin, "pre_IronFrancisca");
         ShapedRecipe recipe = new ShapedRecipe(key, item);
-        recipe.shape("NII"," S "," S ");
+        recipe.shape("NII"," SI"," S ");
         recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('N',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));

@@ -19,7 +19,7 @@ public class ForbiddenCirclet extends Armor {
     public static ItemStack getItem(Plugin plugin) {
         ItemStack item= new ForbiddenCirclet(plugin).createItem();
         ItemMeta meta=item.getItemMeta();
-        meta.addEnchant(Enchantment.PROTECTION,5,false);
+        meta.addEnchant(Enchantment.PROTECTION,5,true);
         meta.setEnchantmentGlintOverride(false);
         EquippableComponent equip= meta.getEquippable();
         equip.setModel(null);

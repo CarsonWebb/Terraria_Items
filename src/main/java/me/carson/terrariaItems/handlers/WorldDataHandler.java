@@ -56,6 +56,11 @@ public class WorldDataHandler implements Listener {
         config.set(".bloodMoon",set);
     }
 
+    public Boolean getBloodMoonEnabled(){return config.getBoolean(".bloodMoonEnabled",true);}
+    public void setBloodMoonEnabled(Boolean set){
+        config.set(".bloodMoonEnabled",set);
+    }
+
     public Boolean getPreHardmodeRecipes(){return config.getBoolean(".preHardmodeRecipes",true);}
     public void setPreHardmodeRecipes(Boolean set){
         config.set(".preHardmodeRecipes",set);

@@ -34,3 +34,9 @@ permissions:
   terrariaitems.sub.toggle_hardmode_crafting:
     description: Terraria Items Commands
     default: op
+  terrariaitems.sub.toggle_blood_moon:
+    description: Terraria Items Commands
+    default: op
+  terrariaitems.sub.summon_blood_moon:
+    description: Terraria Items Commands
+    default: op
