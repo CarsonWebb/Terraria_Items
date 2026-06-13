@@ -17,6 +17,8 @@ import java.util.List;
 
 public class MechanicalDragon extends Boss {
 
+    private final NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+
     public MechanicalDragon(Plugin plugin){
         super(plugin,500, EntityType.ENDER_DRAGON,"Mechanical Dragon",500);
     }
@@ -30,8 +32,7 @@ public class MechanicalDragon extends Boss {
         boss.setHealth(health);
         boss.setCustomName(lang.get("enemies","mechanical_dragon.name"));
         boss.setCustomNameVisible(true);
-        NamespacedKey key = new NamespacedKey(plugin, "BossDragon");
-        boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
+        boss.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BossDragon");
         BossBar bar = Bukkit.createBossBar(name, BarColor.PURPLE, BarStyle.SOLID);
         attachBossBar(boss,bar);
         Bukkit.getScheduler().runTask(plugin, () -> {

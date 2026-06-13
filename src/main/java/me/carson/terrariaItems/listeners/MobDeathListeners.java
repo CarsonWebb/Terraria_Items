@@ -4,15 +4,20 @@ import me.carson.terrariaItems.accesoryFolder.accessories.*;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import me.carson.terrariaItems.materialsFolder.materials.ForbiddenFragment;
 import me.carson.terrariaItems.materialsFolder.materials.FrostCore;
+import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.miscFolder.fishingRods.ChumCaster;
 import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.weaponsFolder.weapons.bowFolder.bows.BloodRainBow;
+import me.carson.terrariaItems.weaponsFolder.weapons.gunFolder.guns.ClockworkAssaultRifle;
+import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.LaserRifle;
 import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
+import me.carson.terrariaItems.weaponsFolder.weapons.meleeFolder.melee.BreakerBlade;
 import me.carson.terrariaItems.weaponsFolder.weapons.throwableFolder.throwablesFolder.Bomb;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.EntityType;
+import org.bukkit.block.Biome;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -20,12 +25,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MobDeathListeners implements Listener {
 
     private final Plugin plugin;
     private final WorldDataHandler worldDataInstance=WorldDataHandler.getInstance();
+    private static final Set<Biome> lightBiomes = Set.of(Biome.CRIMSON_FOREST,Biome.SOUL_SAND_VALLEY,Biome.WARPED_FOREST);
+    private static final Set<Biome> darkBiomes = Set.of(Biome.NETHER_WASTES,Biome.BASALT_DELTAS);
     private final NamespacedKey key;
 
     public MobDeathListeners(Plugin plugin){
@@ -59,13 +67,16 @@ public class MobDeathListeners implements Listener {
     public void onMobDeath(EntityDeathEvent e) {
         EntityType entityType = e.getEntity().getType();
         double rand=Math.random();
-        if (e.getEntity().getType() == EntityType.ZOMBIE){
-            if(rand<0.02){
-                e.getDrops().add(Shackle.getItem(plugin));
-                return;
+        if(worldDataInstance.getPreHardmodeRecipes()){
+            if (e.getEntity().getType() == EntityType.ZOMBIE){
+                if(rand<0.02){
+                    e.getDrops().add(Shackle.getItem(plugin));
+                    return;
+                }
             }
         }
-        if(worldDataInstance.getHardmode()){    //HARDMODE DROPS
+
+        if(worldDataInstance.getHardmode()&&worldDataInstance.getHardmodeRecipes()){    //HARDMODE DROPS
             switch (entityType){
                 case BOGGED ->{
                     if(rand<0.1){
@@ -108,7 +119,13 @@ public class MobDeathListeners implements Listener {
                     }
                 }
                 case ENDER_DRAGON -> {
-                    worldDataInstance.setHardmode(true);
+                    if(rand<0.33){
+                        e.getDrops().add(BreakerBlade.getItem(plugin));
+                    }else if (rand<0.66){
+                        e.getDrops().add(LaserRifle.getItem(plugin));
+                    }else{
+                        e.getDrops().add(ClockworkAssaultRifle.getItem(plugin));
+                    }
                 }
                 default -> {
                 }
@@ -119,62 +136,108 @@ public class MobDeathListeners implements Listener {
     }
 
     @EventHandler
+    public void onSoulDeath(EntityDeathEvent event){
+        if(!worldDataInstance.getHardmode()||!worldDataInstance.getHardmodeRecipes()){return;}
+        LivingEntity entity = event.getEntity();
+        if(!(entity instanceof Monster ||entity instanceof Ghast ||entity instanceof Slime)){return;}
+        Biome deathBiome=entity.getLocation().getBlock().getBiome();
+        if(lightBiomes.contains(deathBiome)){
+            if(Math.random()<0.2){
+                event.getDrops().add(SoulOfLight.getItem(plugin));
+            }
+        }else if(darkBiomes.contains(deathBiome)){
+            if(Math.random()<0.2){
+                event.getDrops().add(SoulOfNight.getItem(plugin));
+            }
+        }
+    }
+
+    @EventHandler
     public void onCustomDeath(EntityDeathEvent event) {
         String id = event.getEntity().getPersistentDataContainer().get(key, PersistentDataType.STRING);
         if (id == null) {
             return;
         }
-        switch (id) {
-            case "UndeadMiner" -> {
-                if (Math.random() < 0.72) {
-                    int tnt = ThreadLocalRandom.current().nextInt(1, 4);
-                    ItemStack item = new ItemStack(Bomb.getItem(plugin));
-                    item.setAmount(tnt);
-                    event.getDrops().add(item);
+
+        if (worldDataInstance.getPreHardmodeRecipes()) {
+            switch (id) {
+                case "UndeadMiner" -> {
+                    if (Math.random() < 0.72) {
+                        int tnt = ThreadLocalRandom.current().nextInt(1, 4);
+                        ItemStack item = new ItemStack(Bomb.getItem(plugin));
+                        item.setAmount(tnt);
+                        event.getDrops().add(item);
+                    }
+                    if (Math.random() < 0.1) {
+                        ItemStack itemStack = new ItemStack(Material.COOKED_BEEF);
+                        event.getDrops().add(itemStack);
+                    }
                 }
-                if (Math.random() < 0.1) {
-                    ItemStack itemStack = new ItemStack(Material.COOKED_BEEF);
-                    event.getDrops().add(itemStack);
+                case "BloodZombie" -> {
+                    if (Math.random() < 0.01) {
+                        event.getDrops().add(BloodyTear.getItem(plugin));
+                    }
+                    if (Math.random() < 0.013) {
+                        event.getDrops().add(SharkToothNecklace.getItem(plugin));
+                    }
                 }
-            }
-            case "SkeletonArcher" -> {
-                if (Math.random() < 0.025) {
-                    event.getDrops().add(MagicQuiver.getItem(plugin));
+                case "TheGroom", "TheBride" -> {
+                    if (Math.random() < 0.2) {
+                        event.getDrops().add(BloodyTear.getItem(plugin));
+                    }
                 }
-            }
-            case "SandElemental" -> {
-                event.getDrops().clear();
-                event.getDrops().add(ForbiddenFragment.getItem(plugin));
-            }
-            case "IceGolem" -> {
-                event.getDrops().clear();
-                event.getDrops().add(FrostCore.getItem(plugin));
-            }
-            case "BloodZombie" ->{
-                if(Math.random()<0.01){
-                    event.getDrops().add(BloodyTear.getItem(plugin));
-                }
-                if(Math.random()<0.013){
-                    event.getDrops().add(SharkToothNecklace.getItem(plugin));
-                }
-            }
-            case "TheGroom", "TheBride" ->{
-                if(Math.random()<0.2){
-                    event.getDrops().add(BloodyTear.getItem(plugin));
-                }
-            }
-            case "ZombieMerman" ->{
-                if(Math.random()<0.04){
-                    event.getDrops().add(BloodyTear.getItem(plugin));
-                }
-                if(Math.random()<0.125){
-                    event.getDrops().add(BloodRainBow.getItem(plugin));
-                }
-                if(Math.random()<0.125){
-                    event.getDrops().add(ChumCaster.getItem(plugin));
+                case "ZombieMerman" -> {
+                    if (Math.random() < 0.04) {
+                        event.getDrops().add(BloodyTear.getItem(plugin));
+                    }
+                    if (Math.random() < 0.125) {
+                        event.getDrops().add(BloodRainBow.getItem(plugin));
+                    }
+                    if (Math.random() < 0.125) {
+                        event.getDrops().add(ChumCaster.getItem(plugin));
+                    }
                 }
             }
-            default -> {
+            if (worldDataInstance.getHardmodeRecipes()) {
+                switch (id) {
+                    case "SkeletonArcher" -> {
+                        if (Math.random() < 0.025) {
+                            event.getDrops().add(MagicQuiver.getItem(plugin));
+                        }
+                    }
+                    case "SandElemental" -> {
+                        event.getDrops().clear();
+                        event.getDrops().add(ForbiddenFragment.getItem(plugin));
+                    }
+                    case "IceGolem" -> {
+                        event.getDrops().clear();
+                        event.getDrops().add(FrostCore.getItem(plugin));
+                    }
+                    case "BossWither" -> {
+                        int drops = 20 + (int) (Math.random() * 11);
+                        ItemStack custom = SoulOfFright.getItem(plugin);
+                        custom.setAmount(drops);
+                        event.getDrops().add(custom);
+                        worldDataInstance.setMechWither(true);
+                        worldDataInstance.save();
+                    }
+                    case "BossDragon" -> {
+                        int drops = 20 + (int) (Math.random() * 11);
+                        ItemStack custom = SoulOfMight.getItem(plugin);
+                        custom.setAmount(drops);
+                        event.getDrops().add(custom);
+                        worldDataInstance.setMechDragon(true);
+                        worldDataInstance.save();
+                    }
+                    case "BossWarden" -> {
+                        int drops = 20 + (int) (Math.random() * 11);
+                        ItemStack custom = SoulOfSight.getItem(plugin);
+                        custom.setAmount(drops);
+                        event.getDrops().add(custom);
+                        worldDataInstance.setMechWarden(true);
+                        worldDataInstance.save();
+                    }
+                }
 
             }
         }

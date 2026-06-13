@@ -22,6 +22,8 @@ import java.util.List;
 
 public class MechanicalWarden extends Boss {
 
+    private final NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
+
     public MechanicalWarden(Plugin plugin){
         super(plugin,1000, EntityType.WARDEN,"Mechanical Warden",150);
     }
@@ -41,8 +43,7 @@ public class MechanicalWarden extends Boss {
         boss.setCustomNameVisible(true);
         boss.setAnger(player,150);
         boss.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, -1, 0, false, false,false));
-        NamespacedKey key = new NamespacedKey(plugin, "BossWarden");
-        boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
+        boss.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BossWarden");
         BossBar bar = Bukkit.createBossBar(name, BarColor.BLUE, BarStyle.SOLID);
         attachBossBar(boss,bar);
         startAttacks(boss);

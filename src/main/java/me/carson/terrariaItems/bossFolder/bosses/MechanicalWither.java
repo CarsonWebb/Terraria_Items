@@ -17,10 +17,11 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MechanicalWither extends Boss implements Listener {
 
-    private NamespacedKey key = new NamespacedKey(plugin, "BossWither");
+    private final NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
 
     public MechanicalWither(Plugin plugin){
         super(plugin,700, EntityType.WITHER,"Mechanical Wither",150);
@@ -36,7 +37,7 @@ public class MechanicalWither extends Boss implements Listener {
         boss.setHealth(health);
         boss.setCustomName(lang.get("enemies","mechanical_wither.name"));
         boss.setCustomNameVisible(true);
-        boss.getPersistentDataContainer().set(key, PersistentDataType.BYTE, (byte) 1);
+        boss.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BossWither");
         startAttacks(boss);
     }
 
@@ -121,7 +122,8 @@ public class MechanicalWither extends Boss implements Listener {
     public void onWitherShoot(ProjectileLaunchEvent e) {
         if (e.getEntity() instanceof WitherSkull skull) {
             LivingEntity shooter= (LivingEntity) skull.getShooter();
-            if(shooter.getPersistentDataContainer().has(key)){
+            if(shooter==null){return;}
+            if(Objects.equals(shooter.getPersistentDataContainer().get(key, PersistentDataType.STRING), "BossWither")){
                 e.setCancelled(true);
             }
         }

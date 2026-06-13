@@ -1,7 +1,6 @@
-package me.carson.terrariaItems.bloodMoonManager;
+package me.carson.terrariaItems.handlers;
 
 import me.carson.terrariaItems.TILangManager;
-import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -50,7 +49,9 @@ public class BloodMoonManager implements Listener{
                 // Just turned night (13000 ticks) — roll for blood moon
                 if ((time >= 13000 && time<18000 )&& !instance.getBloodMoon() && !checked &&getMoonPhase(world)!=4) {
                     checked=true;
-                    if (Math.random() < chance) startBloodMoon(world);
+                    if (Math.random() < chance&&instance.getBloodMoonEnabled()) {
+                        startBloodMoon(world);
+                    }
                 }
 
                 // Approaching dawn (23000 ticks) — end blood moon

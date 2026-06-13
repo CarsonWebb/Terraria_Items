@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.toolFolder.tools.summons;
 
 import me.carson.terrariaItems.toolFolder.Tool;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -17,8 +18,12 @@ public class BloodyTear extends Tool {
     @Override
     public void rightActivate(Player player) {
         if(player.getWorld().getEnvironment() == World.Environment.NORMAL&&isNight(player.getWorld())&& !worldInstance.getBloodMoon()){
-            bloodMoonManagerInstance.startBloodMoon(player.getWorld());
-            player.getInventory().removeItem(BloodyTear.getItem(plugin));
+            if(worldInstance.getBloodMoonEnabled()){
+                bloodMoonManagerInstance.startBloodMoon(player.getWorld());
+                player.getInventory().removeItem(BloodyTear.getItem(plugin));
+            }else{
+                player.sendMessage(ChatColor.RED+lang.get("commands","blood_moon_msg.disabled"));
+            }
         }
     }
 

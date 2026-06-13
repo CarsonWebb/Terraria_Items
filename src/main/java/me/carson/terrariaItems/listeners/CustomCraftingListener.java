@@ -22,52 +22,12 @@ import java.util.Objects;
 public class CustomCraftingListener implements Listener {
 
     private final NamespacedKey customItemKey;
-    private final List<NamespacedKey> preHardmodeRecipes;
-    private final List<NamespacedKey> hardmodeRecipes;
     private final WorldDataHandler worldDataHandler=WorldDataHandler.getInstance();
 
     public CustomCraftingListener(JavaPlugin plugin) {
         this.customItemKey = new NamespacedKey(plugin, "custom_item_id");
         Bukkit.getPluginManager().registerEvents(this, plugin);
 
-        preHardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "aglet"),
-                new NamespacedKey(plugin, "skull"),
-                new NamespacedKey(plugin, "band"),
-                new NamespacedKey(plugin, "CobaltShield"),
-                new NamespacedKey(plugin, "CounterScarf"),
-                //new NamespacedKey(plugin, "Bezoar"),
-                //new NamespacedKey(plugin, "FastClock"),
-                new NamespacedKey(plugin, "NightVisionHelmet"),
-                new NamespacedKey(plugin, "PanicNecklace"),
-                new NamespacedKey(plugin, "BandOfStarpower"),
-                new NamespacedKey(plugin, "ManaRegenerationBand"),
-                new NamespacedKey(plugin, "MagicCuffs"),
-                new NamespacedKey(plugin, "HoneyComb"),
-                new NamespacedKey(plugin, "HoneyBalloon"),
-                new NamespacedKey(plugin, "SweetheartNecklace"),
-                new NamespacedKey(plugin, "ObsidianHorseshoe"),
-                new NamespacedKey(plugin, "StingerNecklace"),
-                new NamespacedKey(plugin, "ManaFlower"),
-                new NamespacedKey(plugin, "ObsidianShield")
-        );
-
-        hardmodeRecipes = List.of(
-                new NamespacedKey(plugin, "NeptuneShell"),
-                new NamespacedKey(plugin, "AnkhCharm"),
-                new NamespacedKey(plugin, "Vitamins"),
-                new NamespacedKey(plugin, "Blindfold"),
-                new NamespacedKey(plugin, "AnkhCharm"),
-                new NamespacedKey(plugin, "AnkhShield"),
-                new NamespacedKey(plugin, "PowerGlove"),
-                new NamespacedKey(plugin, "BeeCloak"),
-                new NamespacedKey(plugin, "StarVeil"),
-                new NamespacedKey(plugin, "MechanicalGlove"),
-                new NamespacedKey(plugin, "ManaCloak"),
-                new NamespacedKey(plugin, "AvengerEmblem1"),
-                new NamespacedKey(plugin, "AvengerEmblem2"),
-                new NamespacedKey(plugin, "AvengerEmblem3")
-        );
     }
 
     @EventHandler

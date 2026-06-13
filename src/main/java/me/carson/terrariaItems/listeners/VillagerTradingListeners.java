@@ -58,37 +58,47 @@ public class VillagerTradingListeners implements Listener {
         originalRecipes.put(villager.getUniqueId(), new ArrayList<>(villager.getRecipes()));
         Villager.Profession profession=villager.getProfession();
 
-        if (profession == Villager.Profession.WEAPONSMITH) {
-            recipes.add(addMinishark());
-            if(isNight(villager.getWorld())){
-                recipes.add(addIllegalGunParts());
+
+        if(worldInstance.getPreHardmodeRecipes()){
+            if (profession == Villager.Profession.WEAPONSMITH) {
+                if(isNight(villager.getWorld())){
+                    recipes.add(addIllegalGunParts());
+                }
             }
-            if(worldInstance.getHardmode()){
+            if(profession == Villager.Profession.CLERIC) {
+                recipes.add(addLesserManaPotion());
+            }
+            if (profession == Villager.Profession.TOOLSMITH) {
+                int moon=getMoonPhase(villager.getWorld());
+                if(moon==1||moon==3||moon==5||moon==7){
+                    recipes.add(addMechanicsRod());
+                }
+            }
+            if (profession == Villager.Profession.LEATHERWORKER) {
+                recipes.add(addCounterScarf());
+            }
+            if (profession == Villager.Profession.ARMORER) {
+                recipes.add(addGrenade());
+                recipes.add(addBomb());
+                recipes.add(addDynamite());
+            }
+            if (profession == Villager.Profession.MASON) {
+                recipes.add(addGlaive());
+            }
+        }
+        if (worldInstance.getHardmodeRecipes()&&worldInstance.getHardmode()){
+            if (profession == Villager.Profession.WEAPONSMITH){
                 recipes.add(addShotgun());
             }
-        } else if (profession == Villager.Profession.CLERIC) {
-            recipes.add(addLesserManaPotion());
-
-            if(worldInstance.getHardmode()){
+            if (profession == Villager.Profession.CLERIC){
                 recipes.add(addGreaterManaPotion());
                 recipes.add(addRodOfDiscord());
             }
-        } else if (profession == Villager.Profession.TOOLSMITH) {
-            int moon=getMoonPhase(villager.getWorld());
-            if(moon==1||moon==3||moon==5||moon==7){
-                recipes.add(addMechanicsRod());
+            if (profession == Villager.Profession.TOOLSMITH) {
+                if(worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
+                    recipes.add(addMomentumCapacitor());
+                }
             }
-            if(worldInstance.getHardmode()&& worldInstance.getMechDragon()&& worldInstance.getMechWither()&& worldInstance.getMechWarden()){
-                recipes.add(addMomentumCapacitor());
-            }
-        }else if (profession == Villager.Profession.LEATHERWORKER) {
-            recipes.add(addCounterScarf());
-        }else if (profession == Villager.Profession.ARMORER) {
-            recipes.add(addGrenade());
-            recipes.add(addBomb());
-            recipes.add(addDynamite());
-        }else if (profession == Villager.Profession.MASON) {
-            recipes.add(addGlaive());
         }
 
         villager.setRecipes(recipes);

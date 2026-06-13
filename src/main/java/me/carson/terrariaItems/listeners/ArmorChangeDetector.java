@@ -175,19 +175,6 @@ public class ArmorChangeDetector implements Listener {
         };
     }
 
-    private Boolean isArmor(ItemStack item){
-        if(item==null){return false;}
-        if(!(item.getItemMeta() instanceof ArmorMeta)){return false;}
-        if (item.getItemMeta().getEquippable().getSlot()== EquipmentSlot.HEAD)
-            return true;
-        if (item.getItemMeta().getEquippable().getSlot()== EquipmentSlot.CHEST)
-            return true;
-        if (item.getItemMeta().getEquippable().getSlot()== EquipmentSlot.LEGS)
-            return true;
-        if (item.getItemMeta().getEquippable().getSlot()== EquipmentSlot.FEET)
-            return true;
-        return false;
-    }
     private boolean isNotNullOrAir(ItemStack item) {
         return item == null ? false : item.getType() != Material.AIR;
     }

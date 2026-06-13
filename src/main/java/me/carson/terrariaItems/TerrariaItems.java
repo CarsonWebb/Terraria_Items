@@ -5,14 +5,13 @@ import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder
 import me.carson.terrariaItems.accesoryFolder.AccessoryListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockListeners;
 import me.carson.terrariaItems.blocksFolder.CustomBlockManager;
-import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
+import me.carson.terrariaItems.handlers.BloodMoonManager;
 import me.carson.terrariaItems.enemiesFolder.EnemyManager;
 import me.carson.terrariaItems.handlers.*;
 import me.carson.terrariaItems.listeners.*;
 import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armorFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
-import me.carson.terrariaItems.materialsFolder.MaterialsListeners;
 import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
 import me.carson.terrariaItems.recipeManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
@@ -77,7 +76,6 @@ public final class TerrariaItems extends JavaPlugin{
         new EnemyManager(this);
         new AccessoryListeners(this);
         new CustomBlockListeners(this);
-        new MaterialsListeners(this);
         new WeaponListeners(this);
         new PlayerDamageHandler(this);
         new ArmorChangeDetector(this);

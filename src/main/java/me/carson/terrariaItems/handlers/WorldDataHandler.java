@@ -92,7 +92,6 @@ public class WorldDataHandler implements Listener {
         if(!(event.getEntity() instanceof EnderDragon)){return;}
         if(getHardmode()){return;}
         setHardmode(true);
-        save();
         String light=(net.md_5.bungee.api.ChatColor.of("#FF96FF")+"light"+ChatColor.WHITE);
         String dark=(net.md_5.bungee.api.ChatColor.of("#B428FF")+"dark"+ChatColor.WHITE);
         String bar="The ancient spirits of "+light+" and "+dark+" have been released";

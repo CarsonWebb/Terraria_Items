@@ -1,7 +1,7 @@
 package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.TILangManager;
-import me.carson.terrariaItems.bloodMoonManager.BloodMoonManager;
+import me.carson.terrariaItems.handlers.BloodMoonManager;
 import me.carson.terrariaItems.handlers.ManaManager;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Material;
