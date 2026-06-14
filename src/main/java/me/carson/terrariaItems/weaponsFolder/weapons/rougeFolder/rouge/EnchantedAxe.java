@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.rouge;
 
+import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.EnchantedAxeProjectile;
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.IronFranciscaProjectile;
 import me.carson.terrariaItems.weaponsFolder.weapons.rougeFolder.Rouge;
 import org.bukkit.Material;
@@ -10,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class EnchantedAxe extends Rouge {
 
     public EnchantedAxe(Plugin plugin) {
-        super(plugin,"enchanted_axe.name","#FFC896", Material.ARCHER_POTTERY_SHERD,"enchanted_axe","EnchantedAxe",10,1.2f,4,0,50,"enchanted_axe.lore");
+        super(plugin,"enchanted_axe.name","#FFC896", Material.ARCHER_POTTERY_SHERD,"enchanted_axe","EnchantedAxe",0,1.2f,4,0,10,"enchanted_axe.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {
@@ -19,12 +20,7 @@ public class EnchantedAxe extends Rouge {
 
     @Override
     public void leftActivate(Player player) {
-        player.getWorld().playSound(player.getLocation(), "terraria:sword_use", 1.0F, 1.0F);
-        if(stealthManager.isStealthStrike(player)){
-            stealthAttack(player);
-        }else{
-            new IronFranciscaProjectile(plugin).createProjectile(player,speed,damage,spread,duration,0,0.03f,15,stealthManager.getStealth(player.getUniqueId()));
-        }
+        new EnchantedAxeProjectile(plugin).startEnchantedAxe(player,speed,damage,spread,duration,20,stealthManager.getStealth(player.getUniqueId()), stealthManager.isStealthStrike(player));
         stealthManager.reduceStealth(player);
         stealthManager.startStealthRegenDelay(player);
     }

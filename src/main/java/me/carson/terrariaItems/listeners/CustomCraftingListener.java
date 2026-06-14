@@ -16,7 +16,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.List;
 import java.util.Objects;
 
 public class CustomCraftingListener implements Listener {
@@ -48,12 +47,12 @@ public class CustomCraftingListener implements Listener {
     }
 
     public Boolean isAllowed(String prefix){
-        if(!worldDataHandler.getPreHardmodeRecipes()){
+        if(!worldDataHandler.getPreHardmodeEnabled()){
             if(Objects.equals(prefix, "pre")){
                 return false;
             }
         }
-        if(!worldDataHandler.getHardmodeRecipes()){
+        if(!worldDataHandler.getHardmodeEnabled()){
             if(Objects.equals(prefix, "hm")){
                 return false;
             }

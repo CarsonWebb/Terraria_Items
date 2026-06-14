@@ -59,7 +59,7 @@ public class VillagerTradingListeners implements Listener {
         Villager.Profession profession=villager.getProfession();
 
 
-        if(worldInstance.getPreHardmodeRecipes()){
+        if(worldInstance.getPreHardmodeEnabled()){
             if (profession == Villager.Profession.WEAPONSMITH) {
                 if(isNight(villager.getWorld())){
                     recipes.add(addIllegalGunParts());
@@ -86,7 +86,7 @@ public class VillagerTradingListeners implements Listener {
                 recipes.add(addGlaive());
             }
         }
-        if (worldInstance.getHardmodeRecipes()&&worldInstance.getHardmode()){
+        if (worldInstance.getHardmodeEnabled()&&worldInstance.getHardmode()){
             if (profession == Villager.Profession.WEAPONSMITH){
                 recipes.add(addShotgun());
             }

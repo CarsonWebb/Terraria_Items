@@ -49,7 +49,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
 
         if(location.getY()<60){return;}
 
-        if(instance.getHardmode()){
+        if(instance.getHardmode()&&instance.getHardmodeEnabled()){
             if ((rand<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
                 spawnDoctorBones(zombie);
                 return;
@@ -88,7 +88,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
                 spawnRaincoatZombie(zombie);
                 return;
             }
-        }else{
+        }else if(instance.getPreHardmodeEnabled()){
             if ((rand<0.01)&&jungleBiomes.contains(location.getBlock().getBiome())){
                 spawnDoctorBones(zombie);
                 return;

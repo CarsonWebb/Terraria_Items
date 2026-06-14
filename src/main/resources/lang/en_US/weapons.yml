@@ -345,32 +345,32 @@ iron_francisca:
   lore:
     - "&7Throws an axe"
     - "&74 Rogue Damage"
-    - "&7Stealth strikes pierce 6 times"
+    - "&5Stealth strikes pierce 6 times"
 glaive:
   name: "Glaive"
   lore:
     - "&7Throws Glaive that bounces at enemies"
     - "&73 Rogue Damage"
-    - "&7Stealth Strikes pierce infinitely"
+    - "&5Stealth Strikes pierce infinitely"
 consecrated_water:
   name: "Consecrated Water"
   lore:
     - "&7Explodes into holy fire"
     - "&710 Rogue Damage"
-    - "&7Stealth Strikes create 3 flames"
+    - "&5Stealth Strikes create 3 flames"
 desecrated_water:
   name: "Desecrated Water"
   lore:
     - "&7Explodes into homing bubbles"
     - "&72 Rogue Damage"
-    - "&7Stealth Strikes create 12 bubbles"
+    - "&5Stealth Strikes create 12 bubbles"
 exorcism:
   name: "Exorcism"
   lore:
     - "&7Rains down holy crosses"
     - "&720 Rogue Damage"
-    - "&7Stealth Strikes cause"
-    - "&7crosses to explode"
+    - "&5Stealth Strikes cause"
+    - "&5crosses to explode"
 life_drain:
   name: "Life Drain"
   lore:
@@ -382,5 +382,13 @@ blazing_star:
   lore:
     - "&7Throws fiery glaive that bounces at enemies"
     - "&76 Rogue Damage"
-    - "&7Stealth Strikes pierce infinitely"
-    - "&7and set enemies ablaze"
+    - "&5Stealth Strikes pierce infinitely"
+    - "&5and set enemies ablaze"
+enchanted_axe:
+  name: "Enchanted Axe"
+  lore:
+    - "&7Throws a high velocity axe that returns to you"
+    - "&7Casts magical homing axes"
+    - "&74 Rouge Damage"
+    - "&5Stealth Strikes go further and"
+    - "&5send out more homing axes"

@@ -67,7 +67,7 @@ public class MobDeathListeners implements Listener {
     public void onMobDeath(EntityDeathEvent e) {
         EntityType entityType = e.getEntity().getType();
         double rand=Math.random();
-        if(worldDataInstance.getPreHardmodeRecipes()){
+        if(worldDataInstance.getPreHardmodeEnabled()){
             if (e.getEntity().getType() == EntityType.ZOMBIE){
                 if(rand<0.02){
                     e.getDrops().add(Shackle.getItem(plugin));
@@ -76,7 +76,7 @@ public class MobDeathListeners implements Listener {
             }
         }
 
-        if(worldDataInstance.getHardmode()&&worldDataInstance.getHardmodeRecipes()){    //HARDMODE DROPS
+        if(worldDataInstance.getHardmode()&&worldDataInstance.getHardmodeEnabled()){    //HARDMODE DROPS
             switch (entityType){
                 case BOGGED ->{
                     if(rand<0.1){
@@ -137,7 +137,7 @@ public class MobDeathListeners implements Listener {
 
     @EventHandler
     public void onSoulDeath(EntityDeathEvent event){
-        if(!worldDataInstance.getHardmode()||!worldDataInstance.getHardmodeRecipes()){return;}
+        if(!worldDataInstance.getHardmode()||!worldDataInstance.getHardmodeEnabled()){return;}
         LivingEntity entity = event.getEntity();
         if(!(entity instanceof Monster ||entity instanceof Ghast ||entity instanceof Slime)){return;}
         Biome deathBiome=entity.getLocation().getBlock().getBiome();
@@ -159,7 +159,7 @@ public class MobDeathListeners implements Listener {
             return;
         }
 
-        if (worldDataInstance.getPreHardmodeRecipes()) {
+        if (worldDataInstance.getPreHardmodeEnabled()) {
             switch (id) {
                 case "UndeadMiner" -> {
                     if (Math.random() < 0.72) {
@@ -198,7 +198,7 @@ public class MobDeathListeners implements Listener {
                     }
                 }
             }
-            if (worldDataInstance.getHardmodeRecipes()) {
+            if (worldDataInstance.getHardmodeEnabled()) {
                 switch (id) {
                     case "SkeletonArcher" -> {
                         if (Math.random() < 0.025) {

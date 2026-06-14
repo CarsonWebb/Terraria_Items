@@ -66,7 +66,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
             return;
         }
 
-        if(instance.getHardmode()){//Hardmode
+        if(instance.getHardmode()&& instance.getHardmodeEnabled()){//Hardmode
             switch (yLevel){
                 case 1 ->{
                     if(skeleton.getWorld().hasStorm()){
@@ -100,7 +100,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
                     }
                 }
             }
-        }else {//Pre-Hardmode
+        }else if(instance.getPreHardmodeEnabled()){//Pre-Hardmode
             switch (yLevel){
                 case 1-> {
                 }

@@ -33,7 +33,7 @@ public class CustomDrowned extends CustomEnemy implements Listener {
         Drowned drowned = (Drowned) event.getEntity();
         Location loc=drowned.getLocation();
 
-        if(instance.getHardmode()){
+        if(instance.getHardmode()&&instance.getHardmodeEnabled()){
             if(icyBiomes.contains(loc.getBlock().getBiome())){
                 spawnIcyMerman(drowned);
                 return;
@@ -42,7 +42,7 @@ public class CustomDrowned extends CustomEnemy implements Listener {
                 spawnZombieMerman(drowned);
                 return;
             }
-        }else{
+        }else if(instance.getPreHardmodeEnabled()){
             if(instance.getBloodMoon()){
                 spawnZombieMerman(drowned);
                 return;
