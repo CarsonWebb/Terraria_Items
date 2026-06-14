@@ -4,6 +4,7 @@ import me.carson.terrariaItems.handlers.PlayerDataHandler;
 import me.carson.terrariaItems.handlers.StealthManager;
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.ConsecratedFlameProjectile;
 import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.DesecratedBubbleProjectile;
+import me.carson.terrariaItems.projectilesFolder.rougeProjectiles.EnchantedAxeGhostProjectile;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -17,6 +18,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -51,7 +54,7 @@ public abstract class RougeProjectiles {
         this.particle = particle;
     }
 
-    private Result createDefaultProjectile(Player player,float speed, float spread){
+    private Result createDefaultProjectile(Player player, float speed, float spread){
         Location loc = player.getEyeLocation();
         loc.add(loc.getDirection().normalize().multiply(0.1));
 
@@ -898,8 +901,12 @@ public abstract class RougeProjectiles {
             }
 
             tick[0]++;
+            if(isStealthStrike&&(tick[0]%3==0)){
+                new EnchantedAxeGhostProjectile(plugin).createEnchantedAxeGhost(player,0.1f,25,15,currentStealth,proj.getLocation(),direction[0]);
+            }
             if (tick[0] >= finalDuration) {
                 moveEnchantedAxeStage2(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                new EnchantedAxeGhostProjectile(plugin).createEnchantedAxeGhost(player,1.2f,25,15,currentStealth,proj.getLocation(),direction[0]);
                 task.cancel();
                 hitEntities.clear();
                 return;
@@ -915,6 +922,7 @@ public abstract class RougeProjectiles {
                 if(result.getHitBlock()!=null){
                     if(!result.getHitBlock().isPassable() && result.getHitBlockFace()!=null){
                         moveEnchantedAxeStage2(player,weaponDamage, finalDuration,proj,dir,spinSpeed,currentStealth,isStealthStrike);
+                        new EnchantedAxeGhostProjectile(plugin).createEnchantedAxeGhost(player,1.2f,25,15,currentStealth,proj.getLocation(),direction[0]);
                         task.cancel();
                         return;
                     }
@@ -1001,6 +1009,92 @@ public abstract class RougeProjectiles {
         proj.remove();
         axeMap.remove(player.getUniqueId());
         axeMovingMap.remove(proj);
+    }
+
+    public void createEnchantedAxeGhost(Player player,float speed,float duration,float spinSpeed,double currentStealth,Location loc,Vector dir){
+        loc.add(loc.getDirection().normalize().multiply(0.1));
+
+        Vector ghostDir = dir.clone().normalize().multiply(speed);
+        loc.setDirection(ghostDir);
+
+        ItemDisplay proj = (ItemDisplay) player.getWorld().spawnEntity(loc, EntityType.ITEM_DISPLAY);
+
+        ItemStack item = new ItemStack(Material.IRON_NUGGET);
+        ItemMeta meta=item.getItemMeta();
+        meta.setItemModel(new NamespacedKey("terraria", texture));
+        item.setItemMeta(meta);
+
+        proj.setItemStack(item);
+        proj.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.HEAD);
+        NamespacedKey key = new NamespacedKey(plugin, id);
+        proj.getPersistentDataContainer().set(key, PersistentDataType.INTEGER,1);
+        proj.setInterpolationDuration(0);
+        proj.setTeleportDuration(2);
+        proj.setInterpolationDelay(-1);
+        faceDirection(proj, ghostDir);
+        moveEnchantedAxeGhost(player, duration, proj, ghostDir, spinSpeed, currentStealth);
+    }
+
+    private void moveEnchantedAxeGhost(Player player,float duration,ItemDisplay proj, Vector dir,float spinSpeed,double currentStealth){
+        final int[] tick = {0};
+        final int[] enemiesHit = {0};
+        final Vector[] direction = {dir};
+        final float[] spinAngle = {0f};
+
+        Bukkit.getScheduler().runTaskTimer(plugin, task -> {
+            if (proj.isDead()) {
+                task.cancel();
+                return;
+            }
+
+            tick[0]++;
+            if (tick[0] >= duration) {
+                proj.remove();
+                task.cancel();
+                return;
+            }
+
+            if(tick[0]>=5){
+                LivingEntity homing=getClosestEntity(proj,player,10);
+                if(homing!=null){
+                    direction[0]=vectorBetween(proj,homing).normalize().multiply(1);
+                }
+            }
+
+            //block handling
+            Location now = proj.getLocation();
+            Location next = now.clone().add(direction[0]);
+            float dist= (float) now.distance(next);
+
+            RayTraceResult result= player.getWorld().rayTrace(now,direction[0],dist,FluidCollisionMode.NEVER,true,0.1, e -> (e.getType() != proj.getType())&&(e!=player));
+            if(result!=null){
+                if(result.getHitEntity()!=null){
+                    if(result.getHitEntity() instanceof LivingEntity target){
+                        target.setMaximumNoDamageTicks(0);
+                        DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
+                        target.damage((damage+getStealthDamage(damage,currentStealth)),source);
+                        hitEntityEffect(target,player);
+                        target.setMaximumNoDamageTicks(20);
+                    }
+                    if(enemiesHit[0] >=peirce) {
+                        proj.remove();
+                        task.cancel();
+                        return;
+                    }else {
+                        enemiesHit[0]++;
+                    }
+                }
+            }
+            Vector norm = direction[0].clone().normalize();
+            float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
+            float pitch = (float) Math.toDegrees(Math.asin(-norm.getY()));
+            next.setYaw(yaw);
+            next.setPitch(pitch);
+            proj.teleport(next);
+            //proj.setInterpolationDelay(0);
+            spinProjectile(proj, spinAngle, spinSpeed);
+
+        }, 1L, 1L);
     }
 
     private double getStealthDamage(double damage,double stealth){
