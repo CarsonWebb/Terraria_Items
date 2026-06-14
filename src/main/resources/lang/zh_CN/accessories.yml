@@ -279,3 +279,25 @@ bundle_of_horseshoe_balloons:
     - "&7允许持有者四段跳"
     - "&7增加跳跃高度"
     - "&7免疫坠落伤害"
+coin_of_deceit:
+  name: "欺诈硬币"
+  lore:
+    - "&7潜行打击仅消耗90%"
+    - "&7的最大潜行值"
+    - "&7暴击率提升6%"
+ruin_medallion:
+  name: "毁灭勋章"
+  lore:
+    - "&7潜行打击仅消耗90%"
+    - "&7的最大潜行值"
+    - "&7暴击率提升6%"
+    - "&7盗贼伤害提升6%"
+rogue_emblem:
+  name: "盗贼徽章"
+  lore:
+    - "&7盗贼伤害提升20%"
+silencing_sheath:
+  name: "消音剑鞘"
+  lore:
+    - "&7+10 最大潜行值"
+    - "&7潜行恢复速度提升4%"

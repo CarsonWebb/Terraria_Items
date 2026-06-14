@@ -73,3 +73,7 @@ ruby:
   name: "红宝石"
   lore:
     - "&7鲜红色宝石"
+unholy_core:
+  name: "邪恶核心"
+  lore:
+    - "&7地狱与末地的诡异融合"

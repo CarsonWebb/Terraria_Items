@@ -1,3 +1,4 @@
 blood_moon_msg:
   rising: "血月正在升起..."
   falling: "血月已经落下..."
+  disabled: "血月当前已禁用"

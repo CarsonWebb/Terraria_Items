@@ -73,3 +73,7 @@ ruby:
   name: "Rubí"
   lore:
     - "&7Gema Rojo Brillante"
+unholy_core:
+  name: "Núcleo Impío"
+  lore:
+    - "&7Una extraña mezcla del Nether y el End"

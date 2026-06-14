@@ -37,6 +37,11 @@ forbidden_mask:
   lore:
     - "&715% de aumento de daño mágico"
     - "&7+3 Armadura"
+forbidden_circlet:
+  name: "Diadema Prohibida"
+  lore:
+    - "&715% de daño pícaro aumentado"
+    - "&7+3 de Armadura"
 forbidden_robes:
   name: "Túnica Prohibida"
   lore:
@@ -220,3 +225,27 @@ wizard_hat:
   lore:
     - "&75% de aumento de daño mágico"
     - "&7+1 Armadura"
+desert_prowler_hat:
+  name: "Sombrero del Merodeador del Desierto"
+  lore:
+    - "&7+10 de Sigilo"
+    - "&7+4% de probabilidad de golpe crítico"
+    - "&7+3 de Armadura"
+desert_prowler_shirt:
+  name: "Camisa del Merodeador del Desierto"
+  lore:
+    - "&7+20 de Sigilo"
+    - "&7+5% de daño pícaro"
+    - "&7+8 de Armadura"
+desert_prowler_leggings:
+  name: "Mallas del Merodeador del Desierto"
+  lore:
+    - "&7+10 de Sigilo"
+    - "&7+5% de daño pícaro"
+    - "&7+6 de Armadura"
+desert_prowler_pants:
+  name: "Pantalones del Merodeador del Desierto"
+  lore:
+    - "&7+10 de Sigilo"
+    - "&7+4% de probabilidad de golpe crítico"
+    - "&7+3 de Armadura"

@@ -281,3 +281,25 @@ bundle_of_horseshoe_balloons:
     - "&7Permite al portador hacer cuádruple salto"
     - "&7Aumenta la altura del salto"
     - "&7Niega el daño de caída"
+coin_of_deceit:
+  name: "Moneda del Engaño"
+  lore:
+    - "&7Los golpes sigilosos solo consumen el 90%"
+    - "&7de tu sigilo máximo"
+    - "&76% de probabilidad de crítico aumentada"
+ruin_medallion:
+  name: "Medallón de la Ruina"
+  lore:
+    - "&7Los golpes sigilosos solo consumen el 90%"
+    - "&7de tu sigilo máximo"
+    - "&76% de probabilidad de crítico aumentada"
+    - "&76% de daño pícaro aumentado"
+rogue_emblem:
+  name: "Emblema Pícaro"
+  lore:
+    - "&720% de daño pícaro aumentado"
+silencing_sheath:
+  name: "Vaina Silenciadora"
+  lore:
+    - "&7+10 de sigilo máximo"
+    - "&7El sigilo se regenera un 4% más rápido"

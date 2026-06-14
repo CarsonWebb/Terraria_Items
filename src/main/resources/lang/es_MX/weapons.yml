@@ -340,3 +340,55 @@ wand_of_sparking:
     - "&7Dispara una pequeña chispa"
     - "&72 de Daño"
     - "&72 de Maná"
+iron_francisca:
+  name: "Francisca de Hierro"
+  lore:
+    - "&7Lanza un hacha"
+    - "&74 de Daño Pícaro"
+    - "&5Los golpes sigilosos perforan 6 veces"
+glaive:
+  name: "Glaive"
+  lore:
+    - "&7Lanza un glaive que rebota en los enemigos"
+    - "&73 de Daño Pícaro"
+    - "&5Los golpes sigilosos perforan infinitamente"
+consecrated_water:
+  name: "Agua Consagrada"
+  lore:
+    - "&7Explota en fuego sagrado"
+    - "&710 de Daño Pícaro"
+    - "&5Los golpes sigilosos crean 3 llamas"
+desecrated_water:
+  name: "Agua Profanada"
+  lore:
+    - "&7Explota en burbujas teledirigidas"
+    - "&72 de Daño Pícaro"
+    - "&5Los golpes sigilosos crean 12 burbujas"
+exorcism:
+  name: "Exorcismo"
+  lore:
+    - "&7Llueve cruces sagradas"
+    - "&720 de Daño Pícaro"
+    - "&5Los golpes sigilosos hacen"
+    - "&5explotar las cruces"
+life_drain:
+  name: "Drenaje de Vida"
+  lore:
+    - "&7Drena vida de los enemigos"
+    - "&74 de Daño Mágico"
+    - "&710 de Maná"
+blazing_star:
+  name: "Estrella Ardiente"
+  lore:
+    - "&7Lanza un glaive ardiente que rebota en los enemigos"
+    - "&76 de Daño Pícaro"
+    - "&5Los golpes sigilosos perforan infinitamente"
+    - "&5y prenden fuego a los enemigos"
+enchanted_axe:
+  name: "Hacha Encantada"
+  lore:
+    - "&7Lanza un hacha de alta velocidad que regresa a ti"
+    - "&7Invoca hachas mágicas teledirigidas"
+    - "&74 de Daño Pícaro"
+    - "&5Los golpes sigilosos van más lejos y"
+    - "&5lanzan más hachas teledirigidas"

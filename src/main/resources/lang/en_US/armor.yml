@@ -234,18 +234,22 @@ desert_prowler_hat:
   lore:
     - "&7+10 Stealth"
     - "&7+4% Critical Strike chance"
+    - "&7+3 Armor"
 desert_prowler_shirt:
   name: "Desert Prowler Shirt"
   lore:
     - "&7+20 Stealth"
     - "&7+5% Rogue Damage"
+    - "&7+8 Armor"
 desert_prowler_leggings:
   name: "Desert Prowler Leggings"
   lore:
     - "&7+10 Stealth"
     - "&7+5% Rogue Damage"
+    - "&7+6 Armor"
 desert_prowler_pants:
   name: "Desert Prowler Pants"
   lore:
     - "&7+10 Stealth"
     - "&7+4% Critical Strike chance"
+    - "&7+3 Armor"
