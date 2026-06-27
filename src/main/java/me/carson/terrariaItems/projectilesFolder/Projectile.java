@@ -101,7 +101,7 @@ public abstract class Projectile implements Listener {
 
     }
 
-    private void moveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
+    public void moveProj(Player player,float weaponDamage,float duration,ItemDisplay proj, Vector dir){
         final int[] tick = {0};
         final int[] enemiesHit = {0};
         final int[] blocksBounced = {0};
@@ -282,7 +282,7 @@ public abstract class Projectile implements Listener {
         }, 1L, 1L);
     }
 
-    private Vector bounce(Vector currentDir, BlockFace face) {
+    public Vector bounce(Vector currentDir, BlockFace face) {
         Vector v = currentDir.clone();
         switch (face) {
             case EAST, WEST   -> v.setX(-v.getX());
@@ -292,7 +292,7 @@ public abstract class Projectile implements Listener {
         return v;
     }
 
-    private void faceDirection(ItemDisplay proj, Vector dir) {
+    public void faceDirection(ItemDisplay proj, Vector dir) {
         Vector norm = dir.clone().normalize();
 
         float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));

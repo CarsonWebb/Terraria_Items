@@ -21,4 +21,6 @@ public abstract class Sword extends Weapon {
         this.duration = duration;
     }
 
+
+
 }

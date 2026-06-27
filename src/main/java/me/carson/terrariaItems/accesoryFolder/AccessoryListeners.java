@@ -13,10 +13,12 @@ import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerInputEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -83,6 +85,19 @@ public class AccessoryListeners implements Listener {
                     return;
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onRightClick(PlayerInteractEvent event) {
+        if (event.getItem() == null) return;
+        if (!(event.getAction() == Action.RIGHT_CLICK_AIR)) return;
+        Player player = event.getPlayer();
+        ItemStack glass = player.getInventory().getItemInMainHand();
+        double height=player.getLocation().getY();
+        if(glass.getType() == Material.GLASS_BOTTLE&&((height>=180)&&(height<=200))){
+            glass.setAmount(glass.getAmount() - 1);
+            player.getInventory().addItem(CloudInABottle.getItem(plugin));
         }
     }
 

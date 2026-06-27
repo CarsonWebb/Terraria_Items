@@ -98,6 +98,7 @@ public class WeaponManager implements Listener {
         weaponList.put("LifeDrain",new LifeDrain(plugin));
         weaponList.put("BlazingStarProjectile",new BlazingStar(plugin));
         weaponList.put("EnchantedAxe",new EnchantedAxe(plugin));
+        weaponList.put("Brimlash",new Brimlash(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

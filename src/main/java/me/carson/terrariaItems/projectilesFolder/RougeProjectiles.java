@@ -1097,11 +1097,11 @@ public abstract class RougeProjectiles {
         }, 1L, 1L);
     }
 
-    private double getStealthDamage(double damage,double stealth){
+    public double getStealthDamage(double damage,double stealth){
         return damage*(stealth*0.01);
     }
 
-    private void spinProjectile(ItemDisplay proj, float[] spinAngle, float spinSpeed) {
+    public void spinProjectile(ItemDisplay proj, float[] spinAngle, float spinSpeed) {
         spinAngle[0] = (spinAngle[0] + spinSpeed) % 360f;
         double rad = Math.toRadians(spinAngle[0]);
         float cos = (float) Math.cos(rad);
@@ -1142,7 +1142,7 @@ public abstract class RougeProjectiles {
                 .orElse(null);
     }
 
-    private Vector bounce(Vector currentDir, BlockFace face) {
+    public Vector bounce(Vector currentDir, BlockFace face) {
         Vector v = currentDir.clone();
         switch (face) {
             case EAST, WEST   -> v.setX(-v.getX());
@@ -1152,7 +1152,7 @@ public abstract class RougeProjectiles {
         return v;
     }
 
-    private void faceDirection(ItemDisplay proj, Vector dir) {
+    public void faceDirection(ItemDisplay proj, Vector dir) {
         Vector norm = dir.clone().normalize();
 
         float yaw = (float) Math.toDegrees(Math.atan2(-norm.getX(), norm.getZ()));
@@ -1164,7 +1164,7 @@ public abstract class RougeProjectiles {
         proj.teleport(loc);
     }
 
-    private Vector vectorBetween(Entity from, LivingEntity to) {
+    public Vector vectorBetween(Entity from, LivingEntity to) {
         return to.getEyeLocation().toVector().subtract(from.getLocation().toVector());
     }
 
