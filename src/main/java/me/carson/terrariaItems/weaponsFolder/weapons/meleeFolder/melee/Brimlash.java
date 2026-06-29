@@ -21,7 +21,7 @@ public class Brimlash extends Sword {
     private final HashMap<UUID, Long> lastClickTime = new HashMap<>();
 
     public Brimlash(Plugin plugin) {
-        super(plugin,"brimlash.name","#FFC896",Material.NETHERITE_SWORD,"brimlash","Brimlash",0,1.5f,10,0,60,"brimlash.lore");
+        super(plugin,"brimlash.name","#96FF0A",Material.NETHERITE_SWORD,"brimlash","Brimlash",0,1.5f,10,0,60,"brimlash.lore");
     }
 
     public static ItemStack getItem(Plugin plugin) {

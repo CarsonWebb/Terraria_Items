@@ -15,6 +15,7 @@ import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Projectile implements Listener {
@@ -302,6 +303,51 @@ public abstract class Projectile implements Listener {
         loc.setYaw(yaw);
         loc.setPitch(pitch);
         proj.teleport(loc);
+    }
+
+    public LivingEntity getClosestEntity(ItemDisplay proj, Player player, ArrayList<Entity> hitEntities, double radius) {
+        Location loc = proj.getLocation();
+
+        return proj.getWorld().getNearbyEntities(loc, radius, radius, radius).stream()
+                .filter(e -> e instanceof LivingEntity)
+                .filter(e -> e != player)
+                .filter(e -> e.getType() != proj.getType())
+                .filter(e -> !hitEntities.contains(e))
+                .map(e -> (LivingEntity) e)
+                .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
+                .orElse(null);
+    }
+
+    public LivingEntity getClosestEntity(ItemDisplay proj, Player player, double radius) {
+        Location loc = proj.getLocation();
+
+        return proj.getWorld().getNearbyEntities(loc, radius, radius, radius).stream()
+                .filter(e -> e instanceof LivingEntity)
+                .filter(e -> e != player)
+                .filter(e -> e.getType() != proj.getType())
+                .map(e -> (LivingEntity) e)
+                .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
+                .orElse(null);
+    }
+
+    public Vector vectorBetween(Entity from, LivingEntity to) {
+        return to.getEyeLocation().toVector().subtract(from.getLocation().toVector());
+    }
+
+    public void spinProjectile(ItemDisplay proj, float[] spinAngle, float spinSpeed) {
+        spinAngle[0] = (spinAngle[0] + spinSpeed) % 360f;
+        double rad = Math.toRadians(spinAngle[0]);
+        float cos = (float) Math.cos(rad);
+        float sin = (float) Math.sin(rad);
+
+        org.joml.Matrix4f spinMatrix = new org.joml.Matrix4f(
+                1,    0,   0, 0,
+                0,  cos, sin, 0,
+                0, -sin, cos, 0,
+                0,    0,   0, 1
+        );
+
+        proj.setTransformationMatrix(spinMatrix);
     }
 
     public abstract void hitEntityEffect(LivingEntity entity,Player player);

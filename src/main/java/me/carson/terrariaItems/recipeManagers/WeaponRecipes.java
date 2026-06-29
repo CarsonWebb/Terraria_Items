@@ -88,6 +88,18 @@ public class WeaponRecipes implements CustomRecipeManager.RecipeProvider {
         registerLifeDrainRecipe();
         registerBlazingStarRecipe();
         registerEnchantedAxeRecipe();
+        registerBrimlashRecipe();
+    }
+
+    private void registerBrimlashRecipe(){
+        ItemStack item= Brimlash.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_Brimlash");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" U "," U "," B ");
+        recipe.setIngredient('U',new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
+        recipe.setIngredient('B',new RecipeChoice.ExactChoice(new ItemStack(Material.BLAZE_ROD)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        Bukkit.addRecipe(recipe);
     }
 
     private void registerEnchantedAxeRecipe(){

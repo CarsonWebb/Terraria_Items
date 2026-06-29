@@ -392,3 +392,9 @@ enchanted_axe:
     - "&74 de Daño Pícaro"
     - "&5Los golpes sigilosos van más lejos y"
     - "&5lanzan más hachas teledirigidas"
+brimlash:
+  name: "Brimlash"
+  lore:
+    - "&7Dispara un rayo de azufre que"
+    - "&7explota en más rayos"
+    - "&710 de Daño Cuerpo a Cuerpo"

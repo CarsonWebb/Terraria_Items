@@ -392,3 +392,9 @@ enchanted_axe:
     - "&74 Rouge Damage"
     - "&5Stealth Strikes go further and"
     - "&5send out more homing axes"
+brimlash:
+  name: "Brimlash"
+  lore:
+    - "&7Fires a brimstone bolt that"
+    - "&7explodes into more bolts"
+    - "&710 Melee Damage"
