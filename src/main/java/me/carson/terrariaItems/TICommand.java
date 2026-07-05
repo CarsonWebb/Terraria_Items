@@ -775,7 +775,7 @@ public class TICommand implements CommandExecutor, TabCompleter {
                     resetInstance.resetBonuses(player);
                 }
                 case "undiscover" -> {
-                    CustomRecipeManager.getInstance().undiscoverAll(player);
+                    CustomRecipeDiscoverManager.getInstance().undiscoverAll(player);
                 }
             }
             return true;

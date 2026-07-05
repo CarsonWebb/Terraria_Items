@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
+import me.carson.terrariaItems.handlers.CustomRecipeDiscoverManager;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
@@ -15,16 +16,17 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
+public class AccessoryRecipes {
 
     private final Plugin plugin;
+    private final CustomRecipeManager recipeManager;
 
-    public AccessoryRecipes(Plugin plugin) {
+    public AccessoryRecipes(Plugin plugin, CustomRecipeManager recipeManager) {
         this.plugin = plugin;
+        this.recipeManager = recipeManager;
     }
 
-    @Override
-    public void registerRecipes(CustomRecipeManager manager) {
+    public void registerRecipes() {
         registerAgletRecipe();
         registerObsidianSkullRecipe();
         registerBandOfRegenerationRecipe();
@@ -81,7 +83,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WHITE_WOOL)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHER_BRICK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerRuinMedallionRecipe(){
@@ -92,7 +94,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(CoinOfDeceit.getItem(plugin)));
         recipe.setIngredient('U', new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerCoinOfDeceitRecipe(){
@@ -103,7 +105,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.COPPER_INGOT)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(DemoniteBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBundleOfHorseshoeBalloonsRecipe(){
@@ -114,7 +116,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(BundleOfBalloons.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
 
         NamespacedKey key1 = new NamespacedKey(plugin, "pre_BundleOfHorseshoeBalloons1");
         ShapelessRecipe recipe1 = new ShapelessRecipe(key1, item);
@@ -122,7 +124,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe1.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin),WhiteHorseshoeBalloon.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin),YellowHorseshoeBalloon.getItem(plugin)));
         recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe1);
+        recipeManager.register(recipe1);
 
         NamespacedKey key2 = new NamespacedKey(plugin, "pre_BundleOfHorseshoeBalloons2");
         ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
@@ -130,7 +132,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe2.addIngredient(new RecipeChoice.ExactChoice(WhiteHorseshoeBalloon.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin),YellowHorseshoeBalloon.getItem(plugin)));
         recipe2.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe2);
+        recipeManager.register(recipe2);
 
         NamespacedKey key3 = new NamespacedKey(plugin, "pre_BundleOfHorseshoeBalloons3");
         ShapelessRecipe recipe3 = new ShapelessRecipe(key3, item);
@@ -138,7 +140,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe3.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin),WhiteHorseshoeBalloon.getItem(plugin)));
         recipe3.addIngredient(new RecipeChoice.ExactChoice(YellowHorseshoeBalloon.getItem(plugin)));
         recipe3.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe3);
+        recipeManager.register(recipe3);
     }
 
     private void registerBundleOfBalloonsRecipe(){
@@ -149,7 +151,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABalloon.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBlizzardInABottleRecipe(){
@@ -159,7 +161,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(FrostCore.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerSandstormInABottleRecipe(){
@@ -169,7 +171,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ForbiddenFragment.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerYellowHorseshoeBalloonRecipe(){
@@ -179,7 +181,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(SandstormInABalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerWhiteHorseshoeBalloonRecipe(){
@@ -189,7 +191,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBlueHorseshoeBalloonRecipe(){
@@ -199,7 +201,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerAmberHorseshoeBalloonRecipe(){
@@ -209,7 +211,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyBalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerSandstormInABalloonRecipe(){
@@ -219,7 +221,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(SandstormInABottle.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBlizzardInABalloonRecipe(){
@@ -229,7 +231,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(BlizzardInABottle.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerCloudInABalloonRecipe(){
@@ -239,7 +241,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(CloudInABottle.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerManaCloakRecipe(){
@@ -249,7 +251,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(ManaFlower.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(StarCloak.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerManaFlowerRecipe(){
@@ -259,7 +261,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(NaturesGift.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ManaPotion.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerStingerNecklaceRecipe(){
@@ -269,7 +271,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(SharkToothNecklace.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerStarVeilRecipe(){
@@ -279,7 +281,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(CrossNecklace.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(StarCloak.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBeeCloakRecipe(){
@@ -289,7 +291,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(StarCloak.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerMechanicalGloveRecipe(){
@@ -299,7 +301,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(PowerGlove.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(AvengerEmblem.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerObsidianHorseshoeRecipe(){
@@ -309,7 +311,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(LuckyHorseshoe.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerAnkhShieldRecipe(){
@@ -319,7 +321,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(AnkhCharm.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianShield.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerPowerGloveRecipe(){
@@ -329,7 +331,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(FeralClaws.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(TitanGlove.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerAnkhCharmRecipe(){
@@ -341,7 +343,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(Blindfold.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(FastClock.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerObsidianShieldRecipe(){
@@ -351,7 +353,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(CobaltShield.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(ObsidianSkull.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerSweetheartNecklaceRecipe(){
@@ -361,7 +363,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(PanicNecklace.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHoneyBalloonRecipe(){
@@ -371,7 +373,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(HoneyComb.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(RedBalloon.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHoneyCombRecipe(){
@@ -382,7 +384,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.HONEYCOMB)));
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerMagicCuffsRecipe(){
@@ -392,7 +394,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(ManaRegenerationBand.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(Shackle.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerManaRegenerationBandRecipe(){
@@ -402,7 +404,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfStarpower.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(BandOfRegeneration.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerPanicNecklaceRecipe(){
@@ -414,7 +416,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SUGAR)));
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBandOfStarpowerRecipe(){
@@ -425,7 +427,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice(new ItemStack(Material.LAPIS_LAZULI)));
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerAgletRecipe(){
@@ -435,7 +437,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape("CCC","C C","CCC");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.COPPER_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerObsidianSkullRecipe(){
@@ -445,7 +447,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape("OOO","OOO"," O ");
         recipe.setIngredient('O', new RecipeChoice.ExactChoice(new ItemStack(Material.OBSIDIAN)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerRedBalloonRecipe(){
@@ -456,7 +458,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.RED_WOOL)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBandOfRegenerationRecipe(){
@@ -467,7 +469,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE_BLOCK)));
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHorseshoeRecipe(){
@@ -477,7 +479,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape("G G","G G","GGG");
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerCobaltShieldRecipe(){
@@ -489,7 +491,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SHIELD)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_INGOT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerCounterScarfRecipe(){
         ItemStack counterScarf=CounterScarf.getItem(plugin);
@@ -500,7 +502,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.RED_WOOL)));
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.ENDER_EYE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerNeptuneShellRecipe(){
         ItemStack item=NeptunesShell.getItem(plugin);
@@ -514,7 +516,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.FIRE_CORAL_BLOCK)));
         recipe.setIngredient('U', new RecipeChoice.ExactChoice(new ItemStack(Material.BUBBLE_CORAL_BLOCK)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerBezoarRecipe(){
         ItemStack bezoar=Bezoar.getItem(plugin);
@@ -526,7 +528,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerBlindfoldRecipe(){
         ItemStack blind=Blindfold.getItem(plugin);
@@ -538,7 +540,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerFastClockRecipe(){
@@ -551,7 +553,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('L', new RecipeChoice.ExactChoice(SoulOfLight.getItem(plugin)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerVitaminsRecipe(){
@@ -568,7 +570,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.MILK_BUCKET)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.HONEY_BOTTLE)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerNightVisionHelmetRecipe(){
@@ -579,7 +581,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLDEN_CARROT)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerAvengerEmblemRecipe(){
@@ -591,7 +593,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
         recipe1.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe1);
+        recipeManager.register(recipe1);
 
         NamespacedKey key2 = new NamespacedKey(plugin, "hm_AvengerEmblem2");
         ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
@@ -600,7 +602,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
         recipe2.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe2);
+        recipeManager.register(recipe2);
 
         NamespacedKey key3 = new NamespacedKey(plugin, "hm_AvengerEmblem3");
         ShapelessRecipe recipe3 = new ShapelessRecipe(key3, item);
@@ -609,7 +611,7 @@ public class AccessoryRecipes implements CustomRecipeManager.RecipeProvider {
         recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfFright.getItem(plugin)));
         recipe3.addIngredient(new RecipeChoice.ExactChoice(SoulOfSight.getItem(plugin)));
         recipe3.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe3);
+        recipeManager.register(recipe3);
     }
 
 }

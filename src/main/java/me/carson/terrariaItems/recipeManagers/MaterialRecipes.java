@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.handlers.CustomRecipeDiscoverManager;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.bullets.BubonicRound;
@@ -16,16 +17,17 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
+public class MaterialRecipes {
 
     private final Plugin plugin;
+    private final CustomRecipeManager recipeManager;
 
-    public MaterialRecipes(Plugin plugin) {
+    public MaterialRecipes(Plugin plugin, CustomRecipeManager recipeManager) {
         this.plugin = plugin;
+        this.recipeManager = recipeManager;
     }
 
-    @Override
-    public void registerRecipes(CustomRecipeManager manager) {
+    public void registerRecipes() {
         registerDemoniteBarRecipe();
         registerHellstoneRecipe();
         registerRubyRecipe();
@@ -46,7 +48,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(Hellstone.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POPPED_CHORUS_FRUIT)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerDemoniteBarRecipe(){
@@ -57,7 +59,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SOUL_SAND)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHellstoneRecipe(){
@@ -68,7 +70,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.LAVA_BUCKET)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.OBSIDIAN)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerRubyRecipe(){
@@ -79,7 +81,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHellstoneBarRecipe(){
@@ -92,7 +94,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
                 0.35f,                               // XP
                 50                                  // Cook time (10s)
         );
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerHallowedBarRecipe(){
@@ -103,7 +105,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfSight.getItem(plugin)));
         recipe.addIngredient(new RecipeChoice.ExactChoice( SoulOfMight.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerMusketBallRecipe(){
@@ -113,7 +115,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         ShapelessRecipe recipe = new ShapelessRecipe(key, bullet);
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerEmptyBulletRecipe(){
@@ -124,7 +126,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape("   ","I I"," I ");
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_NUGGET)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerExplodingBulletRecipe(){
@@ -138,7 +140,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         }
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GUNPOWDER)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerBubonicRoundRecipe(){
@@ -152,7 +154,7 @@ public class MaterialRecipes implements CustomRecipeManager.RecipeProvider {
         }
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.WITHER_ROSE)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
 

@@ -53,23 +53,17 @@ public final class TerrariaItems extends JavaPlugin{
         StealthManager.initialize(this);
         VanityManager.initialize(this);
 
-        CustomRecipeManager.initialize(this);
-        CustomRecipeManager.getInstance().registerAll(
-                new AccessoryRecipes(this),
-                new ToolRecipes(this),
-                new MaterialRecipes(this),
-                new WeaponRecipes(this),
-                new ArmorRecipes(this),
-                new BlocksRecipes(this),
-                new MiscRecipes(this)
-        );
-        CustomRecipeManager.getInstance().freeze();
+        CustomRecipeDiscoverManager.initialize(this);
+
+        CustomRecipeManager customRecipeManager = new CustomRecipeManager(this);
+        customRecipeManager.registerAll(); // populates requiredIds AND calls Bukkit.addRecipe for each
+        Bukkit.getPluginManager().registerEvents(new RecipeValidationListener(customRecipeManager), this);
+
+        CustomRecipeDiscoverManager.getInstance().freeze();
 
         new WeaponManager(this);
         new ResourcePackHandler(this);
-        new CustomCraftingListener(this);
         new CustomBlockManager(this);
-        new CustomCraftingListener(this);
         new FishingManager(this);
         new ItemPlaceListener(this);
         new MessageHandler(this);
@@ -81,6 +75,10 @@ public final class TerrariaItems extends JavaPlugin{
         new ArmorChangeDetector(this);
         new VillagerTradingListeners(this);
         new MobDeathListeners(this);
+
+
+
+
 
         TICommand tiCommand = new TICommand(this);
         Objects.requireNonNull(getCommand("ti")).setExecutor(tiCommand);

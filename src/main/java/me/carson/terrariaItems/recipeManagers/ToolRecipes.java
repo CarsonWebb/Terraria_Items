@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.handlers.CustomRecipeDiscoverManager;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
 import me.carson.terrariaItems.materialsFolder.materials.Ruby;
@@ -24,17 +25,17 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
+public class ToolRecipes {
 
     private final Plugin plugin;
+    private final CustomRecipeManager recipeManager;
 
-
-    public ToolRecipes(Plugin plugin) {
+    public ToolRecipes(Plugin plugin, CustomRecipeManager recipeManager) {
         this.plugin = plugin;
+        this.recipeManager = recipeManager;
     }
 
-    @Override
-    public void registerRecipes(CustomRecipeManager manager) {
+    public void registerRecipes() {
         registerMirrorRecipe();
         registerCosmolightRecipe();
         //registerCapacitorRecipe();
@@ -76,7 +77,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         ));
         recipe.setIngredient('S', Material.STICK);
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerRubyHookRecipe(){
@@ -87,7 +88,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(Ruby.getItem(plugin)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerDiamondHookRecipe(){
@@ -98,7 +99,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerEmeraldHookRecipe(){
@@ -109,7 +110,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(new ItemStack(Material.EMERALD)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerAmethystHookRecipe(){
@@ -120,7 +121,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('A', new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerGrapplingHookRecipe(){
@@ -131,7 +132,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerBloodyTearRecipe(){
@@ -143,7 +144,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.BEEF)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
 
     private void registerMirrorRecipe(){
@@ -154,7 +155,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GLASS)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.DIAMOND)));
-        recipe.setCategory(CraftingBookCategory.MISC);Bukkit.addRecipe(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
     }
     private void registerCosmolightRecipe(){
         ItemStack cosmolight=Cosmolight.getItem(plugin);
@@ -166,7 +167,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerCapacitorRecipe(){
         ItemStack capacitor=MomentumCapacitor.getItem(plugin);
@@ -176,7 +177,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WIND_CHARGE)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_INGOT)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerRodRecipe(){
         ItemStack rod=RodOfDiscord.getItem(plugin);
@@ -187,7 +188,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHORUS_FRUIT)));
         recipe.setIngredient('N', new RecipeChoice.ExactChoice(new ItemStack(Material.NETHERITE_INGOT)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerLifeCrystalRecipe(){
@@ -198,7 +199,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( Ruby.getItem(plugin)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.COBBLESTONE)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerManaCrystalRecipe(){
@@ -208,7 +209,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.shape(" S ","SSS"," S ");
         recipe.setIngredient('S', new RecipeChoice.ExactChoice( FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerTorrentialTearRecipe(){
@@ -220,7 +221,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('D', new RecipeChoice.ExactChoice(new ItemStack(Material.SPONGE)));
         recipe.setIngredient('W', new RecipeChoice.ExactChoice(new ItemStack(Material.WET_SPONGE)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
     private void registerMechanicalShriekerRecipe(){
         ItemStack item= MechanicalShrieker.getItem(plugin);
@@ -231,7 +232,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.SCULK_SHRIEKER)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerMechanicalEggRecipe(){
@@ -243,7 +244,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHORUS_FRUIT)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerMechanicalSkullRecipe(){
@@ -255,7 +256,7 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('N', new RecipeChoice.ExactChoice( SoulOfNight.getItem(plugin)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.WITHER_SKELETON_SKULL)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerManaPotionRecipe(){
@@ -285,6 +286,6 @@ public class ToolRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
         recipe.addIngredient(new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 }

@@ -1,5 +1,6 @@
 package me.carson.terrariaItems.recipeManagers;
 
+import me.carson.terrariaItems.handlers.CustomRecipeDiscoverManager;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.materialsFolder.materials.DemoniteBar;
 import me.carson.terrariaItems.materialsFolder.materials.HallowedBar;
@@ -15,16 +16,17 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.recipe.CraftingBookCategory;
 import org.bukkit.plugin.Plugin;
 
-public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
+public class MiscRecipes {
 
     private final Plugin plugin;
+    private final CustomRecipeManager recipeManager;
 
-    public MiscRecipes(Plugin plugin) {
+    public MiscRecipes(Plugin plugin, CustomRecipeManager recipeManager) {
         this.plugin = plugin;
+        this.recipeManager = recipeManager;
     }
 
-    @Override
-    public void registerRecipes(CustomRecipeManager manager) {
+    public void registerRecipes() {
         registerPickaxeAxeRecipe();
         registerFisherOfSoulsRecipe();
         registerGoldenFishingRodRecipe();
@@ -38,7 +40,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(HallowedBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerFisherOfSoulsRecipe(){
@@ -49,7 +51,7 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
         recipe.setIngredient('D', new RecipeChoice.ExactChoice( DemoniteBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 
     private void registerPickaxeAxeRecipe(){
@@ -60,6 +62,6 @@ public class MiscRecipes implements CustomRecipeManager.RecipeProvider {
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice( HallowedBar.getItem(plugin)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
-        Bukkit.addRecipe(recipe);
+        recipeManager.register(recipe);
     }
 }
