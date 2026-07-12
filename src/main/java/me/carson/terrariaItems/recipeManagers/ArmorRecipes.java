@@ -382,7 +382,7 @@ public class ArmorRecipes{
         recipe.shape("BVB","I I","   ");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
-        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.TWISTING_VINES)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
         
@@ -395,7 +395,7 @@ public class ArmorRecipes{
         recipe.shape("V V","BIB","BCB");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
-        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.TWISTING_VINES)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.COCOA_BEANS)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
@@ -409,7 +409,7 @@ public class ArmorRecipes{
         recipe.shape("VIV","B B","B B");
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.BAMBOO)));
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
-        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('V', new RecipeChoice.ExactChoice(new ItemStack(Material.TWISTING_VINES)));
         recipe.setCategory(CraftingBookCategory.EQUIPMENT);
         recipeManager.register(recipe);
         

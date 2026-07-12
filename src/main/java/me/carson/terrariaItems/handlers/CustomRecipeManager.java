@@ -19,11 +19,9 @@ public class CustomRecipeManager {
     private final Plugin plugin;
     private final NamespacedKey idKey;
 
-    private final Map<List<String>, ItemStack> shapelessResults = new HashMap<>();
-
-    private final Map<List<String>, ItemStack> shapedResults = new HashMap<>();
-
-    private final Set<NamespacedKey> trackedKeys = new HashSet<>();
+    record RecipeEntry(ItemStack itemStack,NamespacedKey key){}
+    private final Map<List<String>, RecipeEntry> shapelessResults = new HashMap<>();
+    private final Map<List<String>, RecipeEntry> shapedResults = new HashMap<>();
 
     public CustomRecipeManager(Plugin plugin) {
         this.plugin = plugin;
@@ -47,36 +45,34 @@ public class CustomRecipeManager {
                     .filter(Objects::nonNull)
                     .sorted()
                     .collect(Collectors.toList());
-            boolean hasCustom = sr.getChoiceList().stream().anyMatch(this::isCustomItemChoice);
-            if (hasCustom) {
-                shapelessResults.put(identities, sr.getResult());
-                trackedKeys.add(key);
-            }
+            shapelessResults.put(identities, new RecipeEntry(sr.getResult(), key));
         } else if (recipe instanceof ShapedRecipe sr) {
-            boolean hasCustom = sr.getChoiceMap().values().stream()
-                    .filter(Objects::nonNull)
-                    .anyMatch(this::isCustomItemChoice);
-            if (hasCustom) {
-                List<String> grid = normalizedGrid(sr);
-                shapedResults.put(grid, sr.getResult());
-                shapedResults.put(mirror(grid), sr.getResult());
-                trackedKeys.add(key);
-            }
+            List<String> grid = normalizedGrid(sr);
+            shapedResults.put(grid, new RecipeEntry(sr.getResult(), key));
+            shapedResults.put(mirror(grid), new RecipeEntry(sr.getResult(), key));
         }
 
         Bukkit.addRecipe(recipe);
     }
 
-    public boolean isTracked(NamespacedKey key) {
-        return trackedKeys.contains(key);
-    }
-
     public ItemStack resolveShapeless(List<String> actualIdentitiesSorted) {
-        return shapelessResults.get(actualIdentitiesSorted);
+        RecipeEntry entry = shapelessResults.get(actualIdentitiesSorted);
+        return entry != null ? entry.itemStack() : null;
     }
 
     public ItemStack resolveShaped(List<String> normalizedActualGrid) {
-        return shapedResults.get(normalizedActualGrid);
+        RecipeEntry entry = shapedResults.get(normalizedActualGrid);
+        return entry != null ? entry.itemStack() : null;
+    }
+
+    public NamespacedKey getResolvedShapelessKey(List<String> actualIdentitiesSorted) {
+        RecipeEntry entry = shapelessResults.get(actualIdentitiesSorted);
+        return entry != null ? entry.key() : null;
+    }
+
+    public NamespacedKey getResolvedShapedKey(List<String> actualIdentitiesSorted) {
+        RecipeEntry entry = shapedResults.get(actualIdentitiesSorted);
+        return entry != null ? entry.key() : null;
     }
 
     public boolean hasAnyShapedSignatures() {

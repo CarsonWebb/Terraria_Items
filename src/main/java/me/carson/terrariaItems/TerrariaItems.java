@@ -75,7 +75,7 @@ public final class TerrariaItems extends JavaPlugin{
         new ArmorChangeDetector(this);
         new VillagerTradingListeners(this);
         new MobDeathListeners(this);
-
+        new CustomCraftingListener(this);
 
 
 
