@@ -3,6 +3,7 @@ package me.carson.terrariaItems.listeners;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,6 +30,9 @@ public class RecipeValidationListener implements Listener {
         CraftingInventory inv = event.getInventory();
         ItemStack[] matrix = inv.getMatrix();
 
+        Recipe eventRecipe = event.getRecipe();
+        boolean isOurRecipe = eventRecipe instanceof Keyed keyed && recipeManager.isOurRecipe(keyed.getKey());
+
         ItemStack resolved = null;
         NamespacedKey key = null;
 
@@ -46,15 +50,16 @@ public class RecipeValidationListener implements Listener {
         key = recipeManager.getResolvedShapelessKey(shapelessIds);
 
         if (resolved == null && recipeManager.hasAnyShapedSignatures()) {
-            int rows = 3, cols = 3;
+            int size = matrix.length;
+            int cols = (size == 4) ? 2 : 3;
+            int rows = size / cols;
             List<String> grid = recipeManager.normalizedGridFromMatrix(matrix, rows, cols);
             resolved = recipeManager.resolveShaped(grid);
             key = recipeManager.getResolvedShapedKey(grid);
         }
-
         if (resolved == null || key == null) {
             boolean hasCustomItem = shapelessIds.stream().anyMatch(s -> s.startsWith("custom:"));
-            if (hasCustomItem) {
+            if (hasCustomItem || isOurRecipe) {
                 event.getInventory().setResult(null);
             }
             return;

@@ -22,6 +22,7 @@ public class CustomRecipeManager {
     record RecipeEntry(ItemStack itemStack,NamespacedKey key){}
     private final Map<List<String>, RecipeEntry> shapelessResults = new HashMap<>();
     private final Map<List<String>, RecipeEntry> shapedResults = new HashMap<>();
+    private final Set<NamespacedKey> registeredKeys = new HashSet<>();
 
     public CustomRecipeManager(Plugin plugin) {
         this.plugin = plugin;
@@ -46,13 +47,19 @@ public class CustomRecipeManager {
                     .sorted()
                     .collect(Collectors.toList());
             shapelessResults.put(identities, new RecipeEntry(sr.getResult(), key));
+            registeredKeys.add(key);
         } else if (recipe instanceof ShapedRecipe sr) {
             List<String> grid = normalizedGrid(sr);
             shapedResults.put(grid, new RecipeEntry(sr.getResult(), key));
             shapedResults.put(mirror(grid), new RecipeEntry(sr.getResult(), key));
+            registeredKeys.add(key);
         }
 
         Bukkit.addRecipe(recipe);
+    }
+
+    public boolean isOurRecipe(NamespacedKey key) {
+        return registeredKeys.contains(key);
     }
 
     public ItemStack resolveShapeless(List<String> actualIdentitiesSorted) {

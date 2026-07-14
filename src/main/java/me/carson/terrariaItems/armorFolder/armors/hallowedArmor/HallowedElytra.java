@@ -20,7 +20,7 @@ import java.util.List;
 public class HallowedElytra extends Armor {
 
     public HallowedElytra(Plugin plugin){
-        super(plugin,"hallowed_elytra.name","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_armor", EquipmentSlot.CHEST,"HallowedElytra","hallowed_elytra.lore");
+        super(plugin,"hallowed_elytra.name","#FF96FF", Material.ELYTRA,"hallowed_elytra","hallowed_elytra_armor", EquipmentSlot.CHEST,"HallowedElytra","hallowed_elytra.lore");
     }
 
     @Override
