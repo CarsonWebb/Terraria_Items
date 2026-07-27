@@ -40,6 +40,7 @@ public final class TerrariaItems extends JavaPlugin{
 
         PacketEvents.getAPI().init();
 
+        CustomPotionHandler.initialize(this);
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
         MaterialManager.initialize(this);
@@ -52,6 +53,7 @@ public final class TerrariaItems extends JavaPlugin{
         ToolManager.initialize(this);
         StealthManager.initialize(this);
         VanityManager.initialize(this);
+
 
         CustomRecipeDiscoverManager.initialize(this);
 

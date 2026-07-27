@@ -129,3 +129,11 @@ step_stool:
   name: "Step Stool"
   lore:
     - "&7NOT FUNCTIONAL YET, WIP"
+ironskin_potion:
+  name: "Ironskin Potion"
+  lore:
+    - "&9+4 Armor (4:00)"
+builder_potion:
+  name: "Builder Potion"
+  lore:
+    - "&9+2 Block Interaction Range (20:00)"

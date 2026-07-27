@@ -2,6 +2,7 @@ package me.carson.terrariaItems.toolFolder;
 
 import me.carson.terrariaItems.TILangManager;
 import me.carson.terrariaItems.handlers.BloodMoonManager;
+import me.carson.terrariaItems.handlers.CustomPotionHandler;
 import me.carson.terrariaItems.handlers.ManaManager;
 import me.carson.terrariaItems.handlers.WorldDataHandler;
 import org.bukkit.Material;
@@ -30,6 +31,7 @@ public abstract class Tool {
     private final NamespacedKey customItemKey;
     public ManaManager manaManagerInstance=ManaManager.getInstance();
     public WorldDataHandler worldInstance=WorldDataHandler.getInstance();
+    public CustomPotionHandler customPotionInstance=CustomPotionHandler.getInstance();
     public final TILangManager lang =TILangManager.getInstance();
     public BloodMoonManager bloodMoonManagerInstance=BloodMoonManager.getInstance();
 

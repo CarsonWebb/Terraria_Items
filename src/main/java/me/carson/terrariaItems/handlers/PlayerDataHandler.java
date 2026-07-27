@@ -1,7 +1,9 @@
 package me.carson.terrariaItems.handlers;
 
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -130,6 +132,19 @@ public class PlayerDataHandler implements Listener {
 
     public double getStealthGeneration(UUID id){return config.getDouble(id+".stealth_gen",1);}
     public void setStealthGeneration(UUID id,double x){config.set(id+".stealth_gen",Math.max(x,0));}
+
+    public void showStats(Player player){
+        UUID id =player.getUniqueId();
+        player.sendMessage("§lPlayer Stats: ");
+        player.sendMessage("Max Mana: "+(getMaxMana(id)+getExtraMana(id)));
+        player.sendMessage("Crit Chance: "+getCritChance(id));
+        player.sendMessage("Max Stealth: "+getMaxStealth(id));
+        player.sendMessage("Bonus Damage: "+getBonusDamage(id));
+        player.sendMessage("Bonus Melee Damage: "+getBonusMelee(id));
+        player.sendMessage("Bonus Ranged Damage: "+getBonusRanged(id));
+        player.sendMessage("Bonus Magic Damage: "+getBonusMagic(id));
+        player.sendMessage("Bonus Rogue Damage: "+getBonusRogue(id));
+    }
 
     public void save() {
         try {

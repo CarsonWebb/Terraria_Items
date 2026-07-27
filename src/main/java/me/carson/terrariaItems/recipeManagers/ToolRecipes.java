@@ -7,10 +7,7 @@ import me.carson.terrariaItems.materialsFolder.materials.Ruby;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.hooks.*;
-import me.carson.terrariaItems.toolFolder.tools.potions.GreaterManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.LesserManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.ManaPotion;
-import me.carson.terrariaItems.toolFolder.tools.potions.SuperManaPotion;
+import me.carson.terrariaItems.toolFolder.tools.potions.*;
 import me.carson.terrariaItems.toolFolder.tools.summons.BloodyTear;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalEgg;
 import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
@@ -55,6 +52,31 @@ public class ToolRecipes {
         registerDiamondHookRecipe();
         registerRubyHookRecipe();
         //registerStepStoolRecipe();
+        registerIronskinPotionRecipe();
+        registerBuilderPotionRecipe();
+    }
+
+    private void registerBuilderPotionRecipe() {
+        ItemStack item = BuilderPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_BuilderPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BRICK)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.CORNFLOWER)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.AZURE_BLUET)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerIronskinPotionRecipe() {
+        ItemStack item = IronSkinPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_IronskinPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.RAW_IRON)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DANDELION)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerStepStoolRecipe(){
@@ -121,7 +143,8 @@ public class ToolRecipes {
         recipe.setIngredient('A', new RecipeChoice.ExactChoice(new ItemStack(Material.AMETHYST_SHARD)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerGrapplingHookRecipe(){
@@ -132,7 +155,8 @@ public class ToolRecipes {
         recipe.setIngredient('I', new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
         recipe.setIngredient('H', new RecipeChoice.ExactChoice(new ItemStack(Material.TRIPWIRE_HOOK)));
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(new ItemStack(Material.CHAIN)));
-        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerBloodyTearRecipe(){
@@ -144,7 +168,8 @@ public class ToolRecipes {
         recipe.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GHAST_TEAR)));
         recipe.setIngredient('R', new RecipeChoice.ExactChoice(new ItemStack(Material.REDSTONE)));
         recipe.setIngredient('S', new RecipeChoice.ExactChoice(new ItemStack(Material.BEEF)));
-        recipe.setCategory(CraftingBookCategory.MISC);recipeManager.register(recipe);
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerMirrorRecipe(){
@@ -267,14 +292,14 @@ public class ToolRecipes {
         recipe1.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
         recipe1.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.WARPED_FUNGUS)));
         recipe1.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe1);
+        recipeManager.register(recipe1);
 
         NamespacedKey key2 = new NamespacedKey(plugin, "pre_ManaPotion2");
         ShapelessRecipe recipe2 = new ShapelessRecipe(key2, item);
         recipe2.addIngredient(new RecipeChoice.ExactChoice(LesserManaPotion.getItem(plugin)));
         recipe2.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.CRIMSON_FUNGUS)));
         recipe2.setCategory(CraftingBookCategory.MISC);
-        Bukkit.addRecipe(recipe2);
+        recipeManager.register(recipe2);
 
     }
 

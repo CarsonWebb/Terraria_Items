@@ -61,6 +61,8 @@ public class ToolManager implements Listener {
         toolList.put("RubyHook",new RubyHook(plugin));
         toolList.put("DiamondHook",new DiamondHook(plugin));
         toolList.put("StepStool",new StepStool(plugin));
+        toolList.put("IronSkinPotion",new IronSkinPotion(plugin));
+        toolList.put("BuilderPotion",new BuilderPotion(plugin));
     }
 
     public Tool getTool(ItemStack item){
