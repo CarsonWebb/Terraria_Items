@@ -132,8 +132,16 @@ step_stool:
 ironskin_potion:
   name: "Ironskin Potion"
   lore:
-    - "&9+4 Armor (4:00)"
+    - "&9+4 Armor (8:00)"
 builder_potion:
   name: "Builder Potion"
   lore:
-    - "&9+2 Block Interaction Range (20:00)"
+    - "&9+2 Block Interaction Range (30:00)"
+titan_potion:
+  name: "Titan Potion"
+  lore:
+    - "&9Increases Knockback (8:00)"
+mining_potion:
+  name: "Mining Potion"
+  lore:
+    - "&9Increases mining speed (10:00)"

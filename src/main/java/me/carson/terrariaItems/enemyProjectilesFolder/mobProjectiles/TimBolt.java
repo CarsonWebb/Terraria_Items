@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class TimBolt extends EnemyProjectile {
 
     public TimBolt(Plugin plugin) {
-        super(plugin, 6,1f, "water_bolt_projectile", "WaterBoltProjectile",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(25, 33, 183), 1f));
+        super(plugin, 8,1f, "water_bolt_projectile", "WaterBoltProjectile",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(25, 33, 183), 1f));
     }
 
 

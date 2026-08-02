@@ -13,13 +13,13 @@ import me.carson.terrariaItems.accesoryFolder.AccessoryManager;
 import me.carson.terrariaItems.armorFolder.ArmorManager;
 import me.carson.terrariaItems.materialsFolder.MaterialManager;
 import me.carson.terrariaItems.projectilesFolder.ProjectileManager;
-import me.carson.terrariaItems.recipeManagers.*;
 import me.carson.terrariaItems.toolFolder.ToolManager;
 import me.carson.terrariaItems.weaponsFolder.WeaponListeners;
 import me.carson.terrariaItems.weaponsFolder.WeaponManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.ItemDisplay;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
@@ -97,6 +97,9 @@ public final class TerrariaItems extends JavaPlugin{
 
     @Override
     public void onDisable() {
+        for(Player player:Bukkit.getOnlinePlayers()){
+            CustomPotionHandler.getInstance().removePotionAttributes(player);
+        }
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();
         PacketEvents.getAPI().terminate();

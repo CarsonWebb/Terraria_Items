@@ -54,6 +54,31 @@ public class ToolRecipes {
         //registerStepStoolRecipe();
         registerIronskinPotionRecipe();
         registerBuilderPotionRecipe();
+        registerTitanPotionRecipe();
+        registerMiningPotionRecipe();
+    }
+
+    private void registerMiningPotionRecipe() {
+        ItemStack item = MiningPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MiningPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.RAW_GOLD)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SUNFLOWER)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerTitanPotionRecipe() {
+        ItemStack item = TitanPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_TitanPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BONE)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.CLOSED_EYEBLOSSOM)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BLUE_ORCHID)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerBuilderPotionRecipe() {

@@ -130,7 +130,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"PossessedArmor");
         zombie.setCanPickupItems(false);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(12);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setHelmet(PossessedHelmet.getItem(plugin));
         equipment.setChestplate(PossessedChestplate.getItem(plugin));
@@ -193,7 +193,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(60);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(5);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(9);
         zombie.setHealth(60);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);
@@ -230,7 +230,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"BloodZombie");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(30);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(5);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
         zombie.setHealth(30);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);
@@ -250,7 +250,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheGroom");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(11);
         zombie.setHealth(75);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);
@@ -270,7 +270,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.getPersistentDataContainer().set(key, PersistentDataType.STRING,"TheBride");
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(75);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(6);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(11);
         zombie.setHealth(75);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);

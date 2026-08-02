@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class WardenFlame extends EnemyProjectile {
 
     public WardenFlame(Plugin plugin) {
-        super(plugin, 0,0,  "warden_flame", "WardenFlame",0,99, DamageType.GENERIC,new Particle.DustOptions(Color.fromRGB(0, 146, 149), 1.5f));
+        super(plugin, 15,0,  "warden_flame", "WardenFlame",0,99, DamageType.GENERIC,new Particle.DustOptions(Color.fromRGB(0, 146, 149), 1.5f));
     }
 
     @Override

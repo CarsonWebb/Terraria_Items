@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class DustDevil extends EnemyProjectile {
 
     public DustDevil(Plugin plugin) {
-        super(plugin, 15,1f, "dust_devil", "DustDevil",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(210, 148, 87), 1f));
+        super(plugin, 20,1f, "dust_devil", "DustDevil",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(210, 148, 87), 1f));
     }
 
 

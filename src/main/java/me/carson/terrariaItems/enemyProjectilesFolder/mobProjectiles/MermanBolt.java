@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class MermanBolt extends EnemyProjectile {
 
     public MermanBolt(Plugin plugin) {
-        super(plugin, 8,1f, "ice_bolt", "IceBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(17, 143, 180), 1f));
+        super(plugin, 10,1f, "ice_bolt", "IceBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(17, 143, 180), 1f));
     }
 
 

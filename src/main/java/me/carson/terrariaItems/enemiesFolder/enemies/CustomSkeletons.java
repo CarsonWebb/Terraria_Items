@@ -136,7 +136,7 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
         equipment.setBoots(null);
         ItemStack bow =new ItemStack(Material.BOW);
         ItemMeta meta=bow.getItemMeta();
-        meta.addEnchant(Enchantment.POWER,2,true);
+        meta.addEnchant(Enchantment.POWER,5,true);
         meta.addEnchant(Enchantment.FLAME,1,true);
         bow.setItemMeta(meta);
         equipment.setItemInMainHand(bow);

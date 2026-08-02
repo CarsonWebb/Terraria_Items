@@ -67,7 +67,7 @@ public class MechanicalDragon extends Boss {
                 int count = 0;
                 @Override
                 public void run() {
-                    new DragonLaser(plugin).createBossProjectile(shooter,target,2.5f,5,0.1f,100);
+                    new DragonLaser(plugin).createBossProjectile(shooter,target,2.5f,0,0.1f,100);
                     shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 4.0F, 1.0F);
 
                     count++;
@@ -78,7 +78,7 @@ public class MechanicalDragon extends Boss {
             }.runTaskTimer(plugin, 0L, 5L);
         }
         else {
-            new DragonLaser(plugin).createBossProjectile(shooter,target,3,5,0.01f,100);
+            new DragonLaser(plugin).createBossProjectile(shooter,target,3,0,0.01f,100);
             shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 4.0F, 1.0F);
         }
     }

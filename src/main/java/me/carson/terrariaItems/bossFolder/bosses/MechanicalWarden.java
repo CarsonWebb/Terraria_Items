@@ -79,7 +79,7 @@ public class MechanicalWarden extends Boss {
                 int count = 0;
                 @Override
                 public void run() {
-                    new WardenLaser(plugin).createBossProjectile(shooter,target,2,15,0.02f,100);
+                    new WardenLaser(plugin).createBossProjectile(shooter,target,2,0,0.02f,100);
                     shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 3.0F, 1.0F);
 
                     count++;
@@ -89,7 +89,7 @@ public class MechanicalWarden extends Boss {
                 }
             }.runTaskTimer(plugin, 0L, 10L);
         }else {
-            new WardenFlame(plugin).createBossProjectile(shooter,target,0.5f,5,0,100);
+            new WardenFlame(plugin).createBossProjectile(shooter,target,0.5f,0,0,100);
             shooter.getWorld().playSound(shooter.getLocation(), "terraria:flame", 2F, 1.0F);
         }
     }

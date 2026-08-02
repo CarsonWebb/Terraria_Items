@@ -34,7 +34,7 @@ public class BeeCloak extends Accessory  {
 
     @Override
     public void onPlayerHit(Player player, EntityDamageEvent event) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,0,false,false,false));
         new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
         new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());
         new StarCannonStar(plugin).createFallingProjectile(player,1.5f,7,5f,50,30,event.getEntity().getLocation());

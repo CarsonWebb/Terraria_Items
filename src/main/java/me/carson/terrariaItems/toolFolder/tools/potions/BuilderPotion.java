@@ -2,6 +2,7 @@ package me.carson.terrariaItems.toolFolder.tools.potions;
 
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -15,7 +16,7 @@ public class BuilderPotion extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddBuildRange(player,2,6000,"builder");
+        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_INTERACTION_RANGE,2,36000,"builder");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }

@@ -8,15 +8,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-public class IronSkinPotion extends Tool {
+public class MiningPotion extends Tool {
 
-    public IronSkinPotion(Plugin plugin){
-        super(plugin,"ironskin_potion.name","#9696FF", Material.BREWER_POTTERY_SHERD,"ironskin_potion","IronSkinPotion",20,"ironskin_potion.lore");
+    public MiningPotion(Plugin plugin){
+        super(plugin,"mining_potion.name","#9696FF", Material.BREWER_POTTERY_SHERD,"mining_potion","MiningPotion",20,"mining_potion.lore");
     }
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddAttribute(player, Attribute.ARMOR,4,9600,"ironskin");
+        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_BREAK_SPEED,1,12000,"mining");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }
@@ -27,7 +27,7 @@ public class IronSkinPotion extends Tool {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item =new IronSkinPotion(plugin).createItem();
+        ItemStack item =new MiningPotion(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
         meta.setMaxStackSize(99);
         item.setItemMeta(meta);

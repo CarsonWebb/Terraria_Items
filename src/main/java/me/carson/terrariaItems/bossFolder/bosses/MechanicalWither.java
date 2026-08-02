@@ -68,7 +68,7 @@ public class MechanicalWither extends Boss implements Listener {
                 int count = 0;
                 @Override
                 public void run() {
-                    new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,10,0.02f,100);
+                    new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,0,0.02f,100);
                     shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 3.0F, 1.0F);
 
                     count++;
@@ -80,7 +80,7 @@ public class MechanicalWither extends Boss implements Listener {
                 }
             }.runTaskTimer(plugin, 0L, 10L);
         }else if(distance>10){
-            new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,10,0.02f,100);
+            new WitherLaser(plugin).createBossProjectile(shooter,target,1.5f,0,0.02f,100);
             shooter.getWorld().playSound(shooter.getLocation(), "terraria:laser", 3.0F, 1.0F);
         }else {
             new WitherBomb(plugin).createBossProjectile(shooter,target,0.2f,0,0,200);

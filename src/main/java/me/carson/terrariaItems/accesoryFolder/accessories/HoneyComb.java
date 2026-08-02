@@ -33,7 +33,7 @@ public class HoneyComb extends Accessory  {
 
     @Override
     public void onPlayerHit(Player player, EntityDamageEvent event) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,1,false,false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,0,false,false,false));
     }
 
     @Override

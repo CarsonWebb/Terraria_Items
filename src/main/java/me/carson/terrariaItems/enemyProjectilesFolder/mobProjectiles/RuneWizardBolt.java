@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class RuneWizardBolt extends EnemyProjectile {
 
     public RuneWizardBolt(Plugin plugin) {
-        super(plugin, 10,1f, "rune_wizard_bolt", "RuneWizardBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(34, 177, 76), 1f));
+        super(plugin, 15,1f, "rune_wizard_bolt", "RuneWizardBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(34, 177, 76), 1f));
     }
 
 
