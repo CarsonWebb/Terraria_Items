@@ -125,3 +125,19 @@ step_stool:
   name: "Escalón"
   lore:
     - "&7AÚN NO FUNCIONAL, EN DESARROLLO"
+ironskin_potion:
+  name: "Poción de Piel de Hierro"
+  lore:
+    - "&9+4 de Armadura (8:00)"
+builder_potion:
+  name: "Poción de Constructor"
+  lore:
+    - "&9+2 de Alcance de Interacción con Bloques (30:00)"
+titan_potion:
+  name: "Poción de Titán"
+  lore:
+    - "&9Aumenta el retroceso (8:00)"
+mining_potion:
+  name: "Poción de Minería"
+  lore:
+    - "&9Aumenta la velocidad de minería (10:00)"

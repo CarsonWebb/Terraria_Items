@@ -125,3 +125,19 @@ step_stool:
   name: "踏脚凳"
   lore:
     - "&7尚未实装，开发中"
+ironskin_potion:
+  name: "铁皮药水"
+  lore:
+    - "&9+4 护甲 (8:00)"
+builder_potion:
+  name: "建造者药水"
+  lore:
+    - "&9+2 方块交互范围 (30:00)"
+titan_potion:
+  name: "泰坦药水"
+  lore:
+    - "&9增加击退效果 (8:00)"
+mining_potion:
+  name: "采矿药水"
+  lore:
+    - "&9增加采矿速度 (10:00)"
