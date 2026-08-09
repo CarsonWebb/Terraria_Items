@@ -16,7 +16,7 @@ public class MiningPotion extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_BREAK_SPEED,1,12000,"mining");
+        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_BREAK_SPEED,1,12000,"Mining");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }

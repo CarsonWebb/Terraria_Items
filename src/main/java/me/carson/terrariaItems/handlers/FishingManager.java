@@ -1,5 +1,8 @@
 package me.carson.terrariaItems.handlers;
 
+import me.carson.terrariaItems.materialsFolder.materials.ArmoredCavefish;
+import me.carson.terrariaItems.materialsFolder.materials.Ebonkoi;
+import me.carson.terrariaItems.materialsFolder.materials.Hemopiranha;
 import me.carson.terrariaItems.toolFolder.tools.crates.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -13,7 +16,6 @@ import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.util.Vector;
 
 import java.util.*;
 
@@ -51,6 +53,11 @@ public class FishingManager implements Listener {
         if(!FISHING_TREASURE.contains(caughtItem.getItemStack().getType())){
             if(Math.random()<=0.1){
                 caughtItem.setItemStack(selectCrate(player));
+            } else if (Math.random()<=0.1) {
+                ItemStack customFish=selectCustomFish(player);
+                if(customFish!=null){
+                    caughtItem.setItemStack(customFish);
+                }
             }
         }
 
@@ -81,29 +88,45 @@ public class FishingManager implements Listener {
 
     private ItemStack rollBonusCatch(Player player) {
         double roll = Math.random();
-        if(roll<0.08){//Treasure at 8%
-            return new ItemStack(TREASURE.get((int)(Math.random() * FISHING_JUNK.size())));
-        }else {
-            if(Math.random()<0.1) {
-                return selectCrate(player);
+        if (roll <= 0.08) {//Treasure at 8%
+            return new ItemStack(TREASURE.get((int) (Math.random() * FISHING_JUNK.size())));
+        }
+        else if (roll <= 0.18) { //Crate at 10%
+            return selectCrate(player);
+        }
+        else if (roll <= 0.23) { //junk at 5%
+            return new ItemStack(FISHING_JUNK.get((int) (Math.random() * FISHING_JUNK.size())));
+        }
+        else if (roll <= 0.33) {  //Custom fish at 10%
+            ItemStack customFish = selectCustomFish(player);
+            if (customFish != null) {
+                return customFish;
             }
-            if(roll<0.15) {
-                return new ItemStack(FISHING_JUNK.get((int)(Math.random() * FISHING_JUNK.size())));
-            }else {
-                double fishChance=Math.random();
-                if(fishChance<0.02){
-                    return new ItemStack(Material.TROPICAL_FISH,1);
-                }else if(fishChance<0.15){
-                    return new ItemStack(Material.PUFFERFISH,1);
-                }
-                else if(fishChance<0.40){
-                    return new ItemStack(Material.SALMON,1);
-                }else {
-                    return new ItemStack(Material.COD,1);
-                }
+        }else {
+            double fishChance = Math.random();
+            if (fishChance < 0.02) {
+                return new ItemStack(Material.TROPICAL_FISH, 1);
+            } else if (fishChance < 0.15) {
+                return new ItemStack(Material.PUFFERFISH, 1);
+            } else if (fishChance < 0.40) {
+                return new ItemStack(Material.SALMON, 1);
+            } else {
+                return new ItemStack(Material.COD, 1);
             }
         }
+        return new ItemStack(Material.COD, 1);
+    }
 
+    public ItemStack selectCustomFish(Player player){
+        Location location=player.getLocation();
+        if(location.getY()<=45){
+            return ArmoredCavefish.getItem(plugin);
+        } else if (location.getBlock().getBiome()==Biome.MUSHROOM_FIELDS) {
+            return Hemopiranha.getItem(plugin);
+        }else if (location.getBlock().getBiome()==Biome.MANGROVE_SWAMP) {
+            return Ebonkoi.getItem(plugin);
+        }
+        return null;
     }
 
     public ItemStack selectCrate(Player player){

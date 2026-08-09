@@ -16,7 +16,7 @@ public class IronSkinPotion extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddAttribute(player, Attribute.ARMOR,4,9600,"ironskin");
+        customPotionInstance.potionAddAttribute(player, Attribute.ARMOR,4,9600,"Ironskin");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }

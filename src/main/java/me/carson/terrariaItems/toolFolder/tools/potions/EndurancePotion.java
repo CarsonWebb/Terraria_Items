@@ -8,15 +8,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-public class TitanPotion extends Tool {
+public class EndurancePotion extends Tool {
 
-    public TitanPotion(Plugin plugin){
-        super(plugin,"titan_potion.name","#9696FF", Material.BREWER_POTTERY_SHERD,"titan_potion","TitanPotion",20,"titan_potion.lore");
+    public EndurancePotion(Plugin plugin){
+        super(plugin,"endurance_potion.name","#9696FF", Material.BREWER_POTTERY_SHERD,"endurance_potion","EndurancePotion",20,"endurance_potion.lore");
     }
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddAttribute(player, Attribute.ATTACK_KNOCKBACK,1.5,9600,"Titan");
+        customPotionInstance.addCustomPotionEffect(player, "reduction",0.1,4800,"Endurance");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }
@@ -27,7 +27,7 @@ public class TitanPotion extends Tool {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item =new TitanPotion(plugin).createItem();
+        ItemStack item =new EndurancePotion(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
         meta.setMaxStackSize(99);
         item.setItemMeta(meta);

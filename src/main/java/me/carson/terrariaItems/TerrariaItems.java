@@ -40,9 +40,9 @@ public final class TerrariaItems extends JavaPlugin{
 
         PacketEvents.getAPI().init();
 
-        CustomPotionHandler.initialize(this);
         WorldDataHandler.initialize(this);
         PlayerDataHandler.initialize(this);
+        CustomPotionHandler.initialize(this);
         MaterialManager.initialize(this);
         ProjectileManager.initialize(this);
         ManaManager.initialize(this);
@@ -99,6 +99,7 @@ public final class TerrariaItems extends JavaPlugin{
     public void onDisable() {
         for(Player player:Bukkit.getOnlinePlayers()){
             CustomPotionHandler.getInstance().removePotionAttributes(player);
+            CustomPotionHandler.getInstance().removeCustomPotionEffects(player);
         }
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();

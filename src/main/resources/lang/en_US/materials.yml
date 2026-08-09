@@ -78,3 +78,15 @@ unholy_core:
   name: "Unholy Core"
   lore:
     - "&7An uncanny mix of Nether and End"
+armored_cavefish:
+  name: "Armored Cavefish"
+  lore:
+    - ""
+ebonkoi:
+  name: "Ebonkoi"
+  lore:
+    - ""
+hemopiranha:
+  name: "Hemopiranha"
+  lore:
+    - ""

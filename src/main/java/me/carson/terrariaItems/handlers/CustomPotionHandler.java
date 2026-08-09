@@ -3,6 +3,7 @@ package me.carson.terrariaItems.handlers;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -15,14 +16,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.scoreboard.*;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
+import java.text.NumberFormat;
+import java.util.*;
 
 
 public class CustomPotionHandler implements Listener {
@@ -30,10 +28,17 @@ public class CustomPotionHandler implements Listener {
     private final Plugin plugin;
     private static CustomPotionHandler instance;
     private final PlayerDataHandler playerDataHandler=PlayerDataHandler.getInstance();
-    public record attributeID(Attribute attr, AttributeModifier mod) {}
+
+    public record attributeID(Attribute attr, AttributeModifier mod,String id) {}
     Multimap<Player, attributeID> playerPotions = ArrayListMultimap.create();
     public record attributeModTask(AttributeModifier mod,BukkitTask task) {}
     Multimap<UUID, attributeModTask> activeTasks = ArrayListMultimap.create();
+
+    public record customPotionInfo(String effect, double amount,String id,BukkitTask task) {}
+    Multimap<UUID, customPotionInfo> activeCustomPotions= ArrayListMultimap.create();
+
+    ScoreboardManager manager = Bukkit.getScoreboardManager();
+    private final Map<UUID, Scoreboard> boards = new HashMap<>();
 
     public CustomPotionHandler(Plugin plugin){
         this.plugin=plugin;
@@ -55,15 +60,17 @@ public class CustomPotionHandler implements Listener {
             });
         }else{
             player.getAttribute(attribute).addModifier(modifier);
-            playerPotions.put(player,new attributeID(attribute,modifier));
+            playerPotions.put(player,new attributeID(attribute,modifier,id));
         }
 
         BukkitTask[] holder = new BukkitTask[1];
         holder[0] = Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.getAttribute(attribute).removeModifier(modifier);
             activeTasks.remove(uuid,new attributeModTask(modifier,holder[0]));
+            updateSidebar(player);
         }, duration);
         activeTasks.put(uuid,new attributeModTask(modifier,holder[0]));
+        updateSidebar(player);
     }
 
     public void removePotionAttributes(Player player){
@@ -81,21 +88,171 @@ public class CustomPotionHandler implements Listener {
             }
             activeTasks.removeAll(uuid);
         }
+        updateSidebar(player);
     }
-
 
     public boolean hasAttributeModifier(Player player,Attribute attribute,AttributeModifier attributeModifier){
         return Objects.requireNonNull(player.getAttribute(attribute)).getModifiers().contains(attributeModifier);
     }
 
+    public void addCustomPotionEffect(Player player,String effect, double amount,int duration,String id){
+        UUID uuid= player.getUniqueId();
+
+        for(customPotionInfo values : new ArrayList<>(activeCustomPotions.get(uuid))){
+            if(Objects.equals(values.id, id)){
+                values.task.cancel();
+                removeBonus(effect, amount, uuid);
+                activeCustomPotions.remove(uuid, values);
+            }
+        }
+
+        addBonus(effect,amount,uuid);
+        BukkitTask[] holder = new BukkitTask[1];
+        holder[0] = Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            removeBonus(effect,amount,uuid);
+            activeCustomPotions.remove(uuid,new customPotionInfo(effect,amount,id,holder[0]));
+            updateSidebar(player);
+        }, duration);
+        activeCustomPotions.put(uuid,new customPotionInfo(effect,amount,id,holder[0]));
+        updateSidebar(player);
+    }
+
+    public void removeCustomPotionEffects(Player player){
+        UUID uuid = player.getUniqueId();
+        Collection<customPotionInfo> potions = activeCustomPotions.removeAll(uuid);
+        if(potions.isEmpty()){return;}
+        for(customPotionInfo values : potions){
+            values.task.cancel();
+            removeBonus(values.effect, values.amount, uuid);
+        }
+        updateSidebar(player);
+    }
+
+    public void addBonus(String effect,double amount,UUID uuid){
+        switch (effect){
+            case "melee" -> {
+                playerDataHandler.addBonusMelee(uuid,amount);
+            }
+            case "ranged" -> {
+                playerDataHandler.addBonusRanged(uuid,amount);
+            }
+            case "magic" -> {
+                playerDataHandler.addBonusMagic(uuid,amount);
+            }
+            case "rogue" -> {
+                playerDataHandler.addBonusRogue(uuid,amount);
+            }
+            case "damage" -> {
+                playerDataHandler.addBonusDamage(uuid,amount);
+            }
+            case "crit" -> {
+                playerDataHandler.addCritChance(uuid,amount);
+            }
+            case "reduction" -> {
+                playerDataHandler.addDamageReduction(uuid,amount);
+            }
+            default -> {
+                return;
+            }
+        }
+    }
+
+    public void removeBonus(String effect,double amount,UUID uuid){
+        switch (effect){
+            case "melee" -> {
+                playerDataHandler.subtractBonusMelee(uuid,amount);
+            }
+            case "ranged" -> {
+                playerDataHandler.subtractBonusRanged(uuid,amount);
+            }
+            case "magic" -> {
+                playerDataHandler.subtractBonusMagic(uuid,amount);
+            }
+            case "rogue" -> {
+                playerDataHandler.subtractBonusRogue(uuid,amount);
+            }
+            case "damage" -> {
+                playerDataHandler.subtractBonusDamage(uuid,amount);
+            }
+            case "crit" -> {
+                playerDataHandler.subtractCritChance(uuid,amount);
+            }
+            case "reduction" -> {
+                playerDataHandler.subtractDamageReduction(uuid,amount);
+            }
+            default -> {
+                return;
+            }
+        }
+    }
+
+    public void updateSidebar(Player player){
+        UUID uuid = player.getUniqueId();
+        if(!playerDataHandler.getShowSidebar(uuid)){return;}
+        Collection<customPotionInfo> customPotions = activeCustomPotions.get(uuid);
+        Collection<attributeID> attributePotions = playerPotions.get(player);
+
+        boolean noCustom = customPotions == null || customPotions.isEmpty();
+        boolean noAttribute = attributePotions == null || attributePotions.isEmpty();
+
+        if (noCustom && noAttribute) {
+            removeSidebar(player);
+            return;
+        }
+
+        Scoreboard board = boards.computeIfAbsent(uuid, k -> {
+            Scoreboard b = manager.getNewScoreboard();
+            player.setScoreboard(b);
+            return b;
+        });
+
+        ArrayList<String> potionList = new ArrayList<>();
+        if (customPotions != null) {
+            for (customPotionInfo value : customPotions) potionList.add(value.id);
+        }
+        if (attributePotions != null) {
+            for (attributeID value : attributePotions) potionList.add(value.id);
+        }
+
+        Objective objective = board.getObjective("potions");
+        if (objective == null) {
+            objective = board.registerNewObjective("potions", "dummy", ChatColor.DARK_PURPLE + "Active Potions");
+        }
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+
+        for (String entry : board.getEntries()) {
+            board.resetScores(entry);
+        }
+
+        int score = potionList.size();
+        for (String line : potionList) {
+            objective.getScore(line).setScore(score--);
+        }
+    }
+
+    public void removeSidebar(Player player){
+        UUID uuid = player.getUniqueId();
+        Scoreboard board = boards.get(uuid);
+        if (board == null) {
+            return;
+        }
+        board.clearSlot(DisplaySlot.SIDEBAR);
+    }
+
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
         removePotionAttributes(event.getPlayer());
+        removeCustomPotionEffects(event.getPlayer());
+        boards.remove(event.getPlayer().getUniqueId());
+        removeSidebar(event.getPlayer());
     }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event){
         removePotionAttributes(event.getEntity().getPlayer());
+        removeCustomPotionEffects(event.getEntity().getPlayer());
+        boards.remove(event.getEntity().getPlayer().getUniqueId());
+        removeSidebar(event.getEntity().getPlayer());
     }
 
     public static void initialize(JavaPlugin plugin) {

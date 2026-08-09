@@ -16,7 +16,7 @@ public class BuilderPotion extends Tool {
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_INTERACTION_RANGE,2,36000,"builder");
+        customPotionInstance.potionAddAttribute(player, Attribute.BLOCK_INTERACTION_RANGE,2,36000,"Builder");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:potion_drink", 0.75f, 1f);
     }

@@ -145,3 +145,23 @@ mining_potion:
   name: "Mining Potion"
   lore:
     - "&9Increases mining speed (10:00)"
+endurance_potion:
+  name: "Endurance Potion"
+  lore:
+    - "&9Reduces damage taken by 10% (4:00)"
+magic_power_potion:
+  name: "Magic Power Potion"
+  lore:
+    - "&920% increased magic damage (4:00)"
+rage_potion:
+  name: "Rage Potion"
+  lore:
+    - "&9Increases critical chance by 10% (4:00)"
+wrath_potion:
+  name: "Wrath Potion"
+  lore:
+    - "&9Increases damage by 10% (4:00)"
+seafood_dinner:
+  name: "Seafood Dinner"
+  lore:
+    - "&9Medium improvements to all stats (14:00)"

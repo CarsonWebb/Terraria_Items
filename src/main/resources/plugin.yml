@@ -43,3 +43,6 @@ permissions:
   terrariaitems.sub.show_stats:
     description: Terraria Items Commands
     default: true
+  terrariaitems.sub.toggle_potion_list:
+    description: Terraria Items Commands
+    default: true

@@ -1,6 +1,5 @@
 package me.carson.terrariaItems.handlers;
 
-import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -40,6 +39,14 @@ public class PlayerDataHandler implements Listener {
     }
     public void toggleMsg(UUID id){
         setShowMsg(id,!getShowMsg(id));
+    }
+
+    public Boolean getShowSidebar(UUID id){return config.getBoolean(id +".show_sidebar",true);}
+    public void setShowSidebar(UUID id,Boolean set){
+        config.set(id +".show_sidebar",set);
+    }
+    public void toggleSidebar(UUID id){
+        setShowSidebar(id,!getShowSidebar(id));
     }
 
     public double getMaxMana(UUID id){
@@ -144,6 +151,7 @@ public class PlayerDataHandler implements Listener {
         player.sendMessage("Bonus Ranged Damage: "+getBonusRanged(id));
         player.sendMessage("Bonus Magic Damage: "+getBonusMagic(id));
         player.sendMessage("Bonus Rogue Damage: "+getBonusRogue(id));
+        player.sendMessage("Damage Reduction: "+getDamageReduction(id));
     }
 
     public void save() {
