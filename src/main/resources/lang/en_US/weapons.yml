@@ -398,3 +398,9 @@ brimlash:
     - "&7Fires a brimstone bolt that"
     - "&7explodes into more bolts"
     - "&710 Melee Damage"
+brimstone_fury:
+  name: "Brimstone Fury"
+  lore:
+    - "&7Converts wooden arrows into"
+    - "&7a spread of 3 brimstone bolts"
+    - "&78 Ranged Damage"

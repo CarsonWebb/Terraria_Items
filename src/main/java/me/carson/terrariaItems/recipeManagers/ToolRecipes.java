@@ -2,8 +2,7 @@ package me.carson.terrariaItems.recipeManagers;
 
 import me.carson.terrariaItems.handlers.CustomRecipeDiscoverManager;
 import me.carson.terrariaItems.handlers.CustomRecipeManager;
-import me.carson.terrariaItems.materialsFolder.materials.FallenStar;
-import me.carson.terrariaItems.materialsFolder.materials.Ruby;
+import me.carson.terrariaItems.materialsFolder.materials.*;
 import me.carson.terrariaItems.materialsFolder.materials.souls.*;
 import me.carson.terrariaItems.toolFolder.tools.*;
 import me.carson.terrariaItems.toolFolder.tools.hooks.*;
@@ -56,6 +55,55 @@ public class ToolRecipes {
         registerBuilderPotionRecipe();
         registerTitanPotionRecipe();
         registerMiningPotionRecipe();
+        registerEndurancePotionRecipe();
+        registerWrathPotionRecipe();
+        registerRagePotionRecipe();
+        registerMagicPowerPotionRecipe();
+    }
+
+    private void registerMagicPowerPotionRecipe() {
+        ItemStack item = MagicPowerPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_MagicPowerPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(FallenStar.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ALLIUM)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BLUE_ORCHID)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerRagePotionRecipe() {
+        ItemStack item = RagePotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_RagePotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Hemopiranha.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ALLIUM)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerWrathPotionRecipe() {
+        ItemStack item = WrathPotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_WrathPotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(Ebonkoi.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.ALLIUM)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerEndurancePotionRecipe() {
+        ItemStack item = EndurancePotion.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_EndurancePotion");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.POTION)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(ArmoredCavefish.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.DANDELION)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
     }
 
     private void registerMiningPotionRecipe() {

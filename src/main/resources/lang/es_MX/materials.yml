@@ -77,3 +77,15 @@ unholy_core:
   name: "Núcleo Impío"
   lore:
     - "&7Una extraña mezcla del Nether y el End"
+armored_cavefish:
+  name: "Pez Caverna Acorazado"
+  lore:
+    - ""
+ebonkoi:
+  name: "Ebonkoi"
+  lore:
+    - ""
+hemopiranha:
+  name: "Hemopiraña"
+  lore:
+    - ""

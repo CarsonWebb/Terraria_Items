@@ -77,3 +77,15 @@ unholy_core:
   name: "Нечестивое Ядро"
   lore:
     - "&7Жуткая смесь Незера и Края"
+armored_cavefish:
+  name: "Бронированная Пещерная Рыба"
+  lore:
+    - ""
+ebonkoi:
+  name: "Эбонкой"
+  lore:
+    - ""
+hemopiranha:
+  name: "Гемопиранья"
+  lore:
+    - ""

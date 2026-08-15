@@ -28,7 +28,7 @@ public class FishingManager implements Listener {
     private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.WOODED_BADLANDS,Biome.ERODED_BADLANDS);
     private static final Set<Biome> frozenBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES);
     private static final Set<Biome> oceanBiomes = Set.of(Biome.BEACH,Biome.OCEAN,Biome.DEEP_OCEAN,Biome.WARM_OCEAN,Biome.LUKEWARM_OCEAN,Biome.DEEP_LUKEWARM_OCEAN,Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN,Biome.MUSHROOM_FIELDS,Biome.SNOWY_BEACH,Biome.STONY_SHORE);
-    private static final Set<Material> FISHING_TREASURE = Set.of(Material.BOW, Material.ENCHANTED_BOOK, Material.FISHING_ROD, Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
+    private static final List<Material> FISHING_TREASURE = List.of(Material.BOW, Material.ENCHANTED_BOOK, Material.FISHING_ROD, Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
     private static final List<Material> FISHING_JUNK = List.of(Material.LILY_PAD, Material.BOWL, Material.LEATHER, Material.ROTTEN_FLESH, Material.STICK, Material.STRING, Material.WATER_BUCKET, Material.BONE);
     private static final List<Material> TREASURE = List.of(Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
 
@@ -51,9 +51,10 @@ public class FishingManager implements Listener {
         Player player = event.getPlayer();
 
         if(!FISHING_TREASURE.contains(caughtItem.getItemStack().getType())){
-            if(Math.random()<=0.1){
+            double chance= Math.random();
+            if(chance<=0.1){
                 caughtItem.setItemStack(selectCrate(player));
-            } else if (Math.random()<=0.1) {
+            } else if (chance<=0.2) {
                 ItemStack customFish=selectCustomFish(player);
                 if(customFish!=null){
                     caughtItem.setItemStack(customFish);
@@ -89,7 +90,7 @@ public class FishingManager implements Listener {
     private ItemStack rollBonusCatch(Player player) {
         double roll = Math.random();
         if (roll <= 0.08) {//Treasure at 8%
-            return new ItemStack(TREASURE.get((int) (Math.random() * FISHING_JUNK.size())));
+            return new ItemStack(FISHING_TREASURE.get((int) (Math.random() * FISHING_TREASURE.size())));
         }
         else if (roll <= 0.18) { //Crate at 10%
             return selectCrate(player);

@@ -77,3 +77,15 @@ unholy_core:
   name: "邪恶核心"
   lore:
     - "&7地狱与末地的诡异融合"
+armored_cavefish:
+  name: "装甲洞穴鱼"
+  lore:
+    - ""
+ebonkoi:
+  name: "乌木锦鲤"
+  lore:
+    - ""
+hemopiranha:
+  name: "血食食人鱼"
+  lore:
+    - ""

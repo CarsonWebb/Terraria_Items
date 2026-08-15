@@ -90,6 +90,18 @@ public class WeaponRecipes {
         registerBlazingStarRecipe();
         registerEnchantedAxeRecipe();
         registerBrimlashRecipe();
+        registerBrimstoneFuryRecipe();
+    }
+
+    private void registerBrimstoneFuryRecipe(){
+        ItemStack item= BrimstoneFury.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_BrimstoneFury");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape(" US","U S"," US");
+        recipe.setIngredient('U',new RecipeChoice.ExactChoice(UnholyCore.getItem(plugin)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STRING)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerBrimlashRecipe(){

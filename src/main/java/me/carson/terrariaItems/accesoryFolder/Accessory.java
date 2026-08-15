@@ -14,8 +14,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Accessory {
 

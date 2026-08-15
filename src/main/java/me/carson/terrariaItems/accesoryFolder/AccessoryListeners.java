@@ -1,15 +1,10 @@
 package me.carson.terrariaItems.accesoryFolder;
 
 import me.carson.terrariaItems.accesoryFolder.accessories.*;
-import me.carson.terrariaItems.handlers.ManaManager;
 import me.carson.terrariaItems.handlers.PlayerDataHandler;
-import me.carson.terrariaItems.handlers.WorldDataHandler;
-import me.carson.terrariaItems.projectilesFolder.projectiles.StarCannonStar;
-import me.carson.terrariaItems.weaponsFolder.weapons.magicFolder.magicWeapons.MagicDagger;
 import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.type.Switch;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,11 +18,9 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 public class AccessoryListeners implements Listener {
 

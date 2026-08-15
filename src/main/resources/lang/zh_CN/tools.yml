@@ -141,3 +141,23 @@ mining_potion:
   name: "采矿药水"
   lore:
     - "&9增加采矿速度 (10:00)"
+endurance_potion:
+  name: "耐久药水"
+  lore:
+    - "&9减少受到的伤害10% (4:00)"
+magic_power_potion:
+  name: "魔力药水"
+  lore:
+    - "&9魔法伤害提升20% (4:00)"
+rage_potion:
+  name: "狂怒药水"
+  lore:
+    - "&9暴击率提升10% (4:00)"
+wrath_potion:
+  name: "愤怒药水"
+  lore:
+    - "&9伤害提升10% (4:00)"
+seafood_dinner:
+  name: "海鲜晚餐"
+  lore:
+    - "&9所有属性中等提升 (14:00)"

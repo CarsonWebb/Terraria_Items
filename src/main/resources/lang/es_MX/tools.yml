@@ -141,3 +141,23 @@ mining_potion:
   name: "Poción de Minería"
   lore:
     - "&9Aumenta la velocidad de minería (10:00)"
+endurance_potion:
+  name: "Poción de Resistencia"
+  lore:
+    - "&9Reduce el daño recibido un 10% (4:00)"
+magic_power_potion:
+  name: "Poción de Poder Mágico"
+  lore:
+    - "&920% de daño mágico aumentado (4:00)"
+rage_potion:
+  name: "Poción de Furia"
+  lore:
+    - "&9Aumenta la probabilidad de crítico un 10% (4:00)"
+wrath_potion:
+  name: "Poción de Ira"
+  lore:
+    - "&9Aumenta el daño un 10% (4:00)"
+seafood_dinner:
+  name: "Cena de Mariscos"
+  lore:
+    - "&9Mejoras moderadas a todas las estadísticas (14:00)"
