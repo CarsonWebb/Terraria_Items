@@ -122,11 +122,12 @@ public abstract class Throwable implements Listener {
                 }
                 if (result.getHitEntity() != null) {
                     if (result.getHitEntity() instanceof LivingEntity target) {
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage + weaponDamage), source);
                         hitEntityEffect(proj, player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                     }
                     if (enemiesHit[0] >= peirce) {
                         proj.remove();
@@ -191,9 +192,10 @@ public abstract class Throwable implements Listener {
 
             for (Entity e : proj.getNearbyEntities(0.2, 0.2, 0.2)) {
                 if (e instanceof LivingEntity target && e!=player) {
+                    int temp= target.getMaximumNoDamageTicks();
                     target.setMaximumNoDamageTicks(0);
                     target.damage(damage+weaponDamage);
-                    target.setMaximumNoDamageTicks(20);
+                    target.setMaximumNoDamageTicks(temp);
                     if (enemiesHit[0]+enemiesHitAgain[0] >= peirce) {
                         proj.remove();
                         task.cancel();

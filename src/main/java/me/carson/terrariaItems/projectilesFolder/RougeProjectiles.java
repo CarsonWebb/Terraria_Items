@@ -140,11 +140,12 @@ public abstract class RougeProjectiles {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
@@ -231,11 +232,12 @@ public abstract class RougeProjectiles {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
@@ -551,11 +553,12 @@ public abstract class RougeProjectiles {
             if(result!=null){
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
@@ -641,11 +644,12 @@ public abstract class RougeProjectiles {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         if(isStealthStrike){
                             target.setFireTicks(100);
                         }
@@ -742,11 +746,12 @@ public abstract class RougeProjectiles {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                 }
@@ -797,11 +802,12 @@ public abstract class RougeProjectiles {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage+getStealthDamage(weaponDamage+damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                 }
@@ -883,11 +889,12 @@ public abstract class RougeProjectiles {
             if(result!=null){
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+getStealthDamage(damage,currentStealth)),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                     }
                     if(enemiesHit[0] >=peirce) {
                         proj.remove();

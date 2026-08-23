@@ -149,11 +149,12 @@ public abstract class Projectile implements Listener {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
@@ -257,11 +258,12 @@ public abstract class Projectile implements Listener {
                 }
                 if(result.getHitEntity()!=null){
                     if(result.getHitEntity() instanceof LivingEntity target){
+                        int temp= target.getMaximumNoDamageTicks();
                         target.setMaximumNoDamageTicks(0);
                         DamageSource source = DamageSource.builder(damageType).withCausingEntity(player).withDirectEntity(player).build();
                         target.damage((damage+weaponDamage),source);
                         hitEntityEffect(target,player);
-                        target.setMaximumNoDamageTicks(20);
+                        target.setMaximumNoDamageTicks(temp);
                         hitEntities.add(target);
                     }
                     if(enemiesHit[0] >=peirce) {
