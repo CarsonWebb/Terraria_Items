@@ -18,6 +18,7 @@ public class SeafoodDinner extends Tool {
     public void rightActivate(Player player) {
         customPotionInstance.addCustomFoodEffect(player,16800,"Plenty_Satisfied");
         player.getInventory().removeItem(getItem(plugin));
+        player.setFoodLevel(player.getFoodLevel()+10);
         player.getWorld().playSound(player.getLocation(), "terraria:food_eat", 0.75f, 1f);
     }
 

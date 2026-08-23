@@ -17,6 +17,7 @@ public class AppleJuice extends Tool {
     public void rightActivate(Player player) {
         customPotionInstance.addCustomFoodEffect(player,12000,"Well_Fed");
         player.getInventory().removeItem(getItem(plugin));
+        player.setFoodLevel(player.getFoodLevel()+5);
         player.getWorld().playSound(player.getLocation(), "terraria:food_eat", 0.75f, 1f);
     }
 

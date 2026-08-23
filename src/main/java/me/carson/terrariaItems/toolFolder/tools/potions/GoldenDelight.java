@@ -17,6 +17,7 @@ public class GoldenDelight extends Tool {
     public void rightActivate(Player player) {
         customPotionInstance.addCustomFoodEffect(player,36000,"Exquisitely_Stuffed");
         player.getInventory().removeItem(getItem(plugin));
+        player.setFoodLevel(player.getFoodLevel()+15);
         player.getWorld().playSound(player.getLocation(), "terraria:food_eat", 0.75f, 1f);
     }
 
