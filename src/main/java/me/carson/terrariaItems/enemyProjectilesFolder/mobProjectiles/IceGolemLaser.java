@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class IceGolemLaser extends EnemyProjectile {
 
     public IceGolemLaser(Plugin plugin) {
-        super(plugin, 20,1f, "ice_golem_laser", "IceGolemLaser",0,0, DamageType.ARROW,null);
+        super(plugin, 25,1f, "ice_golem_laser", "IceGolemLaser",0,0, DamageType.ARROW,null);
     }
 
 

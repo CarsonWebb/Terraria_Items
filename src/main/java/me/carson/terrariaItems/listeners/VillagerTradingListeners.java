@@ -64,6 +64,7 @@ public class VillagerTradingListeners implements Listener {
                 if(isNight(villager.getWorld())){
                     recipes.add(addIllegalGunParts());
                 }
+                recipes.add(addMinishark());
             }
             if(profession == Villager.Profession.CLERIC) {
                 recipes.add(addLesserManaPotion());

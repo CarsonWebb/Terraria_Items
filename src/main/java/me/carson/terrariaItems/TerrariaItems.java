@@ -58,7 +58,7 @@ public final class TerrariaItems extends JavaPlugin{
         CustomRecipeDiscoverManager.initialize(this);
 
         CustomRecipeManager customRecipeManager = new CustomRecipeManager(this);
-        customRecipeManager.registerAll(); // populates requiredIds AND calls Bukkit.addRecipe for each
+        customRecipeManager.registerAll();
         Bukkit.getPluginManager().registerEvents(new RecipeValidationListener(customRecipeManager), this);
 
         CustomRecipeDiscoverManager.getInstance().freeze();
@@ -100,6 +100,7 @@ public final class TerrariaItems extends JavaPlugin{
         for(Player player:Bukkit.getOnlinePlayers()){
             CustomPotionHandler.getInstance().removePotionAttributes(player);
             CustomPotionHandler.getInstance().removeCustomPotionEffects(player);
+            CustomPotionHandler.getInstance().removeCustomFoodEffect(player);
         }
         cleanUpProjectiles();
         PlayerDataHandler.getInstance().save();

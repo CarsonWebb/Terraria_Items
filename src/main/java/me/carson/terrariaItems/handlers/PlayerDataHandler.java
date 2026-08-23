@@ -143,15 +143,15 @@ public class PlayerDataHandler implements Listener {
     public void showStats(Player player){
         UUID id =player.getUniqueId();
         player.sendMessage("§lPlayer Stats: ");
-        player.sendMessage("Max Mana: "+(getMaxMana(id)+getExtraMana(id)));
-        player.sendMessage("Crit Chance: "+getCritChance(id));
-        player.sendMessage("Max Stealth: "+getMaxStealth(id));
-        player.sendMessage("Bonus Damage: "+getBonusDamage(id));
+        player.sendMessage("§bMax Mana: "+(getMaxMana(id)+getExtraMana(id)));
+        player.sendMessage("§6Crit Chance: "+getCritChance(id));
+        player.sendMessage("§5Max Stealth: "+getMaxStealth(id));
+        player.sendMessage("§4Bonus Damage: "+getBonusDamage(id));
         player.sendMessage("Bonus Melee Damage: "+getBonusMelee(id));
         player.sendMessage("Bonus Ranged Damage: "+getBonusRanged(id));
         player.sendMessage("Bonus Magic Damage: "+getBonusMagic(id));
         player.sendMessage("Bonus Rogue Damage: "+getBonusRogue(id));
-        player.sendMessage("Damage Reduction: "+getDamageReduction(id));
+        player.sendMessage("§7Damage Reduction: "+getDamageReduction(id));
     }
 
     public void save() {

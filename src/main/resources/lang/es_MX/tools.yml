@@ -160,4 +160,15 @@ wrath_potion:
 seafood_dinner:
   name: "Cena de Mariscos"
   lore:
+    - "&7Veo comida del mar, me la como."
     - "&9Mejoras moderadas a todas las estadísticas (14:00)"
+golden_delight:
+  name: "Delicia Dorada"
+  lore:
+    - "&7¡(Au)téntico!"
+    - "&9Mejoras mayores a todas las estadísticas (30:00)"
+apple_juice:
+  name: "Jugo de Manzana"
+  lore:
+    - "&7¿Con ganas de manzanas?"
+    - "&9Mejoras menores a todas las estadísticas (10:00)"

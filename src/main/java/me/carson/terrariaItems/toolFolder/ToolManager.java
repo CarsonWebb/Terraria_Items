@@ -68,6 +68,8 @@ public class ToolManager implements Listener {
         toolList.put("RagePotion",new RagePotion(plugin));
         toolList.put("MagicPowerPotion",new MagicPowerPotion(plugin));
         toolList.put("SeafoodDinner",new SeafoodDinner(plugin));
+        toolList.put("GoldenDelight",new GoldenDelight(plugin));
+        toolList.put("AppleJuice",new AppleJuice(plugin));
     }
 
     public Tool getTool(ItemStack item){

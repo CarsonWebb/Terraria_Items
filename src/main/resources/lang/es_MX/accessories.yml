@@ -303,3 +303,10 @@ silencing_sheath:
   lore:
     - "&7+10 de sigilo máximo"
     - "&7El sigilo se regenera un 4% más rápido"
+crossed_heart_necklace:
+  name: "Collar de Corazón Cruzado"
+  lore:
+    - "&7Aumenta la velocidad de movimiento"
+    - "&7tras recibir daño"
+    - "&7Aumenta la duración de la invencibilidad"
+    - "&7tras recibir daño"

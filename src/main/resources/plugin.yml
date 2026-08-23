@@ -1,5 +1,5 @@
 name: TerrariaItems
-version: '4.3'
+version: '4.4'
 main: me.carson.terrariaItems.TerrariaItems
 api-version: '1.21'
 commands:

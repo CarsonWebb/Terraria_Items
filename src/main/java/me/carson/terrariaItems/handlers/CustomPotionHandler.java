@@ -2,6 +2,7 @@ package me.carson.terrariaItems.handlers;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import io.netty.channel.epoll.Epoll;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -19,7 +20,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.*;
 
-import java.text.NumberFormat;
 import java.util.*;
 
 
@@ -36,6 +36,9 @@ public class CustomPotionHandler implements Listener {
 
     public record customPotionInfo(String effect, double amount,String id,BukkitTask task) {}
     Multimap<UUID, customPotionInfo> activeCustomPotions= ArrayListMultimap.create();
+
+    public record customFoodInfo(String id,BukkitTask task){}
+    HashMap<UUID, customFoodInfo> customFoodList = new HashMap<>();
 
     ScoreboardManager manager = Bukkit.getScoreboardManager();
     private final Map<UUID, Scoreboard> boards = new HashMap<>();
@@ -128,7 +131,7 @@ public class CustomPotionHandler implements Listener {
         updateSidebar(player);
     }
 
-    public void addBonus(String effect,double amount,UUID uuid){
+    private void addBonus(String effect,double amount,UUID uuid){
         switch (effect){
             case "melee" -> {
                 playerDataHandler.addBonusMelee(uuid,amount);
@@ -157,7 +160,7 @@ public class CustomPotionHandler implements Listener {
         }
     }
 
-    public void removeBonus(String effect,double amount,UUID uuid){
+    private void removeBonus(String effect,double amount,UUID uuid){
         switch (effect){
             case "melee" -> {
                 playerDataHandler.subtractBonusMelee(uuid,amount);
@@ -186,6 +189,102 @@ public class CustomPotionHandler implements Listener {
         }
     }
 
+    public void addCustomFoodEffect(Player player, int duration, String id){
+        UUID uuid= player.getUniqueId();
+
+        if(customFoodList.get(uuid)!=null){
+            customFoodList.get(uuid).task.cancel();
+            removeFoodEffect(player,customFoodList.get(uuid).id);
+            customFoodList.remove(uuid);
+        }
+
+        addFoodEffect(player,id);
+        BukkitTask[] holder = new BukkitTask[1];
+        holder[0] = Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            removeFoodEffect(player,id);
+            customFoodList.remove(uuid);
+            updateSidebar(player);
+        }, duration);
+        customFoodList.put(uuid,new customFoodInfo(id,holder[0]));
+        updateSidebar(player);
+    }
+
+    public void removeCustomFoodEffect(Player player){
+        UUID uuid = player.getUniqueId();
+        if(customFoodList.get(uuid)!=null){
+            customFoodList.get(uuid).task.cancel();
+            removeFoodEffect(player,customFoodList.get(uuid).id);
+            customFoodList.remove(uuid);
+        }
+        updateSidebar(player);
+    }
+
+    private void addFoodEffect(Player player,String id){
+        UUID uuid=player.getUniqueId();
+        switch (id){
+            case "Well_Fed" ->{
+                player.getAttribute(Attribute.ARMOR).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_ARMOR"),1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_ATTACK_SPEED"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_MOVEMENT_SPEED"),0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_BLOCK_BREAK_SPEED"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                addBonus("damage",0.05,uuid);
+                addBonus("crit",0.02,uuid);
+            }
+            case "Plenty_Satisfied" ->{
+                player.getAttribute(Attribute.ARMOR).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_ARMOR"),2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_ATTACK_SPEED"),0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_MOVEMENT_SPEED"),0.03, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_BLOCK_BREAK_SPEED"),0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                addBonus("damage",0.075,uuid);
+                addBonus("crit",0.03,uuid);
+            }
+            case "Exquisitely_Stuffed" ->{
+                player.getAttribute(Attribute.ARMOR).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_ARMOR"),4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_ATTACK_SPEED"),0.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_MOVEMENT_SPEED"),0.04, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_BLOCK_BREAK_SPEED"),0.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                addBonus("damage",0.10,uuid);
+                addBonus("crit",0.04,uuid);
+            }
+            default -> {
+                return;
+            }
+        }
+    }
+
+    private void removeFoodEffect(Player player,String id){
+        UUID uuid=player.getUniqueId();
+        switch (id){
+            case "Well_Fed" ->{
+                player.getAttribute(Attribute.ARMOR).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_ARMOR"),1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_ATTACK_SPEED"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_MOVEMENT_SPEED"),0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Well_Fed_BLOCK_BREAK_SPEED"),0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                removeBonus("damage",0.05,uuid);
+                removeBonus("crit",0.02,uuid);
+            }
+            case "Plenty_Satisfied" ->{
+                player.getAttribute(Attribute.ARMOR).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_ARMOR"),2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_ATTACK_SPEED"),0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_MOVEMENT_SPEED"),0.03, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Plenty_Satisfied_BLOCK_BREAK_SPEED"),0.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                removeBonus("damage",0.075,uuid);
+                removeBonus("crit",0.03,uuid);
+            }
+            case "Exquisitely_Stuffed" ->{
+                player.getAttribute(Attribute.ARMOR).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_ARMOR"),4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_ATTACK_SPEED"),0.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_MOVEMENT_SPEED"),0.04, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).removeModifier(new AttributeModifier(new NamespacedKey(plugin,"Exquisitely_Stuffed_BLOCK_BREAK_SPEED"),0.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                removeBonus("damage",0.10,uuid);
+                removeBonus("crit",0.04,uuid);
+            }
+            default -> {
+                return;
+            }
+        }
+    }
+
     public void updateSidebar(Player player){
         UUID uuid = player.getUniqueId();
         if(!playerDataHandler.getShowSidebar(uuid)){return;}
@@ -194,8 +293,9 @@ public class CustomPotionHandler implements Listener {
 
         boolean noCustom = customPotions == null || customPotions.isEmpty();
         boolean noAttribute = attributePotions == null || attributePotions.isEmpty();
+        boolean noFood=customFoodList.get(uuid)==null;
 
-        if (noCustom && noAttribute) {
+        if (noCustom && noAttribute && noFood) {
             removeSidebar(player);
             return;
         }
@@ -207,12 +307,10 @@ public class CustomPotionHandler implements Listener {
         });
 
         ArrayList<String> potionList = new ArrayList<>();
-        if (customPotions != null) {
-            for (customPotionInfo value : customPotions) potionList.add(value.id);
-        }
-        if (attributePotions != null) {
-            for (attributeID value : attributePotions) potionList.add(value.id);
-        }
+
+        for (customPotionInfo value : customPotions) potionList.add(value.id);
+        for (attributeID value : attributePotions) potionList.add(value.id);
+        if(customFoodList.get(uuid)!=null){potionList.add(customFoodList.get(uuid).id);}
 
         Objective objective = board.getObjective("potions");
         if (objective == null) {
@@ -243,6 +341,7 @@ public class CustomPotionHandler implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event){
         removePotionAttributes(event.getPlayer());
         removeCustomPotionEffects(event.getPlayer());
+        removeCustomFoodEffect(event.getPlayer());
         boards.remove(event.getPlayer().getUniqueId());
         removeSidebar(event.getPlayer());
     }
@@ -251,6 +350,7 @@ public class CustomPotionHandler implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event){
         removePotionAttributes(event.getEntity().getPlayer());
         removeCustomPotionEffects(event.getEntity().getPlayer());
+        removeCustomFoodEffect(event.getEntity().getPlayer());
         boards.remove(event.getEntity().getPlayer().getUniqueId());
         removeSidebar(event.getEntity().getPlayer());
     }

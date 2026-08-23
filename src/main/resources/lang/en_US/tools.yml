@@ -164,4 +164,15 @@ wrath_potion:
 seafood_dinner:
   name: "Seafood Dinner"
   lore:
+    - "&7I sea food, I eat it."
     - "&9Medium improvements to all stats (14:00)"
+golden_delight:
+  name: "Golden Delight"
+  lore:
+    - "&7(Au)some!"
+    - "&9Major improvements to all stats (30:00)"
+apple_juice:
+  name: "Apple Juice"
+  lore:
+    - "&7Hungry for Apples?"
+    - "&9Minor improvements to all stats (10:00)"

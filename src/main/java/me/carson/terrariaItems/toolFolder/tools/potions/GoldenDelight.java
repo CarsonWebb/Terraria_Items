@@ -2,21 +2,20 @@ package me.carson.terrariaItems.toolFolder.tools.potions;
 
 import me.carson.terrariaItems.toolFolder.Tool;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-public class SeafoodDinner extends Tool {
+public class GoldenDelight extends Tool {
 
-    public SeafoodDinner(Plugin plugin){
-        super(plugin,"seafood_dinner.name","#96FF96", Material.BREWER_POTTERY_SHERD,"seafood_dinner","SeafoodDinner",20,"seafood_dinner.lore");
+    public GoldenDelight(Plugin plugin){
+        super(plugin,"golden_delight.name","#D2A0FF", Material.BREWER_POTTERY_SHERD,"golden_delight","GoldenDelight",20,"golden_delight.lore");
     }
 
     @Override
     public void rightActivate(Player player) {
-        customPotionInstance.addCustomFoodEffect(player,16800,"Plenty_Satisfied");
+        customPotionInstance.addCustomFoodEffect(player,36000,"Exquisitely_Stuffed");
         player.getInventory().removeItem(getItem(plugin));
         player.getWorld().playSound(player.getLocation(), "terraria:food_eat", 0.75f, 1f);
     }
@@ -27,7 +26,7 @@ public class SeafoodDinner extends Tool {
     }
 
     public static ItemStack getItem(Plugin plugin) {
-        ItemStack item =new SeafoodDinner(plugin).createItem();
+        ItemStack item =new GoldenDelight(plugin).createItem();
         ItemMeta meta= item.getItemMeta();
         meta.setMaxStackSize(64);
         item.setItemMeta(meta);

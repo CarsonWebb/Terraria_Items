@@ -31,7 +31,7 @@ public class PanicNecklace extends Accessory  {
 
     @Override
     public void onPlayerHit(Player player, EntityDamageEvent event) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,160,1,false,false,false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,160,0,false,false,false));
     }
 
     @Override

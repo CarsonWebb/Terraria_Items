@@ -160,4 +160,15 @@ wrath_potion:
 seafood_dinner:
   name: "海鲜晚餐"
   lore:
+    - "&7海鲜当前，岂有不吃之理。"
     - "&9所有属性中等提升 (14:00)"
+golden_delight:
+  name: "黄金美食"
+  lore:
+    - "&7（Au）妙极了！"
+    - "&9所有属性大幅提升 (30:00)"
+apple_juice:
+  name: "苹果汁"
+  lore:
+    - "&7想吃苹果吗？"
+    - "&9所有属性小幅提升 (10:00)"

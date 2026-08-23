@@ -3,6 +3,8 @@ package me.carson.terrariaItems.bossFolder.bosses;
 import me.carson.terrariaItems.bossFolder.Boss;
 import me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles.WitherBomb;
 import me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles.WitherLaser;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalSkull;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
@@ -32,6 +34,11 @@ public class MechanicalWither extends Boss implements Listener {
     public void summonBoss(Player player) {
         World world=player.getWorld();
         Location spawnPoint=getSpawnPoint(player);
+        if(spawnPoint==null){
+            player.sendMessage(ChatColor.RED + "Invalid spawn, doesn't have adequate room");
+            player.getInventory().addItem(MechanicalSkull.getItem(plugin));
+            return;
+        }
         Wither boss= (Wither) world.spawnEntity(spawnPoint, type);
         boss.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         boss.setHealth(health);

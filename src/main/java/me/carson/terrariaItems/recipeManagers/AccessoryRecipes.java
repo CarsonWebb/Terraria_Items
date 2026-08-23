@@ -73,7 +73,19 @@ public class AccessoryRecipes {
         registerCoinOfDeceitRecipe();
         registerRuinMedallionRecipe();
         registerSilencingSheathRecipe();
+        registerCrossedHeartNecklaceRecipe();
     }
+
+    private void registerCrossedHeartNecklaceRecipe(){
+        ItemStack item= CrossedHeartNecklace.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "hm_CrossedHeartNecklace");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(CrossNecklace.getItem(plugin)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(PanicNecklace.getItem(plugin)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
+    }
+
 
     private void registerSilencingSheathRecipe(){
         ItemStack item=SilencingSheath.getItem(plugin);

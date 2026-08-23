@@ -59,6 +59,100 @@ public class ToolRecipes {
         registerWrathPotionRecipe();
         registerRagePotionRecipe();
         registerMagicPowerPotionRecipe();
+        registerGoldenDelightRecipe();
+        registerSeafoodDinnerRecipe();
+        registerAppleJuiceRecipe();
+    }
+
+    private void registerAppleJuiceRecipe() {
+        ItemStack item = AppleJuice.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_AppleJuice");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.GLASS_BOTTLE)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.APPLE)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerSeafoodDinnerRecipe() {
+        ItemStack item = SeafoodDinner.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_SeafoodDinner");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, item);
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.BOWL)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.COD)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SALMON)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.TROPICAL_FISH)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.COD)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.SALMON)));
+        recipe.addIngredient(new RecipeChoice.ExactChoice(new ItemStack(Material.TROPICAL_FISH)));
+        recipe.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe);
+    }
+
+    private void registerGoldenDelightRecipe(){
+        ItemStack item= GoldenDelight.getItem(plugin);
+        NamespacedKey key1 = new NamespacedKey(plugin, "pre_GoldenDelight1");
+        ShapedRecipe recipe1 = new ShapedRecipe(key1, item);
+        recipe1.shape("GGG","BFB","GGG");
+        recipe1.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe1.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe1.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_BEEF)));
+        recipe1.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe1);
+
+        NamespacedKey key2 = new NamespacedKey(plugin, "pre_GoldenDelight2");
+        ShapedRecipe recipe2 = new ShapedRecipe(key2, item);
+        recipe2.shape("GGG","BFB","GGG");
+        recipe2.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe2.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe2.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_PORKCHOP)));
+        recipe2.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe2);
+
+        NamespacedKey key3 = new NamespacedKey(plugin, "pre_GoldenDelight3");
+        ShapedRecipe recipe3 = new ShapedRecipe(key3, item);
+        recipe3.shape("GGG","BFB","GGG");
+        recipe3.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe3.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe3.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_CHICKEN)));
+        recipe3.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe3);
+
+        NamespacedKey key4 = new NamespacedKey(plugin, "pre_GoldenDelight4");
+        ShapedRecipe recipe4 = new ShapedRecipe(key4, item);
+        recipe4.shape("GGG","BFB","GGG");
+        recipe4.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe4.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe4.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_MUTTON)));
+        recipe4.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe4);
+
+        NamespacedKey key5 = new NamespacedKey(plugin, "pre_GoldenDelight5");
+        ShapedRecipe recipe5 = new ShapedRecipe(key5, item);
+        recipe5.shape("GGG","BFB","GGG");
+        recipe5.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe5.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe5.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_RABBIT)));
+        recipe5.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe5);
+
+        NamespacedKey key6 = new NamespacedKey(plugin, "pre_GoldenDelight6");
+        ShapedRecipe recipe6 = new ShapedRecipe(key6, item);
+        recipe6.shape("GGG","BFB","GGG");
+        recipe6.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe6.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe6.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_COD)));
+        recipe6.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe6);
+
+        NamespacedKey key7 = new NamespacedKey(plugin, "pre_GoldenDelight7");
+        ShapedRecipe recipe7 = new ShapedRecipe(key7, item);
+        recipe7.shape("GGG","BFB","GGG");
+        recipe7.setIngredient('G', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_INGOT)));
+        recipe7.setIngredient('B', new RecipeChoice.ExactChoice(new ItemStack(Material.GOLD_BLOCK)));
+        recipe7.setIngredient('F', new RecipeChoice.ExactChoice(new ItemStack(Material.COOKED_SALMON)));
+        recipe7.setCategory(CraftingBookCategory.MISC);
+        recipeManager.register(recipe7);
     }
 
     private void registerMagicPowerPotionRecipe() {
