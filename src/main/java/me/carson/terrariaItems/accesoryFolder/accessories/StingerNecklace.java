@@ -34,7 +34,10 @@ public class StingerNecklace extends Accessory  {
 
     @Override
     public void onPlayerHit(Player player, EntityDamageEvent event) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION,100,0,false,false,false));
+        PotionEffect existing = player.getPotionEffect(PotionEffectType.REGENERATION);
+        if (existing == null || existing.getDuration() < 50) {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 0, false, false, false));
+        }
     }
 
     @Override

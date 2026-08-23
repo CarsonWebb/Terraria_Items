@@ -19,7 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.*;
 
-import java.text.NumberFormat;
 import java.util.*;
 
 
@@ -184,6 +183,34 @@ public class CustomPotionHandler implements Listener {
                 return;
             }
         }
+    }
+
+    public void addCustomFoodEffect(Player player, int duration, String id){
+
+    }
+
+    public void addFoodEffect(Player player,String id, int duration){
+        UUID uuid=player.getUniqueId();
+        switch (id){
+            case "Well Fed" ->{
+                player.getAttribute(Attribute.ARMOR).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well Fed ARMOR"),1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.ATTACK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well Fed ATTACK_SPEED"),0.15, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.MOVEMENT_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well Fed MOVEMENT_SPEED"),1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                player.getAttribute(Attribute.BLOCK_BREAK_SPEED).addModifier(new AttributeModifier(new NamespacedKey(plugin,"Well Fed BLOCK_BREAK_SPEED"),0.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.ANY));
+                addBonus("damage",0.05,uuid);
+                addBonus("crit",0.02,uuid);
+            }
+            case "Plenty Satisfied" ->{
+
+            }
+            case "Exquisitely Stuffed" ->{
+
+            }
+            default -> {
+                return;
+            }
+        }
+
     }
 
     public void updateSidebar(Player player){

@@ -32,6 +32,7 @@ public class AccessoryListeners implements Listener {
     private final HashMap<UUID,Integer> usedJumps = new HashMap<UUID, Integer>();
     public final Set<String> DOUBLE_JUMPS = Set.of("BundleOfBalloons","BundleOfHorseshoeBalloons","CloudInABottle","TsunamiInABottle","BlizzardInABottle","SandstormInABottle","CloudInABalloon","BlizzardInABalloon","SandstormInABalloon","BlueHorseshoeBalloon","WhiteHorseshoeBalloon","YellowHorseshoeBalloon");
     public final Set<String> SHIELDS = Set.of("CobaltShield","ObsidianShield","AnkhShield");
+    public final HashMap<UUID,Long> lastHit =new HashMap<>();
 
     public AccessoryListeners(Plugin plugin){
         this.plugin=plugin;
@@ -44,6 +45,7 @@ public class AccessoryListeners implements Listener {
         if (!(event.getEntity() instanceof Player player)) return;
         List<ItemStack> playerAccessories=playerDataInstance.getInventory(player.getUniqueId());
         if(playerAccessories==null){return;}
+
         for(ItemStack item:playerAccessories){
             Accessory accessory=accessoryManagerInstance.getAccessory(item);
             if(accessory!=null){

@@ -1,6 +1,7 @@
 package me.carson.terrariaItems.projectilesFolder;
 
 import org.bukkit.*;
+import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.damage.DamageSource;
@@ -16,6 +17,7 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Projectile implements Listener {
@@ -28,6 +30,7 @@ public abstract class Projectile implements Listener {
     protected final int bounces;
     protected final DamageType damageType;
     protected final Particle.DustOptions particle;
+    private static final Set<EntityType> excludedMobs = Set.of(EntityType.VILLAGER,EntityType.WOLF,EntityType.CAT,EntityType.PARROT,EntityType.WANDERING_TRADER);
 
     public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
         this.plugin = plugin;
@@ -325,6 +328,7 @@ public abstract class Projectile implements Listener {
                 .filter(e -> e instanceof LivingEntity)
                 .filter(e -> e != player)
                 .filter(e -> e.getType() != proj.getType())
+                .filter(e -> !excludedMobs.contains(e.getType()))
                 .map(e -> (LivingEntity) e)
                 .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
                 .orElse(null);

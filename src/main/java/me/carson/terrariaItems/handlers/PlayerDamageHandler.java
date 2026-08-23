@@ -53,7 +53,7 @@ public class PlayerDamageHandler implements Listener {
             extraDamage+=originalDamage *playerInstance.getBonusRanged(id);
         }
         if(Math.random()<playerInstance.getCritChance(id)){
-            event.setDamage((originalDamage+extraDamage)*2);
+            event.setDamage((originalDamage+extraDamage)*1.5);
             if(event.getEntity() instanceof LivingEntity entity){
                 spawnCritEffect(entity.getEyeLocation());
             }

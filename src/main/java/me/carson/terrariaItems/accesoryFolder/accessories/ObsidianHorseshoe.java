@@ -30,7 +30,7 @@ public class ObsidianHorseshoe extends Accessory{
 
     @Override
     public void onPlayerHit(Player player, EntityDamageEvent event) {
-        if (OBSIDIAN_SKULL_DAMAGE.contains(event.getCause())){
+        if ((OBSIDIAN_SKULL_DAMAGE.contains(event.getCause()))||(event.getCause() == EntityDamageEvent.DamageCause.FALL)||(event.getCause() == EntityDamageEvent.DamageCause.FLY_INTO_WALL)){
             event.setCancelled(true);
         }
     }

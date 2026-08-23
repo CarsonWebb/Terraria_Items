@@ -71,11 +71,11 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
                 case 1 ->{
                     if(skeleton.getWorld().hasStorm()){
                         if(snowyBiomes.contains(location.getBlock().getBiome())){
-                            if(Math.random()<0.05){
+                            if(Math.random()<0.075){
                                 spawnIceGolem(skeleton);
                             }
                         } else if (desertBiomes.contains(location.getBlock().getBiome())) {
-                            if(Math.random()<0.05){
+                            if(Math.random()<0.075){
                                 spawnSandElemental(skeleton);
                             }
                         }
@@ -185,15 +185,16 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     public void spawnIceGolem(Skeleton skeleton){
         skeleton.setCustomName(lang.get("enemies","ice_golem.name"));
         skeleton.setCustomNameVisible(false);
-        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(150);
-        skeleton.setHealth(150);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(250);
+        skeleton.setHealth(250);
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"IceGolem");
         skeleton.setCanPickupItems(false);
         skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.17);
         skeleton.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(5);
-        skeleton.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(20);
+        skeleton.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(25);
         skeleton.getAttribute(Attribute.SCALE).setBaseValue(2.5);
+        skeleton.getAttribute(Attribute.FOLLOW_RANGE).setBaseValue(50);
         EntityEquipment equipment=skeleton.getEquipment();
         equipment.setHelmet(IceGolemHat.getItem(plugin));
         equipment.setChestplate(IceGolemChestplate.getItem(plugin));
@@ -231,15 +232,16 @@ public class CustomSkeletons extends CustomEnemy implements Listener {
     public void spawnSandElemental(Skeleton skeleton){
         skeleton.setCustomName(lang.get("enemies","sand_elemental.name"));
         skeleton.setCustomNameVisible(false);
-        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(200);
-        skeleton.setHealth(200);
+        skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(300);
+        skeleton.setHealth(300);
         NamespacedKey key = new NamespacedKey(plugin, "custom_enemy");
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.STRING,"SandElemental");
         skeleton.setCanPickupItems(false);
         skeleton.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.15);
         skeleton.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(5);
-        skeleton.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(20);
+        skeleton.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(25);
         skeleton.getAttribute(Attribute.SCALE).setBaseValue(2);
+        skeleton.getAttribute(Attribute.FOLLOW_RANGE).setBaseValue(50);
         skeleton.setInvisible(true);
         EntityEquipment equipment=skeleton.getEquipment();
         equipment.setHelmet(SandElementalHat.getItem(plugin));

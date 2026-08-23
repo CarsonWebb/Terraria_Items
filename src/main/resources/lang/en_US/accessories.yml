@@ -304,3 +304,10 @@ silencing_sheath:
   lore:
     - "&7+10 maximum stealth"
     - "&7Stealth generates 4% faster"
+crossed_heart_necklace:
+  name: "Crossed Heart Necklace"
+  lore:
+    - "&7Increases movement speed"
+    - "&7after taking damage"
+    - "&7Increases length of invincibility"
+    - "&7after taking damage"

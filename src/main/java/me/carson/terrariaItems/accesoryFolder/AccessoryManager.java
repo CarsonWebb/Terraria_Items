@@ -95,7 +95,7 @@ public class AccessoryManager implements Listener {
         accessoryList.put("RuinMedallion",new RuinMedallion(plugin));
         accessoryList.put("RougeEmblem",new RougeEmblem(plugin));
         accessoryList.put("SilencingSheath",new SilencingSheath(plugin));
-        accessoryList.put("HermesBoots",new HermesBoots(plugin));
+        accessoryList.put("CrossedHeartNecklace",new CrossedHeartNecklace(plugin));
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

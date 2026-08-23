@@ -24,13 +24,15 @@ public class FishingManager implements Listener {
     private final Plugin plugin;
     private final NamespacedKey customItemId;
 
+    private static final Set<Biome> badlandsBiomes = Set.of(Biome.BADLANDS,Biome.ERODED_BADLANDS);
+    private static final Set<Biome> swampBiomes = Set.of(Biome.SWAMP,Biome.MANGROVE_SWAMP);
     private static final Set<Biome> jungleBiomes = Set.of(Biome.JUNGLE,Biome.BAMBOO_JUNGLE,Biome.SPARSE_JUNGLE);
     private static final Set<Biome> desertBiomes = Set.of(Biome.DESERT,Biome.BADLANDS,Biome.WOODED_BADLANDS,Biome.ERODED_BADLANDS);
     private static final Set<Biome> frozenBiomes = Set.of(Biome.SNOWY_TAIGA,Biome.JAGGED_PEAKS,Biome.FROZEN_PEAKS,Biome.GROVE,Biome.SNOWY_SLOPES,Biome.FROZEN_RIVER,Biome.SNOWY_PLAINS,Biome.ICE_SPIKES);
     private static final Set<Biome> oceanBiomes = Set.of(Biome.BEACH,Biome.OCEAN,Biome.DEEP_OCEAN,Biome.WARM_OCEAN,Biome.LUKEWARM_OCEAN,Biome.DEEP_LUKEWARM_OCEAN,Biome.COLD_OCEAN,Biome.DEEP_COLD_OCEAN,Biome.FROZEN_OCEAN,Biome.DEEP_FROZEN_OCEAN,Biome.MUSHROOM_FIELDS,Biome.SNOWY_BEACH,Biome.STONY_SHORE);
     private static final List<Material> FISHING_TREASURE = List.of(Material.BOW, Material.ENCHANTED_BOOK, Material.FISHING_ROD, Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
     private static final List<Material> FISHING_JUNK = List.of(Material.LILY_PAD, Material.BOWL, Material.LEATHER, Material.ROTTEN_FLESH, Material.STICK, Material.STRING, Material.WATER_BUCKET, Material.BONE);
-    private static final List<Material> TREASURE = List.of(Material.NAME_TAG, Material.NAUTILUS_SHELL,Material.SADDLE);
+
 
     public FishingManager(Plugin plugin) {
         this.plugin = plugin;
@@ -122,9 +124,9 @@ public class FishingManager implements Listener {
         Location location=player.getLocation();
         if(location.getY()<=45){
             return ArmoredCavefish.getItem(plugin);
-        } else if (location.getBlock().getBiome()==Biome.MUSHROOM_FIELDS) {
+        } else if (badlandsBiomes.contains(location.getBlock().getBiome())) {
             return Hemopiranha.getItem(plugin);
-        }else if (location.getBlock().getBiome()==Biome.MANGROVE_SWAMP) {
+        }else if (swampBiomes.contains(location.getBlock().getBiome())) {
             return Ebonkoi.getItem(plugin);
         }
         return null;

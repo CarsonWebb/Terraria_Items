@@ -3,6 +3,7 @@ package me.carson.terrariaItems.bossFolder.bosses;
 import me.carson.terrariaItems.bossFolder.Boss;
 import me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles.WardenFlame;
 import me.carson.terrariaItems.enemyProjectilesFolder.bossProjectiles.WardenLaser;
+import me.carson.terrariaItems.toolFolder.tools.summons.MechanicalShrieker;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
@@ -34,6 +35,7 @@ public class MechanicalWarden extends Boss {
         Location spawnPoint=getSpawnPoint(player);
         if(spawnPoint==null){
             player.sendMessage(ChatColor.RED + "Invalid spawn, doesn't have adequate room");
+            player.getInventory().addItem(MechanicalShrieker.getItem(plugin));
             return;
         }
         Warden boss= (Warden) world.spawnEntity(spawnPoint, type);

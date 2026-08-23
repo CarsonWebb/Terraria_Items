@@ -23,10 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public abstract class RougeProjectiles {
 
@@ -42,6 +39,7 @@ public abstract class RougeProjectiles {
     public record Result(ItemDisplay proj, Vector dir) {};
     private static final HashMap<UUID, ItemDisplay> axeMap = new HashMap<>();
     private static final HashMap<ItemDisplay, Boolean> axeMovingMap = new HashMap<>();
+    private static final Set<EntityType> excludedMobs = Set.of(EntityType.VILLAGER,EntityType.WOLF,EntityType.CAT,EntityType.PARROT,EntityType.WANDERING_TRADER);
 
     public RougeProjectiles(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
         this.plugin = plugin;
@@ -940,6 +938,7 @@ public abstract class RougeProjectiles {
                 .filter(e -> e != player)
                 .filter(e -> e.getType() != proj.getType())
                 .filter(e -> !hitEntities.contains(e))
+                .filter(e -> !excludedMobs.contains(e.getType()))
                 .map(e -> (LivingEntity) e)
                 .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
                 .orElse(null);
@@ -952,6 +951,7 @@ public abstract class RougeProjectiles {
                 .filter(e -> e instanceof LivingEntity)
                 .filter(e -> e != player)
                 .filter(e -> e.getType() != proj.getType())
+                .filter(e -> !excludedMobs.contains(e.getType()))
                 .map(e -> (LivingEntity) e)
                 .min(Comparator.comparingDouble(e -> e.getLocation().distanceSquared(loc)))
                 .orElse(null);

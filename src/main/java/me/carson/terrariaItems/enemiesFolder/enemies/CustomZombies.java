@@ -193,7 +193,7 @@ public class CustomZombies extends CustomEnemy implements Listener {
         zombie.setCanPickupItems(false);
         zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.3);
         zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(60);
-        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(9);
+        zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(10);
         zombie.setHealth(60);
         EntityEquipment equipment=zombie.getEquipment();
         equipment.setItemInMainHand(null);
