@@ -91,7 +91,20 @@ public class WeaponRecipes {
         registerEnchantedAxeRecipe();
         registerBrimlashRecipe();
         registerBrimstoneFuryRecipe();
+        registerDaybloomStaffRecipe();
     }
+
+    private void registerDaybloomStaffRecipe(){
+        ItemStack item= DaybloomStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_DaybloomStaff");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("DDD"," S "," S ");
+        recipe.setIngredient('D',new RecipeChoice.ExactChoice(new ItemStack(Material.DANDELION)));
+        recipe.setIngredient('S',new RecipeChoice.ExactChoice(new ItemStack(Material.STICK)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
+    }
+
 
     private void registerBrimstoneFuryRecipe(){
         ItemStack item= BrimstoneFury.getItem(plugin);
