@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class EnchantedSwordBeam extends Projectile {
 
     public EnchantedSwordBeam(Plugin plugin) {
-        super(plugin, 0,  "enchanted_sword_beam", "EnchantedSwordBeam",0, 0, DamageType.PLAYER_ATTACK,null);
+        super(plugin, 0,  "enchanted_sword_beam", "EnchantedSwordBeam",0, 0, DamageType.PLAYER_ATTACK,null,0);
     }
 
     @Override

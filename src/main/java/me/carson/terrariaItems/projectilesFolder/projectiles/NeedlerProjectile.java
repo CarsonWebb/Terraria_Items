@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class NeedlerProjectile extends Projectile {
 
     public NeedlerProjectile(Plugin plugin) {
-        super(plugin, 0, "needler_projectile", "NeedlerProjectile", 0,0,DamageType.ARROW,null);
+        super(plugin, 0, "needler_projectile", "NeedlerProjectile", 0,0,DamageType.ARROW,null,0);
     }
 
     @Override

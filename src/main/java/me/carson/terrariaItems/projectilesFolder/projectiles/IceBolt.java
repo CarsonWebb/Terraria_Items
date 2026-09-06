@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class IceBolt extends Projectile {
 
     public IceBolt(Plugin plugin) {
-        super(plugin, 0,  "ice_bolt", "IceBolt",0, 0,DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(17, 143, 180), 0.75f));
+        super(plugin, 0,  "ice_bolt", "IceBolt",0, 0,DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(17, 143, 180), 0.75f),0);
     }
 
     @Override

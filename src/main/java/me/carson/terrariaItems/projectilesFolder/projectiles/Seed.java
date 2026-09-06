@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class Seed extends Projectile {
 
     public Seed(Plugin plugin) {
-        super(plugin, 0, "seed_projectile", "SeedProjectile",0,0, DamageType.ARROW,null);
+        super(plugin, 0, "seed_projectile", "SeedProjectile",0,0, DamageType.ARROW,null,0);
     }
 
 

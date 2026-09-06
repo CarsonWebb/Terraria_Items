@@ -12,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 public class CausticBeam extends Projectile {
 
     public CausticBeam(Plugin plugin) {
-        super(plugin, 0,  "caustic_beam", "CausticBeam",0,5, DamageType.PLAYER_ATTACK,null);
+        super(plugin, 0,  "caustic_beam", "CausticBeam",0,5, DamageType.PLAYER_ATTACK,null,0);
     }
 
 

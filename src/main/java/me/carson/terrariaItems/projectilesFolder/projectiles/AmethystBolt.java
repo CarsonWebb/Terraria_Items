@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class AmethystBolt extends Projectile {
 
     public AmethystBolt(Plugin plugin) {
-        super(plugin, 0,  "amethyst_bolt", "AmethystBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(125, 27, 116), 1f));
+        super(plugin, 0,  "amethyst_bolt", "AmethystBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(125, 27, 116), 1f),5);
     }
 
     @Override

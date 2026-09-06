@@ -16,7 +16,7 @@ import org.bukkit.plugin.Plugin;
 public class MistArrow extends Projectile {
 
     public MistArrow(Plugin plugin) {
-        super(plugin, 0,  "mist_arrow", "MistArrow",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(214, 249, 251), 1f));
+        super(plugin, 0,  "mist_arrow", "MistArrow",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(214, 249, 251), 1f),0);
     }
 
     @Override

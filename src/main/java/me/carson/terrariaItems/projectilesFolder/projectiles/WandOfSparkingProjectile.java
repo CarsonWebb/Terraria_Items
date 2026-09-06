@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class WandOfSparkingProjectile extends Projectile {
 
     public WandOfSparkingProjectile(Plugin plugin) {
-        super(plugin, 0,  "wand_of_sparking_projectile", "WandOfSparkingProjectile",1,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(232, 100, 0), 0.5f));
+        super(plugin, 0,  "wand_of_sparking_projectile", "WandOfSparkingProjectile",1,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(232, 100, 0), 0.5f),0);
     }
 
     @Override

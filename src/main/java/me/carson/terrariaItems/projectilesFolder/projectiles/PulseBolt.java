@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class PulseBolt extends Projectile {
 
     public PulseBolt(Plugin plugin) {
-        super(plugin, 0,  "pulse_bolt", "PulseBolt",5,5, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(0, 255, 255), 1f));
+        super(plugin, 0,  "pulse_bolt", "PulseBolt",5,5, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(0, 255, 255), 1f),0);
     }
 
     @Override

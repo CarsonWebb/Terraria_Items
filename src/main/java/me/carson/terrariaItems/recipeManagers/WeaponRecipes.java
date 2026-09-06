@@ -92,6 +92,18 @@ public class WeaponRecipes {
         registerBrimlashRecipe();
         registerBrimstoneFuryRecipe();
         registerDaybloomStaffRecipe();
+        registerSapphireStaffRecipe();
+    }
+
+    private void registerSapphireStaffRecipe(){
+        ItemStack item= SapphireStaff.getItem(plugin);
+        NamespacedKey key = new NamespacedKey(plugin, "pre_SapphireStaff");
+        ShapedRecipe recipe = new ShapedRecipe(key, item);
+        recipe.shape("  L"," I ","I  ");
+        recipe.setIngredient('I',new RecipeChoice.ExactChoice(new ItemStack(Material.IRON_INGOT)));
+        recipe.setIngredient('L',new RecipeChoice.ExactChoice(new ItemStack(Material.LAPIS_LAZULI)));
+        recipe.setCategory(CraftingBookCategory.EQUIPMENT);
+        recipeManager.register(recipe);
     }
 
     private void registerDaybloomStaffRecipe(){

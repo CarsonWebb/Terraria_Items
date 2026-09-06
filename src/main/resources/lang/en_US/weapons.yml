@@ -155,7 +155,7 @@ meteor_staff:
 ruby_staff:
   name: "Ruby Staff"
   lore:
-    - "&7Fires a ruby bolt"
+    - "&7Rubies flash double"
     - "&7Costs 7 Mana"
     - "&76 Magic Damage"
 thunder_zapper:
@@ -404,3 +404,15 @@ brimstone_fury:
     - "&7Converts wooden arrows into"
     - "&7a spread of 3 brimstone bolts"
     - "&78 Ranged Damage"
+daybloom_staff:
+  name: "Daybloom Staff"
+  lore:
+    - "&7Shoots small magical pellets"
+    - "&71.5 Magic Damage"
+    - "&75 Mana"
+sapphire_staff:
+  name: "Sapphire Staff"
+  lore:
+    - "&7Sapphires swirl in pairs"
+    - "&74 Magic Damage"
+    - "&78 Mana"

@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 public class LaserRifleProjectile extends Projectile {
 
     public LaserRifleProjectile(Plugin plugin) {
-        super(plugin, 0,  "laser_rifle_projectile", "LaserRifleProjectile",3,0, DamageType.LIGHTNING_BOLT,null);
+        super(plugin, 0,  "laser_rifle_projectile", "LaserRifleProjectile",3,0, DamageType.LIGHTNING_BOLT,null,0);
     }
 
     @Override

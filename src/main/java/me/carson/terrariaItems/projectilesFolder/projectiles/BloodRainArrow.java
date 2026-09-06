@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class BloodRainArrow extends Projectile {
 
     public BloodRainArrow(Plugin plugin) {
-        super(plugin, 0,  "blood_rain_arrow", "BloodRainArrow",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(101, 29, 29), 0.75f));
+        super(plugin, 0,  "blood_rain_arrow", "BloodRainArrow",0,0, DamageType.ARROW,new Particle.DustOptions(Color.fromRGB(101, 29, 29), 0.75f),0);
     }
 
     @Override

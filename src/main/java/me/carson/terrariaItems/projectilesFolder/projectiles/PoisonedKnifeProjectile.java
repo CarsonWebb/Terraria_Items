@@ -12,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 public class PoisonedKnifeProjectile extends Projectile {
 
     public PoisonedKnifeProjectile(Plugin plugin) {
-        super(plugin, 0,  "poisoned_knife_projectile", "PoisonedKnifeProjectile",1,0, DamageType.ARROW,null);
+        super(plugin, 0,  "poisoned_knife_projectile", "PoisonedKnifeProjectile",1,0, DamageType.ARROW,null,0);
     }
 
     @Override

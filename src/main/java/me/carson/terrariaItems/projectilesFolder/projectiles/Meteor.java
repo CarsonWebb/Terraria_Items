@@ -16,7 +16,7 @@ import org.bukkit.plugin.Plugin;
 public class Meteor extends Projectile {
 
     public Meteor(Plugin plugin) {
-        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(40, 40, 40), 2f));
+        super(plugin, 0,  "meteor", "Meteor",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(40, 40, 40), 2f),0);
     }
 
 

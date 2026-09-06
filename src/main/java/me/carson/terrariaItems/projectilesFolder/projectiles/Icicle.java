@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class Icicle extends Projectile {
 
     public Icicle(Plugin plugin) {
-        super(plugin, 0,  "icicle", "Icicle",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(84, 186, 255), 1.5f));
+        super(plugin, 0,  "icicle", "Icicle",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(84, 186, 255), 1.5f),0);
     }
 
 

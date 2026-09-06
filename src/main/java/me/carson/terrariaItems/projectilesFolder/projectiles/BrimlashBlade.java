@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class BrimlashBlade extends Projectile {
 
     public BrimlashBlade(Plugin plugin) {
-        super(plugin, 0,  "brimlash_blade", "BrimlashBlade",99,0, DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(136, 30, 27), 1f));
+        super(plugin, 0,  "brimlash_blade", "BrimlashBlade",99,0, DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(136, 30, 27), 1f),0);
     }
 
     @Override

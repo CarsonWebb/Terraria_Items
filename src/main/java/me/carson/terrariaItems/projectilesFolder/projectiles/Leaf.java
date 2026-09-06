@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Leaf extends Projectile {
 
     public Leaf(Plugin plugin) {
-        super(plugin, 0,  "leaf_blade_projectile", "Leaf",0,0, DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(46, 84, 29), 0.5f));
+        super(plugin, 0,  "leaf_blade_projectile", "Leaf",0,0, DamageType.PLAYER_ATTACK,new Particle.DustOptions(Color.fromRGB(46, 84, 29), 0.5f),0);
     }
 
     @Override

@@ -14,7 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class DaybloomPellet extends Projectile {
 
     public DaybloomPellet(Plugin plugin) {
-        super(plugin, 0,  "daybloom_pellet", "DaybloomPellet",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(236, 197, 18), 1f));
+        super(plugin, 0,  "daybloom_pellet", "DaybloomPellet",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(236, 197, 18), 1f),0);
     }
 
     @Override

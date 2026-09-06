@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class ThunderZapperBolt extends Projectile {
 
     public ThunderZapperBolt(Plugin plugin) {
-        super(plugin, 0,  "thunder_zapper_bolt", "ThunderZapperBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(75, 166, 211), 1f));
+        super(plugin, 0,  "thunder_zapper_bolt", "ThunderZapperBolt",0,0, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(75, 166, 211), 1f),0);
     }
 
 

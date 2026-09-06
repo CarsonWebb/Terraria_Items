@@ -30,9 +30,11 @@ public abstract class Projectile implements Listener {
     protected final int bounces;
     protected final DamageType damageType;
     protected final Particle.DustOptions particle;
+    protected final double homingDistance;
+
     private static final Set<EntityType> excludedMobs = Set.of(EntityType.VILLAGER,EntityType.WOLF,EntityType.CAT,EntityType.PARROT,EntityType.WANDERING_TRADER);
 
-    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle) {
+    public Projectile(Plugin plugin, int damage, String texture, String id, int peirce, int bounces, DamageType damageType, Particle.DustOptions particle,double homingDistance) {
         this.plugin = plugin;
         this.texture = texture;
         this.id = id;
@@ -41,6 +43,7 @@ public abstract class Projectile implements Listener {
         this.bounces = bounces;
         this.damageType = damageType;
         this.particle = particle;
+        this.homingDistance=homingDistance;
     }
 
     public void createProjectile(Player player,float speed,float weaponDamage, float spread,float duration){
@@ -123,6 +126,15 @@ public abstract class Projectile implements Listener {
                 proj.remove();
                 task.cancel();
                 return;
+            }
+
+            if(tick[0]>=5){
+                if(homingDistance>0){
+                    LivingEntity homing=getClosestEntity(proj,player,hitEntities,homingDistance);
+                    if(homing!=null){
+                        direction[0]=vectorBetween(proj,homing).normalize().multiply(1);
+                    }
+                }
             }
 
             //block handling

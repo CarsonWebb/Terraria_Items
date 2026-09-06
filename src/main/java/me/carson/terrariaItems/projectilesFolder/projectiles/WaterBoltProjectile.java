@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class WaterBoltProjectile extends Projectile {
 
     public WaterBoltProjectile(Plugin plugin) {
-        super(plugin, 0, "water_bolt_projectile", "WaterBoltProjectile",9,5, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(25, 33, 183), 1f));
+        super(plugin, 0, "water_bolt_projectile", "WaterBoltProjectile",9,5, DamageType.LIGHTNING_BOLT,new Particle.DustOptions(Color.fromRGB(25, 33, 183), 1f),0);
     }
 
 

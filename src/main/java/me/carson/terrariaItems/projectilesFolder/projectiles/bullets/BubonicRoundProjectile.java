@@ -12,7 +12,7 @@ import org.bukkit.potion.PotionEffectType;
 public class BubonicRoundProjectile extends Projectile {
 
     public BubonicRoundProjectile(Plugin plugin) {
-        super(plugin, 5, "bubonic_round_projectile", "BubonicRound",0,0, DamageType.ARROW,null);
+        super(plugin, 5, "bubonic_round_projectile", "BubonicRound",0,0, DamageType.ARROW,null,0);
     }
 
     @Override
